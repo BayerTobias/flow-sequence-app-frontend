@@ -1,0 +1,11 @@
+@mixin glassStyle() {
+  background: rgba(0, 0, 0, 0.33);
+  backdrop-filter: blur(27.5px);
+}
+
+@mixin dFlex($jc: center, $ai: center, $gp: 0px) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+  gap: $gp;
+}

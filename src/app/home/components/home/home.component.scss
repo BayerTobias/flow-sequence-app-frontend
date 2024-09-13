@@ -1,4 +1,7 @@
+@import "./../../../../mixin.scss";
+
 main {
+  @include dFlex();
   min-width: 100vw;
   min-width: 100svw;
   min-height: 100vh;
