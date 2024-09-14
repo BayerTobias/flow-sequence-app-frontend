@@ -5,6 +5,29 @@
   </div>
 
   <div class="buttons-wrapper">
-    <button></button><button></button><button></button><button></button>
+    <app-glass-button
+      [btnAction]="'Start'"
+      [btnName]="'Standart'"
+      [btnType]="'Flow Sequence'"
+      (buttonClicked)="test()"
+    ></app-glass-button>
+
+    <app-glass-button
+      [btnAction]="'Start'"
+      [btnName]="'Reverse'"
+      [btnType]="'Flow Sequence'"
+    ></app-glass-button>
+
+    <app-glass-button
+      [btnAction]="'Create'"
+      [btnName]="'Custom'"
+      [btnType]="'Flow Sequence'"
+    ></app-glass-button>
+
+    <app-glass-button
+      [btnAction]="'Browse'"
+      [btnName]="'Saved'"
+      [btnType]="'Flow Sequences'"
+    ></app-glass-button>
   </div>
 </section>
