@@ -9,25 +9,28 @@
       [btnAction]="'Start'"
       [btnName]="'Standart'"
       [btnType]="'Flow Sequence'"
-      (buttonClicked)="test()"
+      (buttonClicked)="startStandardTimer()"
     ></app-glass-button>
 
     <app-glass-button
       [btnAction]="'Start'"
       [btnName]="'Reverse'"
       [btnType]="'Flow Sequence'"
+      (buttonClicked)="startStandardReverse()"
     ></app-glass-button>
 
     <app-glass-button
       [btnAction]="'Create'"
       [btnName]="'Custom'"
       [btnType]="'Flow Sequence'"
+      (buttonClicked)="openCreateTimerMenu()"
     ></app-glass-button>
 
     <app-glass-button
       [btnAction]="'Browse'"
       [btnName]="'Saved'"
       [btnType]="'Flow Sequences'"
+      (buttonClicked)="openSavedTimersMenu()"
     ></app-glass-button>
   </div>
 </section>

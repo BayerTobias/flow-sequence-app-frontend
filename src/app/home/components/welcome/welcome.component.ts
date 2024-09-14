@@ -9,7 +9,19 @@ import { GlassButtonComponent } from '../../../shared/components/buttons/glass-b
   styleUrl: './welcome.component.scss',
 })
 export class WelcomeComponent {
-  test() {
-    console.log('test');
+  startStandardTimer() {
+    console.log('Standard Timer');
+  }
+
+  startStandardReverse() {
+    console.log('Standard Reverse');
+  }
+
+  openCreateTimerMenu() {
+    console.log('Create Timer');
+  }
+
+  openSavedTimersMenu() {
+    console.log('Browse Timer');
   }
 }

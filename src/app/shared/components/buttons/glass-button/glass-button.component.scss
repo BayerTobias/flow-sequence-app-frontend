@@ -1,7 +1,7 @@
 @import "./../../../../../mixin.scss";
 
 button {
-  @include dFlex($gp: 8px);
+  @include dFlex();
   @include glassStyle();
   flex-direction: column;
   border-radius: 24px;
