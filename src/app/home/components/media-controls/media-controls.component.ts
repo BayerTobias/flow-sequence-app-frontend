@@ -5,8 +5,22 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './media-controls.component.html',
-  styleUrl: './media-controls.component.scss'
+  styleUrl: './media-controls.component.scss',
 })
 export class MediaControlsComponent {
+  play() {
+    console.log('play');
+  }
 
+  pause() {
+    console.log('pause');
+  }
+
+  next() {
+    console.log('next');
+  }
+
+  previous() {
+    console.log('previous');
+  }
 }
