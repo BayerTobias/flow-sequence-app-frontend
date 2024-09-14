@@ -21,9 +21,20 @@ h1 h2 {
   text-wrap: balance;
 }
 
-/* FONTS */
+/* Colors */
+$copy-light: rgba(255, 255, 255, 0.8);
+$copy-dark: rgba(0, 0, 0, 0.85);
+$inactive-text: rgb(165, 165, 165);
+$settings-background: rgb(34, 34, 34);
 
-/* rubik-300 - latin */
+$interface-accent-1: rgb(201, 0, 151);
+$interface-accent-1-dark: rgb(77, 0, 36);
+$interface-accent-1-light: rgb(255, 163, 206);
+$interface-accent-1-extra-light: rgb(243, 205, 223);
+
+$scrollbar-background: rgba(0, 0, 0, 0.15);
+
+/* FONTS */ /* rubik-300 - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
   font-family: "Rubik";
