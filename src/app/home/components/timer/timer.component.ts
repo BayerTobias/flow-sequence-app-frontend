@@ -5,8 +5,10 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './timer.component.html',
-  styleUrl: './timer.component.scss'
+  styleUrl: './timer.component.scss',
 })
 export class TimerComponent {
-
+  editTimer() {
+    console.log('edit');
+  }
 }

@@ -9,11 +9,43 @@ section {
   padding: 24px 48px;
 
   width: 400px;
-  height: 590px;
 
   p {
     color: $copy-light;
     font-size: 24px;
     text-align: center;
+  }
+
+  .minutes {
+    color: $copy-light;
+    font-size: 256px;
+    font-weight: 300;
+  }
+
+  .time-text {
+    color: $copy-light;
+    font-size: 24px;
+    font-weight: 300;
+  }
+
+  .seconds-bar-wrapper {
+    width: 228px;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 46px;
+    margin-bottom: 12px;
+
+    .bar {
+      width: 20%;
+      height: 100%;
+      background-color: rgb(106, 158, 157);
+    }
+  }
+
+  img {
+    margin-top: 54px;
+    cursor: pointer;
   }
 }
