@@ -10,3 +10,12 @@ main {
   background-size: cover;
   background-position: center;
 }
+
+.timer-active {
+  @include dFlex($gp: 12px, $ai: flex-start);
+
+  .left {
+    @include dFlex($gp: 12px);
+    flex-direction: column;
+  }
+}

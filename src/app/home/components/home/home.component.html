@@ -1,6 +1,14 @@
 <main style="background-image: url('assets/img/backgrounds/background-1.webp')">
   @if (timer) {
-  <app-timer></app-timer>
-  <app-media-controls></app-media-controls>
+  <div class="timer-active">
+    <div class="left">
+      <app-timer></app-timer>
+      <app-media-controls></app-media-controls>
+    </div>
+    <div class="right">
+      <app-flow-sequence-details></app-flow-sequence-details>
+    </div>
+  </div>
+
   } @else {<app-welcome></app-welcome>}
 </main>
