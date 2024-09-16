@@ -3,8 +3,112 @@
 
 section {
   @include glassStyle();
+  @include dFlex($gp: 16px, $jc: flex-start);
+  flex-direction: column;
+  padding: 24px 48px;
   border-radius: 24px;
 
   width: 700px;
-  height: 542px;
+  max-height: 542px;
+
+  .sequence-box {
+    @include dFlex($gp: 8px, $jc: flex-start);
+    flex-direction: column;
+    max-height: 432px;
+    overflow-y: auto;
+    width: 100%;
+
+    .step-wrapper {
+      @include dFlex($gp: 12px, $jc: flex-start);
+      width: 100%;
+
+      > div {
+        @include dFlex($jc: space-between);
+        background-color: rgba(255, 255, 255, 0.1);
+        width: calc(100% - 24px);
+        padding: 8px 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.33);
+        border-radius: 8px;
+
+        span {
+          color: $copy-light;
+          font-size: 16px;
+          font-weight: 300;
+        }
+
+        img {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .bottom-container {
+    @include dFlex($gp: 16px, $ai: flex-end);
+    width: 100%;
+
+    svg {
+      cursor: pointer;
+    }
+
+    .progress-container {
+      @include dFlex($jc: flex-start, $gp: 8px);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.11);
+      flex-grow: 1;
+      min-height: 44px;
+      padding: 8px 12px;
+      flex-wrap: wrap;
+    }
+
+    .complete-upload-container {
+      @include dFlex($gp: 16px);
+
+      img {
+        width: 44px;
+        height: 44px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.flow-time {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: $copy-light;
+}
+
+.long-break {
+  width: 18px;
+  height: 6px;
+  border-radius: 3px;
+  background-color: $copy-light;
+}
+
+.short-break {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: $copy-light;
+}
+
+// svg {
+//   height: 100px;
+//   width: 100px;
+
+//   path {
+//     // stroke: #ff0000; // Ändere die Stroke-Farbe (z.B. Rot)
+//   }
+// }
+
+.step-done {
+  background-color: rgb(106, 158, 157);
+  border-radius: 2px;
+}
+
+.sequence-complete {
+  background-color: rgb(106, 158, 157);
+  border-radius: 4px;
 }
