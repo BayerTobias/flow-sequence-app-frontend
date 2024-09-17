@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FlowSequenceServiceService } from '../../../shared/services/flow-sequence-service.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-timer',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './timer.component.html',
   styleUrl: './timer.component.scss',
 })
 export class TimerComponent {
+  public flowSequenceService = inject(FlowSequenceServiceService);
   editTimer() {
     console.log('edit');
   }

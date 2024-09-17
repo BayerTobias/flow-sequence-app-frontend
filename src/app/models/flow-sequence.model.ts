@@ -1,6 +1,7 @@
 import { Step } from './step.model';
 
 export class FlowSequence {
+  name: string = '';
   steps: Step[];
 
   constructor() {

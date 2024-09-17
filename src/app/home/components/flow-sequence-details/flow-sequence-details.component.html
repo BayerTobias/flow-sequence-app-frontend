@@ -1,6 +1,6 @@
 <section>
   <div class="sequence-box">
-    @for (step of flowSequence.steps; track $index) {
+    @for (step of flowSequenceService.activeFlowSequence.steps; track $index) {
 
     <div class="step-wrapper">
       <img
@@ -41,8 +41,8 @@
     </svg>
 
     <div class="progress-container">
-      @for (step of flowSequence.steps; track $index) { @if (step.type ===
-      'flowTime') {
+      @for (step of flowSequenceService.activeFlowSequence.steps ; track $index)
+      { @if (step.type === 'flowTime') {
       <div
         [ngStyle]="step.complete ? { 'background-color': completeColor } : {}"
         class="flow-time"
