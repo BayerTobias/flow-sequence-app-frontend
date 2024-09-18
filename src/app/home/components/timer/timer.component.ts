@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class TimerComponent {
   public flowSequenceService = inject(FlowSequenceServiceService);
+
   editTimer() {
     console.log('edit');
   }

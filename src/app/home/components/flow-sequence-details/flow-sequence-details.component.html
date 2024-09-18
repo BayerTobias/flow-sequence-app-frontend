@@ -62,7 +62,9 @@
 
     <div class="complete-upload-container">
       <img
-        class="sequence-complete"
+        [ngClass]="{
+          'sequence-complete': flowSequenceService.sequenceComplete
+        }"
         src="assets/img/icons/flow-checkbox.svg"
         alt=""
       />

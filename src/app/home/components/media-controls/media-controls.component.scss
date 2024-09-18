@@ -2,7 +2,7 @@
 @import "./../../../../styles.scss";
 
 section {
-  @include dFlex($gp: 64px);
+  @include dFlex($gp: 46px);
   @include glassStyle();
   border-radius: 24px;
   padding: 24px 48px;
@@ -10,5 +10,9 @@ section {
 
   img {
     cursor: pointer;
+  }
+
+  .chapter-img {
+    height: 18px;
   }
 }

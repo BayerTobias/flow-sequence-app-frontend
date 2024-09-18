@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FlowSequenceServiceService } from '../../../shared/services/flow-sequence-service.service';
 
 @Component({
   selector: 'app-media-controls',
@@ -8,19 +9,21 @@ import { Component } from '@angular/core';
   styleUrl: './media-controls.component.scss',
 })
 export class MediaControlsComponent {
+  public flowSequenceService = inject(FlowSequenceServiceService);
+
   play() {
-    console.log('play');
+    this.flowSequenceService.startSequence();
   }
 
   pause() {
-    console.log('pause');
+    this.flowSequenceService.pauseTimer();
   }
 
   next() {
-    console.log('next');
+    this.flowSequenceService.nextStep();
   }
 
   previous() {
-    console.log('previous');
+    this.flowSequenceService.previousStep();
   }
 }
