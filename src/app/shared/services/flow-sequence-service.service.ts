@@ -19,6 +19,19 @@ export class FlowSequenceServiceService {
   private isPaused: boolean = false;
   private currentStep!: Step;
 
+  private shortBreakSound: HTMLAudioElement = new Audio(
+    'assets/sounds/correct-answer.mp3'
+  );
+  private lognBreakSound: HTMLAudioElement = new Audio(
+    'assets/sounds/dream-harp.mp3'
+  );
+  private flowTimeSound: HTMLAudioElement = new Audio(
+    'assets/sounds/celebration-big.mp3'
+  );
+  private FlowSequenceSound: HTMLAudioElement = new Audio(
+    'assets/sounds/big-band-celebration.mp3'
+  );
+
   constructor() {}
 
   createDummyFlowSequence() {
@@ -31,7 +44,7 @@ export class FlowSequenceServiceService {
         type: 'flowTime',
         position: 1,
         complete: false,
-        duration: 2,
+        duration: 1.1,
       })
     );
 
@@ -83,6 +96,7 @@ export class FlowSequenceServiceService {
         this.setupTimer();
       }
 
+      this.countDownSecond();
       this.isPaused = false;
 
       this.interval = setInterval(() => {
@@ -107,7 +121,7 @@ export class FlowSequenceServiceService {
 
   countDownSecond() {
     this.currentStepTimeRemaining--;
-    this.minutesRemaining = Math.floor(this.currentStepTimeRemaining / 60);
+    this.minutesRemaining = Math.floor(this.currentStepTimeRemaining / 60 + 1);
     this.secondsOfMinuteRemainung = this.currentStepTimeRemaining % 60;
   }
 
@@ -119,6 +133,9 @@ export class FlowSequenceServiceService {
   completeFlowSequence() {
     this.clearTimerInterval();
     this.sequenceComplete = true;
+    this.minutesRemaining = 0;
+    this.secondsOfMinuteRemainung = 0;
+    this.playSound();
   }
 
   pauseTimer() {
@@ -133,7 +150,10 @@ export class FlowSequenceServiceService {
   nextStep() {
     if (this.currentStepindex !== this.activeFlowSequence.steps.length - 1) {
       this.clearTimerInterval();
+      this.minutesRemaining = 0;
+      this.secondsOfMinuteRemainung = 0;
       this.currentStep.complete = true;
+      this.playSound();
       this.currentStepindex++;
       this.startStepTimer();
     } else {
@@ -144,7 +164,10 @@ export class FlowSequenceServiceService {
 
   previousStep() {
     if (this.currentStepindex !== 0) {
-      if (this.currentStepindex === this.activeFlowSequence.steps.length - 1) {
+      if (
+        this.currentStepindex === this.activeFlowSequence.steps.length - 1 &&
+        this.sequenceComplete
+      ) {
         this.clearTimerInterval();
         this.startStepTimer();
       } else {
@@ -152,6 +175,18 @@ export class FlowSequenceServiceService {
         this.currentStepindex--;
         this.startStepTimer();
       }
+    }
+  }
+
+  playSound() {
+    if (this.sequenceComplete) {
+      this.FlowSequenceSound.play();
+    } else if (this.currentStep.type === 'shortBreak') {
+      this.shortBreakSound.play();
+    } else if (this.currentStep.type === 'longBreak') {
+      this.lognBreakSound.play();
+    } else if (this.currentStep.type === 'flowTime') {
+      this.flowTimeSound.play();
     }
   }
 }

@@ -18,6 +18,10 @@
           (this.flowSequenceService.secondsOfMinuteRemainung / 60) * 100 + '%'
       }"
       class="bar"
+      [ngClass]="{
+        'transition-opacity':
+          this.flowSequenceService.secondsOfMinuteRemainung !== 0
+      }"
     ></div>
   </div>
 

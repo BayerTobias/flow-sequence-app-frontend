@@ -41,15 +41,30 @@ section {
     overflow: hidden;
 
     .bar {
-      width: 20%;
+      width: 0%;
       height: 100%;
       background-color: rgb(106, 158, 157);
       transition: width linear 1s;
     }
   }
 
+  // .transition-opacity {
+  //   animation: animate-bar 1s ease-in-out;
+  // }
+
   img {
     margin-top: 54px;
     cursor: pointer;
+  }
+}
+
+@keyframes animate-bar {
+  0% {
+    opacity: 0;
+    width: 100% !important;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

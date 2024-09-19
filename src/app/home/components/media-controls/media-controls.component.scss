@@ -12,6 +12,21 @@ section {
     cursor: pointer;
   }
 
+  svg {
+    cursor: pointer;
+
+    path {
+      transition: fill 250ms ease-in-out, stroke 250ms ease-in-out;
+    }
+
+    &:hover {
+      path {
+        stroke: aqua;
+        fill: aqua;
+      }
+    }
+  }
+
   .chapter-img {
     height: 18px;
   }
