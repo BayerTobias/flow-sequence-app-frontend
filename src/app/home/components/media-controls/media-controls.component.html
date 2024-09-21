@@ -1,14 +1,41 @@
 <section>
-  <img
-    class="chapter-img"
+  <svg
     (click)="previous()"
-    src="assets/img/icons/previous-chapter.svg"
-    alt="previous"
-  />
-  <!-- <img (click)="play()" src="assets/img/icons/play.svg" alt="play" /> -->
+    class="chapter-img"
+    width="23"
+    height="26"
+    viewBox="0 0 23 26"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g id="Group">
+      <g id="Vector">
+        <path d="M1 4.25684V21.7451V4.25684Z" fill="white" fill-opacity="0.8" />
+        <path
+          d="M1 4.25684V21.7451"
+          stroke="white"
+          stroke-opacity="0.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </g>
+      <path
+        id="Vector_2"
+        d="M20.2964 1.22602C20.4511 1.10378 20.6373 1.0276 20.8334 1.0062C21.0295 0.9848 21.2277 1.01905 21.4052 1.10502C21.5828 1.19099 21.7325 1.32521 21.8372 1.49229C21.9419 1.65938 21.9974 1.85256 21.9974 2.04972V23.952C21.9971 24.149 21.9414 24.342 21.8365 24.5088C21.7317 24.6756 21.5819 24.8096 21.4044 24.8954C21.227 24.9811 21.0289 25.0152 20.833 24.9938C20.637 24.9723 20.451 24.8961 20.2964 24.774L6.41711 13.8246C6.29257 13.7264 6.19192 13.6012 6.12273 13.4586C6.05353 13.3159 6.01758 13.1594 6.01758 13.0009C6.01758 12.8423 6.05353 12.6859 6.12273 12.5432C6.19192 12.4005 6.29257 12.2754 6.41711 12.1772L20.2964 1.22602Z"
+        fill="white"
+        fill-opacity="0.8"
+        stroke="white"
+        stroke-opacity="0.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </g>
+  </svg>
 
+  @if (playButton) {
   <svg
     (click)="play()"
+    class="play-pause"
     width="22"
     height="26"
     viewBox="0 0 22 26"
@@ -27,12 +54,62 @@
       stroke-linejoin="round"
     />
   </svg>
+  }@else {
+  <svg
+    (click)="pause()"
+    class="play-pause"
+    width="23"
+    height="26"
+    viewBox="0 0 23 26"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      id="icon Pause flow sequence"
+      d="M0.998047 23.9714V2.02857C0.998047 1.75578 1.10867 1.49416 1.30558 1.30126C1.5025 1.10837 1.76957 1 2.04805 1H6.94805C7.22652 1 7.4936 1.10837 7.69051 1.30126C7.88742 1.49416 7.99805 1.75578 7.99805 2.02857V23.9714C7.99805 24.2442 7.88742 24.5058 7.69051 24.6987C7.4936 24.8916 7.22652 25 6.94805 25H2.04805C1.76957 25 1.5025 24.8916 1.30558 24.6987C1.10867 24.5058 0.998047 24.2442 0.998047 23.9714ZM14.998 23.9714V2.02857C14.998 1.75578 15.1087 1.49416 15.3056 1.30126C15.5025 1.10837 15.7696 1 16.048 1H20.948C21.2265 1 21.4936 1.10837 21.6905 1.30126C21.8874 1.49416 21.998 1.75578 21.998 2.02857V23.9714C21.998 24.2442 21.8874 24.5058 21.6905 24.6987C21.4936 24.8916 21.2265 25 20.948 25H16.048C15.7696 25 15.5025 24.8916 15.3056 24.6987C15.1087 24.5058 14.998 24.2442 14.998 23.9714Z"
+      fill="white"
+      fill-opacity="0.9"
+      stroke="white"
+      stroke-opacity="0.8"
+      stroke-width="0.75"
+    />
+  </svg>
+  }
 
-  <img (click)="pause()" src="assets/img/icons/pause.svg" alt="pause" />
-  <img
-    class="chapter-img"
+  <svg
     (click)="next()"
-    src="assets/img/icons/next-chapter.svg"
-    alt="next"
-  />
+    class="chapter-img"
+    width="23"
+    height="26"
+    viewBox="0 0 23 26"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g id="Group">
+      <g id="Vector">
+        <path
+          d="M21.998 4.25684V21.7451V4.25684Z"
+          fill="white"
+          fill-opacity="0.8"
+        />
+        <path
+          d="M21.998 4.25684V21.7451"
+          stroke="white"
+          stroke-opacity="0.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </g>
+      <path
+        id="Vector_2"
+        d="M2.69905 1.22602C2.54426 1.10378 2.35814 1.0276 2.16202 1.0062C1.9659 0.9848 1.76771 1.01905 1.59017 1.10502C1.41263 1.19099 1.26292 1.32521 1.1582 1.49229C1.05347 1.65938 0.997968 1.85256 0.998047 2.04972V23.952C0.998297 24.149 1.05404 24.342 1.1589 24.5088C1.26375 24.6756 1.41348 24.8096 1.59096 24.8954C1.76844 24.9811 1.96649 25.0152 2.16245 24.9938C2.35842 24.9723 2.54437 24.8961 2.69905 24.774L16.5783 13.8246C16.7028 13.7264 16.8035 13.6012 16.8727 13.4586C16.9419 13.3159 16.9778 13.1594 16.9778 13.0009C16.9778 12.8423 16.9419 12.6859 16.8727 12.5432C16.8035 12.4005 16.7028 12.2754 16.5783 12.1772L2.69905 1.22602Z"
+        fill="white"
+        fill-opacity="0.8"
+        stroke="white"
+        stroke-opacity="0.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </g>
+  </svg>
 </section>

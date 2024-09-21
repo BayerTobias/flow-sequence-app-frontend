@@ -2,15 +2,16 @@
 @import "./../../../../styles.scss";
 
 section {
-  @include dFlex($jc: flex-start);
+  @include dFlex();
   @include glassStyle();
   position: relative;
   flex-direction: column;
   border-radius: 24px;
-  padding: 120px 48px;
+  padding: 0 48px;
   overflow: hidden;
 
   width: 400px;
+  height: 550px;
 
   p {
     color: $copy-light;
@@ -35,7 +36,7 @@ section {
     position: absolute;
     bottom: 0;
     left: 0;
-    right: 0;
+    right: 6px;
     height: 8px;
     background-color: rgba(255, 255, 255, 0.75);
     overflow: hidden;
@@ -48,11 +49,13 @@ section {
   }
 
   .transition-opacity {
+    transition: none;
     animation: animate-bar 1s linear forwards;
   }
 
   img {
-    margin-top: 54px;
+    position: absolute;
+    bottom: 36px;
     cursor: pointer;
   }
 }
@@ -63,7 +66,7 @@ section {
     width: 100%;
   }
 
-  70% {
+  75% {
     opacity: 50%;
   }
 

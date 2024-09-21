@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { TimerComponent } from '../timer/timer.component';
 import { MediaControlsComponent } from '../media-controls/media-controls.component';
 import { FlowSequenceDetailsComponent } from '../flow-sequence-details/flow-sequence-details.component';
+import { FlowSequenceServiceService } from '../../../shared/services/flow-sequence-service.service';
 
 @Component({
   selector: 'app-home',
@@ -17,5 +18,5 @@ import { FlowSequenceDetailsComponent } from '../flow-sequence-details/flow-sequ
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  timer: boolean = true;
+  public flowSequenceService = inject(FlowSequenceServiceService);
 }

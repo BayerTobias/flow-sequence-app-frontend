@@ -1,5 +1,5 @@
 <main style="background-image: url('assets/img/backgrounds/background-1.webp')">
-  @if (timer) {
+  @if (flowSequenceService.activeFlowSequence) {
   <div class="timer-active">
     <div class="left">
       <app-timer></app-timer>

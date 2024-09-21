@@ -10,12 +10,15 @@ import { FlowSequenceServiceService } from '../../../shared/services/flow-sequen
 })
 export class MediaControlsComponent {
   public flowSequenceService = inject(FlowSequenceServiceService);
+  public playButton: boolean = true;
 
   play() {
+    this.playButton = false;
     this.flowSequenceService.startSequence();
   }
 
   pause() {
+    this.playButton = true;
     this.flowSequenceService.pauseTimer();
   }
 

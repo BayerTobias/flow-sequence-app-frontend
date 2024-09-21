@@ -21,7 +21,7 @@ section {
 
     &:hover {
       path {
-        stroke: aqua;
+        stroke: red;
         fill: aqua;
       }
     }
@@ -29,5 +29,10 @@ section {
 
   .chapter-img {
     height: 18px;
+  }
+
+  .play-pause {
+    width: 25px;
+    height: 25px;
   }
 }

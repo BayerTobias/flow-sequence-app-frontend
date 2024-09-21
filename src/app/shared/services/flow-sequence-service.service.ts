@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
 import { FlowSequence } from '../../models/flow-sequence.model';
-import { FlowTime } from '../../models/flow-time.model';
-import { ShortBreak } from '../../models/short-break.model';
-import { LongBreak } from '../../models/long-break.model';
 import { Step } from '../../models/step.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FlowSequenceServiceService {
-  public activeFlowSequence: FlowSequence = new FlowSequence();
+  public activeFlowSequence!: FlowSequence;
   private currentStepindex: number = 0;
   private currentStepTimeRemaining: number = 0;
   public minutesRemaining: number = 0;
@@ -35,58 +32,6 @@ export class FlowSequenceServiceService {
   );
 
   constructor() {}
-
-  createDummyFlowSequence() {
-    const sequence = new FlowSequence();
-    sequence.name = 'Test flow sequence';
-
-    sequence.addStep(
-      new FlowTime({
-        name: 'Programmieren',
-        type: 'flowTime',
-        position: 1,
-        complete: false,
-        duration: 1.1,
-      })
-    );
-
-    sequence.addStep(
-      new ShortBreak({
-        name: 'Kurze Pause',
-        type: 'shortBreak',
-        position: 2,
-        complete: false,
-        duration: 2,
-      })
-    );
-
-    sequence.addStep(
-      new FlowTime({
-        name: 'mehr Programmieren',
-        type: 'flowTime',
-        position: 3,
-        complete: false,
-        duration: 2,
-      })
-    );
-
-    sequence.addStep(
-      new LongBreak({
-        name: 'Lange Pause',
-        type: 'longBreak',
-        position: 3,
-        complete: false,
-        duration: 0.1,
-      })
-    );
-
-    this.activeFlowSequence = sequence;
-
-    console.log(sequence);
-    // this.minutesRemaining =
-    //   this.activeFlowSequence.steps[this.currentStepindex].duration;
-    // this.secondsOfMinuteRemainung = 60;
-  }
 
   startSequence() {
     if (this.activeFlowSequence.steps.length > 0) {
@@ -159,7 +104,7 @@ export class FlowSequenceServiceService {
       this.animateBar = true;
       setTimeout(() => {
         this.animateBar = false;
-      }, 1000);
+      }, 1001);
     }
   }
 

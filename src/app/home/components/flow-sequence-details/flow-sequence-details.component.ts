@@ -15,6 +15,6 @@ export class FlowSequenceDetailsComponent {
   public completeColor: string = 'rgb(106, 158, 157)';
 
   ngOnInit() {
-    this.flowSequenceService.createDummyFlowSequence();
+    // this.flowSequenceService.createDummyFlowSequence();
   }
 }
