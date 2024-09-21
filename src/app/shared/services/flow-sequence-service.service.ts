@@ -18,6 +18,8 @@ export class FlowSequenceServiceService {
   public sequenceComplete: boolean = false;
   private isPaused: boolean = false;
   private currentStep!: Step;
+  public animateBar: boolean = false;
+  public firstStart: boolean = true;
 
   private shortBreakSound: HTMLAudioElement = new Audio(
     'assets/sounds/correct-answer.mp3'
@@ -74,12 +76,16 @@ export class FlowSequenceServiceService {
         type: 'longBreak',
         position: 3,
         complete: false,
-        duration: 2,
+        duration: 0.1,
       })
     );
 
     this.activeFlowSequence = sequence;
+
     console.log(sequence);
+    // this.minutesRemaining =
+    //   this.activeFlowSequence.steps[this.currentStepindex].duration;
+    // this.secondsOfMinuteRemainung = 60;
   }
 
   startSequence() {
@@ -96,13 +102,18 @@ export class FlowSequenceServiceService {
         this.setupTimer();
       }
 
-      this.countDownSecond();
+      this.checkAnimateBar();
       this.isPaused = false;
+      this.firstStart = false;
 
       this.interval = setInterval(() => {
         this.countDownSecond();
 
         console.log('sekunden: ', this.secondsOfMinuteRemainung);
+
+        if (this.secondsOfMinuteRemainung === 0) {
+          this.checkAnimateBar();
+        }
 
         if (this.currentStepTimeRemaining === 0) {
           this.nextStep();
@@ -112,11 +123,12 @@ export class FlowSequenceServiceService {
   }
 
   setupTimer() {
+    console.log('setup');
+
     this.minutesRemaining = this.currentStep.duration;
     this.currentStepTimeRemaining = this.currentStep.duration * 60;
     this.currentStep.complete = false;
     this.sequenceComplete = false;
-    this.countDownSecond();
   }
 
   countDownSecond() {
@@ -138,10 +150,21 @@ export class FlowSequenceServiceService {
     this.playSound();
   }
 
+  checkAnimateBar() {
+    if (
+      !this.firstStart &&
+      !this.isPaused &&
+      this.currentStepindex !== this.activeFlowSequence.steps.length - 1
+    ) {
+      this.animateBar = true;
+      setTimeout(() => {
+        this.animateBar = false;
+      }, 1000);
+    }
+  }
+
   pauseTimer() {
     if (!this.isPaused) {
-      console.log('Timer Paused');
-
       this.isPaused = true;
       this.clearTimerInterval();
     }
@@ -150,8 +173,6 @@ export class FlowSequenceServiceService {
   nextStep() {
     if (this.currentStepindex !== this.activeFlowSequence.steps.length - 1) {
       this.clearTimerInterval();
-      this.minutesRemaining = 0;
-      this.secondsOfMinuteRemainung = 0;
       this.currentStep.complete = true;
       this.playSound();
       this.currentStepindex++;

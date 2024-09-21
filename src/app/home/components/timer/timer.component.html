@@ -19,8 +19,7 @@
       }"
       class="bar"
       [ngClass]="{
-        'transition-opacity':
-          this.flowSequenceService.secondsOfMinuteRemainung !== 0
+        'transition-opacity': this.flowSequenceService.animateBar === true
       }"
     ></div>
   </div>

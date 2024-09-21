@@ -41,16 +41,15 @@ section {
     overflow: hidden;
 
     .bar {
-      width: 0%;
       height: 100%;
       background-color: rgb(106, 158, 157);
       transition: width linear 1s;
     }
   }
 
-  // .transition-opacity {
-  //   animation: animate-bar 1s ease-in-out;
-  // }
+  .transition-opacity {
+    animation: animate-bar 1s linear forwards;
+  }
 
   img {
     margin-top: 54px;
@@ -61,10 +60,15 @@ section {
 @keyframes animate-bar {
   0% {
     opacity: 0;
-    width: 100% !important;
+    width: 100%;
+  }
+
+  70% {
+    opacity: 50%;
   }
 
   100% {
+    width: 100%;
     opacity: 1;
   }
 }
