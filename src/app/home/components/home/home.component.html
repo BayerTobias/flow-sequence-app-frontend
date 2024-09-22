@@ -1,13 +1,17 @@
 <main style="background-image: url('assets/img/backgrounds/background-1.webp')">
+  @if (settingsService.settingsOpen) {
+  <app-settings-overlay></app-settings-overlay>}
+
+  <div (click)="openSettings()" class="open-settings"></div>
   @if (flowSequenceService.activeFlowSequence) {
   <div class="timer-active">
     <div class="left">
       <app-timer></app-timer>
       <app-media-controls></app-media-controls>
     </div>
-    <div class="right">
+    <!-- <div class="right">
       <app-flow-sequence-details></app-flow-sequence-details>
-    </div>
+    </div> -->
   </div>
 
   } @else {<app-welcome></app-welcome>}

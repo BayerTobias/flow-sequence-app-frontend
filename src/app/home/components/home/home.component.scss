@@ -19,3 +19,13 @@ main {
     flex-direction: column;
   }
 }
+
+.open-settings {
+  position: absolute;
+  top: 36px;
+  right: 36px;
+  height: 36px;
+  width: 36px;
+  background-color: red;
+  cursor: pointer;
+}
