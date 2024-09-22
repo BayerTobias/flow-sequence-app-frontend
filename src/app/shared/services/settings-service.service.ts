@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class SettingsServiceService {
-  public settingsOpen: boolean = false;
+  public settingsOpen: boolean = true;
 
   constructor() {}
 }

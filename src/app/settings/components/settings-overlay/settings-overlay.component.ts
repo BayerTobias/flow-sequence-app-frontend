@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { SettingsServiceService } from '../../../shared/services/settings-service.service';
+import { SettingsBaseComponent } from '../settings-base/settings-base.component';
 
 @Component({
   selector: 'app-settings-overlay',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SettingsBaseComponent],
   templateUrl: './settings-overlay.component.html',
   styleUrl: './settings-overlay.component.scss',
 })
