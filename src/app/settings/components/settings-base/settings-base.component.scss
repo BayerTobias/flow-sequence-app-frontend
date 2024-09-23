@@ -76,6 +76,18 @@ nav {
   }
 }
 
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+
+  app-settings-general {
+    display: flex;
+    flex-grow: 1;
+  }
+}
+
 .active {
   border-bottom: 4px solid $interface-accent-1 !important;
 

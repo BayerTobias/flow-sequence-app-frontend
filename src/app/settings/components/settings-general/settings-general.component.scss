@@ -1,0 +1,47 @@
+@import "./../../../../styles.scss";
+@import "./../../../../mixin.scss";
+
+section {
+  @include dFlex($jc: flex-start, $gp: 40px);
+  flex-direction: column;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.headline {
+  @include dFlex($gp: 8px);
+
+  img {
+    height: 20px;
+    width: 20px;
+  }
+
+  span {
+    font-size: 24px;
+    color: $copy-light;
+  }
+}
+
+.account-settings {
+  @include dFlex($ai: flex-start, $gp: 8px);
+  flex-direction: column;
+  width: 100%;
+
+  > div {
+    @include dFlex($ai: flex-start, $gp: 36px);
+
+    span {
+      font-size: 16px;
+      color: $copy-light;
+      width: 130px;
+    }
+
+    input {
+      background: unset;
+      border: unset;
+      outline: none;
+      color: $copy-light;
+      font-size: 16px;
+    }
+  }
+}
