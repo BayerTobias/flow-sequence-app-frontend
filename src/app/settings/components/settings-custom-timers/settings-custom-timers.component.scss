@@ -10,6 +10,17 @@ section {
   overflow: auto;
 }
 
+.saved-custom-timers-headline {
+  @include dFlex();
+  flex-direction: column;
+
+  > span {
+    color: $copy-light;
+    font-size: 16px;
+    font-weight: 300;
+  }
+}
+
 .headline {
   @include dFlex($gp: 8px);
 
@@ -24,26 +35,21 @@ section {
   }
 }
 
-.account-settings {
+.timer-settings {
   @include dFlex($ai: flex-start, $gp: 8px);
   flex-direction: column;
   width: 100%;
 
   > div {
-    @include dFlex($ai: flex-start, $gp: 36px);
+    @include dFlex($gp: 8px);
+
+    img {
+      cursor: pointer;
+    }
 
     span {
       font-size: 16px;
       color: $copy-light;
-      width: 130px;
-    }
-
-    input {
-      background: unset;
-      border: unset;
-      outline: none;
-      color: $copy-light;
-      font-size: 16px;
     }
   }
 }

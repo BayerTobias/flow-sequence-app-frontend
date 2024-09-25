@@ -179,6 +179,8 @@
   <div class="content-wrapper">
     @if (activeTab === 'general') {
     <app-settings-general></app-settings-general>
+    } @else if (activeTab === "timers") {
+    <app-settings-custom-timers></app-settings-custom-timers>
     }
   </div>
 </section>
