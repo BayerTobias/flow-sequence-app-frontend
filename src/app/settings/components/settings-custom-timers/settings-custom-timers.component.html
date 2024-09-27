@@ -35,9 +35,17 @@
           src="assets\img\icons\magnifying-glass.svg"
           alt="magnifying-glass"
         />
-        <button>Edit</button>
-        <button>Choose</button>
+        <app-simple-settings-button
+          [content]="'Edit'"
+          (submitEvent)="editSequence()"
+        ></app-simple-settings-button>
+        <app-simple-settings-button
+          [content]="'Choose'"
+          (submitEvent)="chooseSequence()"
+        ></app-simple-settings-button>
       </div>
     </div>
   </div>
+
+  <div class="create-custom-timer-headline"></div>
 </section>
