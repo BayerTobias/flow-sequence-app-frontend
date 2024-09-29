@@ -25,10 +25,11 @@
   </div>
 
   <div class="saved-custom-timers-box">
+    @for (sequence of settingsService.savedCustomSequences; track $index) {
     <div>
       <div>
         <img src="assets\img\icons\dots.svg" alt="drag" />
-        <span>Test Timer Pogchamp</span>
+        <span>{{ sequence.name }}</span>
       </div>
       <div>
         <img
@@ -45,6 +46,7 @@
         ></app-simple-settings-button>
       </div>
     </div>
+    }
   </div>
 
   <div class="create-custom-timer-headline"></div>

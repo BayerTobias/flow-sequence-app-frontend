@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { SimpleSettingsButtonComponent } from '../../../shared/components/buttons/simple-settings-button/simple-settings-button.component';
+import { SettingsServiceService } from '../../../shared/services/settings-service.service';
 
 @Component({
   selector: 'app-settings-custom-timers',
@@ -9,6 +10,8 @@ import { SimpleSettingsButtonComponent } from '../../../shared/components/button
   styleUrl: './settings-custom-timers.component.scss',
 })
 export class SettingsCustomTimersComponent {
+  public settingsService = inject(SettingsServiceService);
+
   editSequence() {
     console.log('edit');
   }
