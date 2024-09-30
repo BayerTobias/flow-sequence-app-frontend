@@ -24,9 +24,13 @@
     <span>( 3 of 10 )</span>
   </div>
 
-  <div class="saved-custom-timers-box">
+  <div
+    cdkDropList
+    class="saved-custom-timers-box"
+    (cdkDropListDropped)="drop($event)"
+  >
     @for (sequence of settingsService.savedCustomSequences; track $index) {
-    <div>
+    <div class="sequence-card" cdkDrag>
       <div>
         <img src="assets\img\icons\dots.svg" alt="drag" />
         <span>{{ sequence.name }}</span>
