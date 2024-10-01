@@ -53,5 +53,47 @@
     }
   </div>
 
-  <div class="create-custom-timer-headline"></div>
+  <div class="headline">
+    <img src="assets\img\icons\settings.svg" alt="settings" />
+    <span>Create Custom Timer</span>
+  </div>
+
+  <div class="create-custom-timer-wrapper">
+    <div class="left">
+      <span>Add:</span>
+      <div>
+        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+          <mat-label>Minutes</mat-label>
+          <input matInput [value]="flowTimeDuration" placeholder="Min" />
+        </mat-form-field>
+        <app-simple-settings-button
+          [content]="'Flow Time'"
+          (submitEvent)="addFlowTime()"
+        ></app-simple-settings-button>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+          <mat-label>Minutes</mat-label>
+          <input matInput [value]="shortBreakDuration" placeholder="Min" />
+        </mat-form-field>
+        <app-simple-settings-button
+          [content]="'Flow Time'"
+          (submitEvent)="addShortBreak()"
+        ></app-simple-settings-button>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+          <mat-label>Minutes</mat-label>
+          <input matInput [value]="longBreakDuration" placeholder="Min" />
+        </mat-form-field>
+        <app-simple-settings-button
+          [content]="'Flow Time'"
+          (submitEvent)="addLongBreak()"
+        ></app-simple-settings-button>
+      </div>
+    </div>
+    <div class="right">Test</div>
+  </div>
 </section>

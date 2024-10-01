@@ -16,5 +16,5 @@ import { SettingsCustomTimersComponent } from '../settings-custom-timers/setting
 })
 export class SettingsBaseComponent {
   @Input() startAnimation: boolean = false;
-  public activeTab: string = 'general';
+  public activeTab: string = 'timers';
 }

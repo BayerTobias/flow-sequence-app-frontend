@@ -6,8 +6,6 @@ section {
   flex-direction: column;
   width: 100%;
   flex-grow: 1;
-  // height: 400px;
-  overflow: auto;
 }
 
 .saved-custom-timers-headline {
@@ -104,4 +102,31 @@ section {
 .saved-custom-timers-box.cdk-drop-list-dragging
   .sequence-card:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.create-custom-timer-wrapper {
+  @include dFlex($jc: space-between, $ai: flex-start);
+  width: 100%;
+
+  .left {
+    @include dFlex($gp: 16px, $ai: flex-start);
+    flex-direction: column;
+
+    span {
+      font-size: 16px;
+      color: $copy-light;
+    }
+
+    > div {
+      @include dFlex($gp: 8px);
+
+      mat-form-field {
+        width: 80px;
+      }
+
+      input {
+        text-align: center;
+      }
+    }
+  }
 }
