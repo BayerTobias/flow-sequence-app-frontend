@@ -94,6 +94,28 @@
         ></app-simple-settings-button>
       </div>
     </div>
-    <div class="right">Test</div>
+    <div class="right" cdkDropList (cdkDropListDropped)="drop($event)">
+      <div class="time-card">
+        <img src="assets/img/icons/dots.svg" alt="drag" />
+        <input class="name-input" type="text" />
+        <div>
+          <input class="time-input" type="number" />
+          <span>min.</span>
+        </div>
+        <img src="assets/img/icons/copy.svg" alt="copy" />
+        <img src="assets/img/icons/delete.svg" alt="delete" />
+      </div>
+
+      <div class="time-card">
+        <img src="assets/img/icons/dots.svg" alt="drag" />
+        <input class="name-input" type="text" />
+        <div>
+          <input class="time-input" type="number" />
+          <span>min.</span>
+        </div>
+        <img src="assets/img/icons/copy.svg" alt="copy" />
+        <img src="assets/img/icons/delete.svg" alt="delete" />
+      </div>
+    </div>
   </div>
 </section>

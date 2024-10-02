@@ -129,4 +129,47 @@ section {
       }
     }
   }
+
+  .right {
+    @include dFlex($gp: 16px);
+    flex-direction: column;
+
+    .time-card {
+      @include dFlex($gp: 8px);
+      background-color: $settings-background-light;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+
+      > div {
+        @include dFlex($gp: 4px);
+
+        span {
+          font-size: 10px;
+          color: $copy-dark;
+        }
+      }
+
+      input {
+        border: unset;
+        outline: unset;
+        border-radius: 2px;
+
+        &::-webkit-inner-spin-button,
+        ::-webkit-outer-spin-button {
+          display: none;
+        }
+      }
+
+      .name-input {
+        background-color: rgb(242, 227, 234);
+      }
+
+      .time-input {
+        width: 25px;
+        background-color: #d2d2d2;
+        text-align: center;
+      }
+    }
+  }
 }
