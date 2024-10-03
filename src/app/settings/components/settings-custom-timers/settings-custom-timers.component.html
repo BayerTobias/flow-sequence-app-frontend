@@ -58,13 +58,29 @@
     <span>Create Custom Timer</span>
   </div>
 
+  <div>
+    <span>Timer Name:</span>
+    <div>
+      <input type="text" />
+      <span> / 100</span>
+    </div>
+  </div>
+
+  <div>
+    <span>Timer Description:</span>
+    <div>
+      <textarea name="" id=""></textarea>
+      <span> / 1000</span>
+    </div>
+  </div>
+
   <div class="create-custom-timer-wrapper">
     <div class="left">
       <span>Add:</span>
       <div>
         <mat-form-field appearance="outline" subscriptSizing="dynamic">
           <mat-label>Minutes</mat-label>
-          <input matInput [value]="flowTimeDuration" placeholder="Min" />
+          <input matInput [(ngModel)]="flowTimeDuration" placeholder="Min" />
         </mat-form-field>
         <app-simple-settings-button
           [content]="'Flow Time'"
@@ -75,7 +91,7 @@
       <div>
         <mat-form-field appearance="outline" subscriptSizing="dynamic">
           <mat-label>Minutes</mat-label>
-          <input matInput [value]="shortBreakDuration" placeholder="Min" />
+          <input matInput [(ngModel)]="shortBreakDuration" placeholder="Min" />
         </mat-form-field>
         <app-simple-settings-button
           [content]="'Flow Time'"
@@ -86,7 +102,7 @@
       <div>
         <mat-form-field appearance="outline" subscriptSizing="dynamic">
           <mat-label>Minutes</mat-label>
-          <input matInput [value]="longBreakDuration" placeholder="Min" />
+          <input matInput [(ngModel)]="longBreakDuration" placeholder="Min" />
         </mat-form-field>
         <app-simple-settings-button
           [content]="'Flow Time'"
@@ -94,28 +110,53 @@
         ></app-simple-settings-button>
       </div>
     </div>
-    <div class="right" cdkDropList (cdkDropListDropped)="drop($event)">
-      <div class="time-card">
-        <img src="assets/img/icons/dots.svg" alt="drag" />
-        <input class="name-input" type="text" />
-        <div>
-          <input class="time-input" type="number" />
-          <span>min.</span>
+    <div
+      class="right"
+      cdkDropList
+      (cdkDropListDropped)="dropCreateSequence($event)"
+    >
+      @for (step of newFlowSequence.steps; track $index) {
+      <div class="time-card" cdkDrag>
+        <img
+          class="img-container"
+          src="assets/img/icons/dots.svg"
+          alt="drag"
+          cdkDragHandle
+        />
+        <div class="right-container">
+          <input
+            #nameInput
+            class="name-input"
+            type="text"
+            [value]="step.name"
+            (input)="renameStep(step, $event)"
+          />
+          <div>
+            <input
+              class="time-input"
+              type="number"
+              [value]="step.duration"
+              (input)="editStepDuration(step, $event)"
+            />
+            <span>min.</span>
+          </div>
+          <img
+            src="assets/img/icons/copy.svg"
+            alt="copy"
+            (click)="copyStep(step)"
+          />
+          <img
+            src="assets/img/icons/delete.svg"
+            alt="delete"
+            (click)="deleteStep($index)"
+          />
         </div>
-        <img src="assets/img/icons/copy.svg" alt="copy" />
-        <img src="assets/img/icons/delete.svg" alt="delete" />
       </div>
-
-      <div class="time-card">
-        <img src="assets/img/icons/dots.svg" alt="drag" />
-        <input class="name-input" type="text" />
-        <div>
-          <input class="time-input" type="number" />
-          <span>min.</span>
-        </div>
-        <img src="assets/img/icons/copy.svg" alt="copy" />
-        <img src="assets/img/icons/delete.svg" alt="delete" />
-      </div>
+      } @if (newFlowSequence.steps.length > 0) {
+      <app-simple-settings-button
+        [content]="'Save Timer'"
+      ></app-simple-settings-button>
+      }
     </div>
   </div>
 </section>

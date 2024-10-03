@@ -95,12 +95,12 @@ section {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.example-box:last-child {
-  border: none;
-}
-
 .saved-custom-timers-box.cdk-drop-list-dragging
   .sequence-card:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.right.cdk-drop-list-dragging .time-card:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
@@ -131,45 +131,59 @@ section {
   }
 
   .right {
-    @include dFlex($gp: 16px);
+    @include dFlex($gp: 16px, $ai: flex-end);
     flex-direction: column;
+  }
+}
 
-    .time-card {
-      @include dFlex($gp: 8px);
-      background-color: $settings-background-light;
-      padding: 8px;
-      border-radius: 4px;
+.time-card {
+  @include dFlex();
+  background-color: $settings-background-light;
+  border-radius: 4px;
+  overflow: hidden;
+
+  .img-container {
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  .right-container {
+    @include dFlex($gp: 8px);
+    padding: 8px 8px 8px 0;
+
+    img {
       cursor: pointer;
+    }
 
-      > div {
-        @include dFlex($gp: 4px);
+    > div {
+      @include dFlex($gp: 4px);
 
-        span {
-          font-size: 10px;
-          color: $copy-dark;
-        }
+      span {
+        font-size: 10px;
+        color: $copy-dark;
       }
+    }
 
-      input {
-        border: unset;
-        outline: unset;
-        border-radius: 2px;
+    input {
+      border: unset;
+      outline: unset;
+      border-radius: 2px;
 
-        &::-webkit-inner-spin-button,
-        ::-webkit-outer-spin-button {
-          display: none;
-        }
+      &::-webkit-inner-spin-button,
+      ::-webkit-outer-spin-button {
+        display: none;
       }
+    }
 
-      .name-input {
-        background-color: rgb(242, 227, 234);
-      }
+    .name-input {
+      width: 300px;
+      background-color: rgb(242, 227, 234);
+    }
 
-      .time-input {
-        width: 25px;
-        background-color: #d2d2d2;
-        text-align: center;
-      }
+    .time-input {
+      width: 32px;
+      background-color: #d2d2d2;
+      text-align: center;
     }
   }
 }
