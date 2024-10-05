@@ -22,6 +22,7 @@ import { LongBreak } from '../../../models/long-break.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Step } from '../../../models/step.model';
+import { FlowSequenceServiceService } from '../../../shared/services/flow-sequence-service.service';
 
 @Component({
   selector: 'app-settings-custom-timers',
@@ -40,10 +41,13 @@ import { Step } from '../../../models/step.model';
 })
 export class SettingsCustomTimersComponent {
   public settingsService = inject(SettingsServiceService);
+  public flowSequenceService = inject(FlowSequenceServiceService);
 
   public flowTimeDuration: number = 30;
   public shortBreakDuration: number = 5;
   public longBreakDuration: number = 15;
+  public sequenceName: string = '';
+  public sequenceDescription: string = '';
 
   public newFlowSequence: FlowSequence = new FlowSequence();
 
@@ -54,8 +58,10 @@ export class SettingsCustomTimersComponent {
     console.log('edit');
   }
 
-  chooseSequence() {
+  chooseSequence(index: number) {
     console.log('choose');
+    this.flowSequenceService.activeFlowSequence =
+      this.settingsService.savedCustomSequences[index];
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -153,5 +159,16 @@ export class SettingsCustomTimersComponent {
     this.newFlowSequence.steps.forEach((step, index) => {
       step.position = index;
     });
+  }
+
+  saveNewFlowSequence() {
+    if (this.sequenceName && this.sequenceDescription) {
+      this.newFlowSequence.name = this.sequenceName;
+      this.newFlowSequence.description = this.sequenceDescription;
+      this.settingsService.savedCustomSequences.push(this.newFlowSequence);
+      this.sequenceName = '';
+      this.sequenceDescription = '';
+      this.newFlowSequence = new FlowSequence();
+    }
   }
 }

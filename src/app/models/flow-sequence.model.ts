@@ -2,15 +2,18 @@ import { Step } from './step.model';
 
 export interface flowSequenceData {
   name: string;
+  description: string;
 }
 
 export class FlowSequence {
   name: string = '';
+  description: string = '';
   steps: Step[];
 
   constructor(data?: flowSequenceData) {
     this.steps = [];
     this.name = data?.name || '';
+    this.description = data?.description || '';
   }
 
   addStep(step: Step) {

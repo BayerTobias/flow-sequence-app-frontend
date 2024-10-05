@@ -46,7 +46,7 @@
         ></app-simple-settings-button>
         <app-simple-settings-button
           [content]="'Choose'"
-          (submitEvent)="chooseSequence()"
+          (submitEvent)="chooseSequence($index)"
         ></app-simple-settings-button>
       </div>
     </div>
@@ -58,19 +58,28 @@
     <span>Create Custom Timer</span>
   </div>
 
-  <div>
+  <div class="timer-info">
     <span>Timer Name:</span>
     <div>
-      <input type="text" />
-      <span> / 100</span>
+      <input
+        placeholder="Flowsequence Name"
+        [(ngModel)]="sequenceName"
+        maxlength="100"
+        type="text"
+      />
+      <span>{{ sequenceName.length }} of 100 characters</span>
     </div>
   </div>
 
-  <div>
+  <div class="timer-info">
     <span>Timer Description:</span>
     <div>
-      <textarea name="" id=""></textarea>
-      <span> / 1000</span>
+      <textarea
+        placeholder="Flowsequence Description"
+        [(ngModel)]="sequenceDescription"
+        maxlength="1000"
+      ></textarea>
+      <span>{{ sequenceDescription.length }} of 1000 characters</span>
     </div>
   </div>
 
@@ -155,6 +164,7 @@
       } @if (newFlowSequence.steps.length > 0) {
       <app-simple-settings-button
         [content]="'Save Timer'"
+        (submitEvent)="saveNewFlowSequence()"
       ></app-simple-settings-button>
       }
     </div>

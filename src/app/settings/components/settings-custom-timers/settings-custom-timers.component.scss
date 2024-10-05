@@ -52,6 +52,41 @@ section {
   }
 }
 
+.timer-info {
+  @include dFlex($jc: space-between, $ai: flex-start);
+  width: 100%;
+
+  span {
+    font-size: 16px;
+    color: $copy-light;
+  }
+
+  > div {
+    @include dFlex($ai: flex-end);
+    flex-direction: column;
+    flex: 1;
+
+    input,
+    textarea {
+      width: 500px;
+      padding: 12px;
+      color: $copy-dark;
+      border-radius: 4px;
+      border: none;
+    }
+
+    textarea {
+      resize: none;
+      height: 86px;
+    }
+
+    span {
+      font-size: 12px;
+      color: $inactive-text;
+    }
+  }
+}
+
 .saved-custom-timers-box {
   @include dFlex($gp: 20px);
   flex-direction: column;
