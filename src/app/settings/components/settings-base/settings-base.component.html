@@ -9,8 +9,8 @@
 
   <nav>
     <div
-      (click)="activeTab = 'general'"
-      [ngClass]="{ active: activeTab === 'general' }"
+      (click)="settingsService.activeTab = 'general'"
+      [ngClass]="{ active: settingsService.activeTab === 'general' }"
     >
       <svg
         width="16"
@@ -43,8 +43,8 @@
     </div>
 
     <div
-      (click)="activeTab = 'timers'"
-      [ngClass]="{ active: activeTab === 'timers' }"
+      (click)="settingsService.activeTab = 'timers'"
+      [ngClass]="{ active: settingsService.activeTab === 'timers' }"
     >
       <svg
         width="16"
@@ -77,8 +77,8 @@
     </div>
 
     <div
-      (click)="activeTab = 'themes'"
-      [ngClass]="{ active: activeTab === 'themes' }"
+      (click)="settingsService.activeTab = 'themes'"
+      [ngClass]="{ active: settingsService.activeTab === 'themes' }"
     >
       <svg
         width="18"
@@ -109,8 +109,8 @@
     </div>
 
     <div
-      (click)="activeTab = 'sounds'"
-      [ngClass]="{ active: activeTab === 'sounds' }"
+      (click)="settingsService.activeTab = 'sounds'"
+      [ngClass]="{ active: settingsService.activeTab === 'sounds' }"
     >
       <svg
         width="16"
@@ -143,8 +143,8 @@
     </div>
 
     <div
-      (click)="activeTab = 'coffee'"
-      [ngClass]="{ active: activeTab === 'coffee' }"
+      (click)="settingsService.activeTab = 'coffee'"
+      [ngClass]="{ active: settingsService.activeTab === 'coffee' }"
     >
       <svg
         width="18"
@@ -177,9 +177,9 @@
     </div>
   </nav>
   <div class="content-wrapper">
-    @if (activeTab === 'general') {
+    @if (settingsService.activeTab === 'general') {
     <app-settings-general></app-settings-general>
-    } @else if (activeTab === "timers") {
+    } @else if (settingsService.activeTab === "timers") {
     <app-settings-custom-timers></app-settings-custom-timers>
     }
   </div>

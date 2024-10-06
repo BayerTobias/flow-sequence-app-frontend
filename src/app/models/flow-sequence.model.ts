@@ -3,6 +3,7 @@ import { Step } from './step.model';
 export interface flowSequenceData {
   name: string;
   description: string;
+  steps?: Step[];
 }
 
 export class FlowSequence {
@@ -11,7 +12,7 @@ export class FlowSequence {
   steps: Step[];
 
   constructor(data?: flowSequenceData) {
-    this.steps = [];
+    this.steps = data?.steps || [];
     this.name = data?.name || '';
     this.description = data?.description || '';
   }

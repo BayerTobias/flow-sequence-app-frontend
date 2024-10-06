@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { SettingsGeneralComponent } from '../settings-general/settings-general.component';
 import { SettingsCustomTimersComponent } from '../settings-custom-timers/settings-custom-timers.component';
+import { SettingsServiceService } from '../../../shared/services/settings-service.service';
 
 @Component({
   selector: 'app-settings-base',
@@ -16,5 +17,5 @@ import { SettingsCustomTimersComponent } from '../settings-custom-timers/setting
 })
 export class SettingsBaseComponent {
   @Input() startAnimation: boolean = false;
-  public activeTab: string = 'timers';
+  public settingsService = inject(SettingsServiceService);
 }
