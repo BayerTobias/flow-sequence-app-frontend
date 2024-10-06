@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { FlowSequence } from '../../models/flow-sequence.model';
+import {
+  FlowSequence,
+  flowSequenceData,
+} from '../../models/flow-sequence.model';
 import { FlowTime } from '../../models/flow-time.model';
 import { ShortBreak } from '../../models/short-break.model';
 import { LongBreak } from '../../models/long-break.model';
@@ -108,12 +111,27 @@ export class SettingsServiceService {
     ],
   });
 
-  public savedCustomSequences: FlowSequence[] = [
-    new FlowSequence({ name: 'Test1', description: 'Test Description' }),
-    new FlowSequence({ name: 'Test2', description: 'Test Description' }),
-    new FlowSequence({ name: 'Test3', description: 'Test Description' }),
-    new FlowSequence({ name: 'Test4', description: 'Test Description' }),
-  ];
+  public savedCustomSequences: FlowSequence[] = [];
 
   constructor() {}
+
+  saveCustomSequences() {
+    const sequencesAsJson = this.savedCustomSequences.map((sequence) =>
+      sequence.asJson()
+    );
+
+    localStorage.setItem('customSequences', JSON.stringify(sequencesAsJson));
+  }
+
+  loadCustomSequences() {
+    const sequences = localStorage.getItem('customSequences');
+
+    if (sequences) {
+      const parsedSequences = JSON.parse(sequences);
+
+      this.savedCustomSequences = parsedSequences.map(
+        (sequence: flowSequenceData) => new FlowSequence(sequence)
+      );
+    }
+  }
 }

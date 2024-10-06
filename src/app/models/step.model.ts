@@ -20,4 +20,14 @@ export class Step {
     this.complete = data?.complete || false;
     this.duration = data?.duration || 0;
   }
+
+  asJson() {
+    return {
+      name: this.name,
+      type: this.type,
+      position: this.position,
+      complete: this.complete,
+      duration: this.duration,
+    };
+  }
 }

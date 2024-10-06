@@ -54,6 +54,10 @@ export class SettingsCustomTimersComponent {
   @ViewChildren('nameInput') nameInputFields: QueryList<ElementRef> | null =
     null;
 
+  ngOnInit() {
+    this.settingsService.loadCustomSequences();
+  }
+
   editSequence() {
     console.log('edit');
   }
@@ -146,9 +150,37 @@ export class SettingsCustomTimersComponent {
   }
 
   copyStep(step: Step) {
-    const copiedStep: Step = { ...step };
+    let copiedStep: FlowTime | ShortBreak | LongBreak | null = null;
 
-    this.newFlowSequence.steps.push(copiedStep);
+    if (step instanceof FlowTime) {
+      copiedStep = new FlowTime({
+        name: step.name,
+        duration: step.duration,
+        position: step.position,
+        complete: step.complete,
+        type: step.type,
+      });
+    } else if (step instanceof ShortBreak) {
+      copiedStep = new ShortBreak({
+        name: step.name,
+        duration: step.duration,
+        position: step.position,
+        complete: step.complete,
+        type: step.type,
+      });
+    } else if (step instanceof LongBreak) {
+      copiedStep = new LongBreak({
+        name: step.name,
+        duration: step.duration,
+        position: step.position,
+        complete: step.complete,
+        type: step.type,
+      });
+    }
+
+    if (copiedStep) {
+      this.newFlowSequence.steps.push(copiedStep);
+    }
   }
 
   deleteStep(index: number) {
@@ -166,6 +198,7 @@ export class SettingsCustomTimersComponent {
       this.newFlowSequence.name = this.sequenceName;
       this.newFlowSequence.description = this.sequenceDescription;
       this.settingsService.savedCustomSequences.push(this.newFlowSequence);
+      this.settingsService.saveCustomSequences();
       this.sequenceName = '';
       this.sequenceDescription = '';
       this.newFlowSequence = new FlowSequence();
