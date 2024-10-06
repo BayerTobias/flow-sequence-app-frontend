@@ -14,6 +14,8 @@ export class SettingsServiceService {
   public activeTab: string = 'general';
   public settingsOpen: boolean = false;
 
+  public showCountdownInBrowserTab: boolean = true;
+
   public reverseSequence: FlowSequence = new FlowSequence({
     name: 'reverse',
     description: 'reverse flow sequence customised by Katrin Wertl <3',

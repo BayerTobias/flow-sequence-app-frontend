@@ -1,11 +1,14 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { FlowSequence } from '../../models/flow-sequence.model';
 import { Step } from '../../models/step.model';
+import { SettingsServiceService } from './settings-service.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FlowSequenceServiceService {
+  private settingsService = inject(SettingsServiceService);
+
   public activeFlowSequence!: FlowSequence;
   private currentStepindex: number = 0;
   private currentStepTimeRemaining: number = 0;
@@ -80,6 +83,11 @@ export class FlowSequenceServiceService {
     this.currentStepTimeRemaining--;
     this.minutesRemaining = Math.floor(this.currentStepTimeRemaining / 60 + 1);
     this.secondsOfMinuteRemainung = this.currentStepTimeRemaining % 60;
+    if (this.settingsService.showCountdownInBrowserTab) {
+      document.title = ` ${this.minutesRemaining}min ${this.secondsOfMinuteRemainung}sec `;
+    } else {
+      document.title = 'FlowSequenceFrontend';
+    }
   }
 
   clearTimerInterval() {
@@ -93,6 +101,11 @@ export class FlowSequenceServiceService {
     this.minutesRemaining = 0;
     this.secondsOfMinuteRemainung = 0;
     this.playSound();
+    if (this.settingsService.showCountdownInBrowserTab) {
+      document.title = `Flow sequence Completed`;
+    } else {
+      document.title = 'FlowSequenceFrontend';
+    }
   }
 
   checkAnimateBar() {

@@ -62,6 +62,11 @@ export class SettingsCustomTimersComponent {
     console.log('edit');
   }
 
+  toggleShowCountdown() {
+    this.settingsService.showCountdownInBrowserTab =
+      !this.settingsService.showCountdownInBrowserTab;
+  }
+
   chooseSequence(index: number) {
     console.log('choose');
     this.flowSequenceService.activeFlowSequence =

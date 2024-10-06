@@ -6,7 +6,18 @@
 
   <div class="timer-settings">
     <div>
-      <img src="assets\img\icons\checkbox-unchecked.svg" alt="checkbox" />
+      @if (settingsService.showCountdownInBrowserTab) {
+      <img
+        (click)="toggleShowCountdown()"
+        src="assets\img\icons\checkbox-checked.svg"
+        alt="checkbox"
+      />
+      } @else{
+      <img
+        (click)="toggleShowCountdown()"
+        src="assets\img\icons\checkbox-unchecked.svg"
+        alt="checkbox"
+      />}
       <span>Show timer in browser tab</span>
     </div>
 
@@ -21,7 +32,7 @@
       <img src="assets\img\icons\settings.svg" alt="settings" />
       <span>Saved Custom Timers</span>
     </div>
-    <span>( 3 of 10 )</span>
+    <span>( {{ settingsService.savedCustomSequences.length }} of 10 )</span>
   </div>
 
   <div
