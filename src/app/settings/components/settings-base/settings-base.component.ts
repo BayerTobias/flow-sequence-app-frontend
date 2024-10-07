@@ -3,6 +3,7 @@ import { Component, inject, Input } from '@angular/core';
 import { SettingsGeneralComponent } from '../settings-general/settings-general.component';
 import { SettingsCustomTimersComponent } from '../settings-custom-timers/settings-custom-timers.component';
 import { SettingsServiceService } from '../../../shared/services/settings-service.service';
+import { SettingsThemesComponent } from '../settings-themes/settings-themes.component';
 
 @Component({
   selector: 'app-settings-base',
@@ -11,6 +12,7 @@ import { SettingsServiceService } from '../../../shared/services/settings-servic
     CommonModule,
     SettingsGeneralComponent,
     SettingsCustomTimersComponent,
+    SettingsThemesComponent,
   ],
   templateUrl: './settings-base.component.html',
   styleUrl: './settings-base.component.scss',

@@ -17,7 +17,7 @@ export class SettingsServiceService {
   public showCountdownInBrowserTab: boolean = true;
 
   public reverseSequence: FlowSequence = new FlowSequence({
-    name: 'reverse',
+    name: 'Reverse Flow Sequence',
     description: 'reverse flow sequence customised by Katrin Wertl <3',
     steps: [
       new LongBreak({
@@ -51,7 +51,7 @@ export class SettingsServiceService {
     ],
   });
   public standardSequence: FlowSequence = new FlowSequence({
-    name: 'standad',
+    name: 'Standard Flow Sequence',
     description: 'standard flow sequence customised by Katrin Wertl <3',
     steps: [
       new FlowTime({
