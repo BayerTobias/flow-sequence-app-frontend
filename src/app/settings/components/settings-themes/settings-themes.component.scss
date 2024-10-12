@@ -24,13 +24,20 @@ section {
 
 .select-theme-wrapper {
   @include dFlex($gp: 36px);
-  width: 100%;
 
   span {
     font-size: 16px;
     color: $copy-light;
   }
 }
+
+// ::ng-deep .mat-form-field-outline {
+//   stroke: blue; /* Deine gewünschte Farbe */
+// }
+
+// ::ng-deep .mat-form-field-outline-thick {
+//   stroke: green; /* Farbe für die dicke Outline beim Fokussieren */
+// }
 
 :host {
   display: flex;
@@ -40,7 +47,6 @@ section {
 
 .preview-wrapper {
   @include dFlex($ai: flex-start, $gp: 36px);
-  width: 100%;
 
   span {
     font-size: 16px;
