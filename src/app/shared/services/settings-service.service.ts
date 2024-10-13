@@ -6,6 +6,7 @@ import {
 import { FlowTime } from '../../models/flow-time.model';
 import { ShortBreak } from '../../models/short-break.model';
 import { LongBreak } from '../../models/long-break.model';
+import { Theme } from '../../models/theme.model';
 
 @Injectable({
   providedIn: 'root',
@@ -112,6 +113,34 @@ export class SettingsServiceService {
       }),
     ],
   });
+
+  public activeTheme: Theme = new Theme({
+    name: 'Monstera',
+    accentColor: 'string',
+    gradientColor: 'string',
+    backgroundImage: 'assets/img/backgrounds/background-1.webp',
+  });
+
+  public themeList: Theme[] = [
+    new Theme({
+      name: 'Monstera',
+      accentColor: 'string',
+      gradientColor: 'string',
+      backgroundImage: 'assets/img/backgrounds/background-1.webp',
+    }),
+    new Theme({
+      name: 'theme2',
+      accentColor: 'string',
+      gradientColor: 'string',
+      backgroundImage: 'assets/img/backgrounds/background-2.webp',
+    }),
+    new Theme({
+      name: 'theme3',
+      accentColor: 'string',
+      gradientColor: 'string',
+      backgroundImage: 'assets/img/backgrounds/background-3.webp',
+    }),
+  ];
 
   public savedCustomSequences: FlowSequence[] = [];
 

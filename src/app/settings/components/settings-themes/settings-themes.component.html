@@ -4,22 +4,26 @@
     <span>Themes</span>
   </div>
 
-  <div class="select-theme-wrapper">
-    <span>Select your theme:</span>
-    <mat-form-field appearance="outline" subscriptSizing="dynamic">
-      <mat-label>Select</mat-label>
-      <mat-select>
-        <mat-option value="one">Monstera</mat-option>
-        <mat-option value="two">Second option</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <app-simple-settings-button
-      [content]="'Choose this Theme'"
-    ></app-simple-settings-button>
-  </div>
+  <div class="select-wrapper">
+    <div class="select-theme-wrapper">
+      <span>Select your theme:</span>
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>Select</mat-label>
+        <mat-select [(ngModel)]="selectedTheme" [compareWith]="compareThemes">
+          @for (theme of settingsService.themeList; track $index) {
+          <mat-option [value]="theme">{{ theme.name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <app-simple-settings-button
+        [content]="'Choose this Theme'"
+        (submitEvent)="chooseTheme()"
+      ></app-simple-settings-button>
+    </div>
 
-  <div class="preview-wrapper">
-    <span>Preview:</span>
-    <img src="assets/img/backgrounds/background-3.webp" alt="background" />
+    <div class="preview-wrapper">
+      <span>Preview:</span>
+      <img [src]="selectedTheme.backgroundImage" alt="background" />
+    </div>
   </div>
 </section>

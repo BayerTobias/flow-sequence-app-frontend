@@ -22,6 +22,11 @@ section {
   }
 }
 
+.select-wrapper {
+  @include dFlex($ai: flex-start, $gp: 40px);
+  flex-direction: column;
+}
+
 .select-theme-wrapper {
   @include dFlex($gp: 36px);
 
