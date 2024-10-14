@@ -6,11 +6,13 @@ import { FlowSequenceDetailsComponent } from '../flow-sequence-details/flow-sequ
 import { FlowSequenceServiceService } from '../../../shared/services/flow-sequence-service.service';
 import { SettingsServiceService } from '../../../shared/services/settings-service.service';
 import { SettingsOverlayComponent } from '../../../settings/components/settings-overlay/settings-overlay.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
+    CommonModule,
     WelcomeComponent,
     TimerComponent,
     MediaControlsComponent,

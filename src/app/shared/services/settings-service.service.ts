@@ -117,7 +117,7 @@ export class SettingsServiceService {
   public activeTheme: Theme = new Theme({
     name: 'Monstera',
     accentColor: 'rgba(106, 158, 157, 1)',
-    gradientColor: 'string',
+    gradientColor: 'rgb(12, 23, 19) 0%',
     backgroundImage: 'assets/img/backgrounds/background-1.webp',
   });
 
@@ -125,19 +125,19 @@ export class SettingsServiceService {
     new Theme({
       name: 'Monstera',
       accentColor: 'rgba(106, 158, 157, 1)',
-      gradientColor: 'string',
+      gradientColor: 'rgb(12, 23, 19) 0%',
       backgroundImage: 'assets/img/backgrounds/background-1.webp',
     }),
     new Theme({
       name: 'theme2',
       accentColor: 'rgba(210, 212, 147, 1)',
-      gradientColor: 'string',
+      gradientColor: 'rgb(0, 28, 40) 0%',
       backgroundImage: 'assets/img/backgrounds/background-2.webp',
     }),
     new Theme({
       name: 'theme3',
       accentColor: 'rgba(200, 94, 106, 1)',
-      gradientColor: 'string',
+      gradientColor: 'rgb(35, 41, 41)  0%',
       backgroundImage: 'assets/img/backgrounds/background-3.webp',
     }),
   ];
