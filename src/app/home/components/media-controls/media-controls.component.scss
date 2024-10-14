@@ -19,12 +19,12 @@ section {
       transition: fill 250ms ease-in-out, stroke 250ms ease-in-out;
     }
 
-    &:hover {
-      path {
-        stroke: red;
-        fill: aqua;
-      }
-    }
+    // &:hover {
+    //   path {
+    //     stroke: red;
+    //     fill: aqua;
+    //   }
+    // }
   }
 
   .chapter-img {

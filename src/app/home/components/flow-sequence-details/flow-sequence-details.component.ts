@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlowSequenceServiceService } from '../../../shared/services/flow-sequence-service.service';
+import { SettingsServiceService } from '../../../shared/services/settings-service.service';
 
 @Component({
   selector: 'app-flow-sequence-details',
@@ -11,10 +12,7 @@ import { FlowSequenceServiceService } from '../../../shared/services/flow-sequen
 })
 export class FlowSequenceDetailsComponent {
   public flowSequenceService = inject(FlowSequenceServiceService);
+  public settingsService = inject(SettingsServiceService);
 
-  public completeColor: string = 'rgb(106, 158, 157)';
-
-  ngOnInit() {
-    // this.flowSequenceService.createDummyFlowSequence();
-  }
+  ngOnInit() {}
 }

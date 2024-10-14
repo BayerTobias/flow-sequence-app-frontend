@@ -116,7 +116,7 @@ export class SettingsServiceService {
 
   public activeTheme: Theme = new Theme({
     name: 'Monstera',
-    accentColor: 'string',
+    accentColor: 'rgba(106, 158, 157, 1)',
     gradientColor: 'string',
     backgroundImage: 'assets/img/backgrounds/background-1.webp',
   });
@@ -124,23 +124,25 @@ export class SettingsServiceService {
   public themeList: Theme[] = [
     new Theme({
       name: 'Monstera',
-      accentColor: 'string',
+      accentColor: 'rgba(106, 158, 157, 1)',
       gradientColor: 'string',
       backgroundImage: 'assets/img/backgrounds/background-1.webp',
     }),
     new Theme({
       name: 'theme2',
-      accentColor: 'string',
+      accentColor: 'rgba(210, 212, 147, 1)',
       gradientColor: 'string',
       backgroundImage: 'assets/img/backgrounds/background-2.webp',
     }),
     new Theme({
       name: 'theme3',
-      accentColor: 'string',
+      accentColor: 'rgba(200, 94, 106, 1)',
       gradientColor: 'string',
       backgroundImage: 'assets/img/backgrounds/background-3.webp',
     }),
   ];
+
+  public transitionInProgress: boolean = false;
 
   public savedCustomSequences: FlowSequence[] = [];
 

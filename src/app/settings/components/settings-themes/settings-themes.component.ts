@@ -27,6 +27,7 @@ export class SettingsThemesComponent {
 
   chooseTheme() {
     if (this.settingsService.activeTheme !== this.selectedTheme) {
+      // this.settingsService.transitionInProgress = true;
       this.settingsService.activeTheme = this.selectedTheme;
     } else {
       console.log('ist schon dummy');

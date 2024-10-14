@@ -9,7 +9,17 @@ main {
 
   background-size: cover;
   background-position: center;
+
+  transition: opacity 0.5s ease-in-out;
 }
+
+// main.fade-out {
+//   opacity: 0;
+// }
+
+// main.fade-in {
+//   opacity: 1;
+// }
 
 .timer-active {
   @include dFlex($gp: 12px, $ai: flex-start);
