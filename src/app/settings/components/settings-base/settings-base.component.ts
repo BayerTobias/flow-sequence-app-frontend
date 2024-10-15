@@ -4,6 +4,7 @@ import { SettingsGeneralComponent } from '../settings-general/settings-general.c
 import { SettingsCustomTimersComponent } from '../settings-custom-timers/settings-custom-timers.component';
 import { SettingsServiceService } from '../../../shared/services/settings-service.service';
 import { SettingsThemesComponent } from '../settings-themes/settings-themes.component';
+import { SettingsSoundComponent } from '../settings-sound/settings-sound.component';
 
 @Component({
   selector: 'app-settings-base',
@@ -13,6 +14,7 @@ import { SettingsThemesComponent } from '../settings-themes/settings-themes.comp
     SettingsGeneralComponent,
     SettingsCustomTimersComponent,
     SettingsThemesComponent,
+    SettingsSoundComponent,
   ],
   templateUrl: './settings-base.component.html',
   styleUrl: './settings-base.component.scss',
