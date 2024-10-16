@@ -3,4 +3,60 @@
     <img src="assets\img\icons\music-note.svg" alt="settings" />
     <span>Sounds</span>
   </div>
+
+  <div class="select-sounds-wrapper">
+    <p>
+      Test the different sounds by clicking the buttons and then drag and drop
+      the button of your chosen notification sound into the fields.
+    </p>
+  </div>
+  <div class="drag-wrapper">
+    <div class="drag-left">
+      <div>
+        <span>Longer notifications:</span>
+        <div
+          cdkDropList
+          [cdkDropListData]="longSounds"
+          [cdkDropListConnectedTo]="['flowArea']"
+          cdkDropListSortingDisabled
+          class="drag-area"
+        >
+          @for (sound of longSounds; track $index) {
+          <div class="sound-item" cdkDrag [cdkDragData]="sound">
+            {{ sound.name }}
+          </div>
+          }
+        </div>
+      </div>
+      <div>
+        <span>Shorter notifications:</span>
+      </div>
+    </div>
+    <div class="drag-right">
+      <div>
+        <span>Sound when flow time has ended:</span>
+        <div
+          cdkDropList
+          id="flowArea"
+          (cdkDropListDropped)="onDrop($event, 'flow')"
+          class="dropArea"
+        >
+          @if (selectedFlowTimeSound) {
+          <p>{{ selectedFlowTimeSound.name }}</p>
+          }@else {
+          <p>Drop Flow Sound here</p>
+          }
+        </div>
+      </div>
+      <div>
+        <span>Sound when short breakhas ended:</span>
+      </div>
+      <div>
+        <span>Sound when long breakhas ended:</span>
+      </div>
+      <div>
+        <span>Sound when flow sequence is completed:</span>
+      </div>
+    </div>
+  </div>
 </section>
