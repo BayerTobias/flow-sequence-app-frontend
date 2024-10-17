@@ -57,12 +57,17 @@ section {
 }
 
 .dropArea {
+  @include dFlex();
   height: 35px;
-  width: 100px;
-  background-color: aquamarine;
+  min-width: 95px;
+  width: fit-content;
+  background-color: $interface-accent-1-extra-light;
+  border-radius: 4px;
+  border: 1px dashed $interface-accent-1;
+  overflow: hidden;
 
   .cdk-drag-placeholder {
-    opacity: 0;
+    display: none !important;
   }
 }
 
@@ -70,6 +75,7 @@ section {
   position: relative;
   @include dFlex();
   background-color: $interface-accent-2;
+  color: $copy-light;
   border-radius: 4px;
   padding: 8px 16px;
   cursor: pointer;

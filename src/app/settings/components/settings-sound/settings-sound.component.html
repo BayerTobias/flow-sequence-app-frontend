@@ -17,7 +17,12 @@
         <div
           cdkDropList
           [cdkDropListData]="longSounds"
-          [cdkDropListConnectedTo]="['flowArea']"
+          [cdkDropListConnectedTo]="[
+            'flowArea',
+            'shortBreakArea',
+            'longBreakArea',
+            'completedArea'
+          ]"
           cdkDropListSortingDisabled
           class="drag-area"
         >
@@ -37,25 +42,93 @@
         <span>Sound when flow time has ended:</span>
         <div
           cdkDropList
+          cdkDropListSortingDisabled
           id="flowArea"
           (cdkDropListDropped)="onDrop($event, 'flow')"
           class="dropArea"
+          [ngStyle]="{ border: selectedFlowTimeSound ? 'hidden' : '' }"
         >
           @if (selectedFlowTimeSound) {
-          <p>{{ selectedFlowTimeSound.name }}</p>
+          <div
+            cdkDrag
+            (cdkDragEnded)="checkDropOutside($event, 'flowArea')"
+            class="sound-item"
+          >
+            {{ selectedFlowTimeSound.name }}
+          </div>
           }@else {
-          <p>Drop Flow Sound here</p>
+          <p>Drag Here</p>
           }
         </div>
       </div>
       <div>
-        <span>Sound when short breakhas ended:</span>
+        <span>Sound when short break has ended:</span>
+        <div
+          cdkDropList
+          cdkDropListSortingDisabled
+          id="shortBreakArea"
+          (cdkDropListDropped)="onDrop($event, 'shortBreak')"
+          class="dropArea"
+          [ngStyle]="{ border: selectedShortBreakSound ? 'hidden' : '' }"
+        >
+          @if (selectedShortBreakSound) {
+          <div
+            cdkDrag
+            (cdkDragEnded)="checkDropOutside($event, 'shortBreakArea')"
+            class="sound-item"
+          >
+            {{ selectedShortBreakSound.name }}
+          </div>
+          }@else {
+          <p>Drag Here</p>
+          }
+        </div>
       </div>
       <div>
-        <span>Sound when long breakhas ended:</span>
+        <span>Sound when long break has ended:</span>
+        <div
+          cdkDropList
+          cdkDropListSortingDisabled
+          id="longBreakArea"
+          (cdkDropListDropped)="onDrop($event, 'longBreak')"
+          class="dropArea"
+          [ngStyle]="{ border: selectedLongBreakSound ? 'hidden' : '' }"
+        >
+          @if (selectedLongBreakSound) {
+          <div
+            cdkDrag
+            (cdkDragEnded)="checkDropOutside($event, 'longBreakArea')"
+            class="sound-item"
+          >
+            {{ selectedLongBreakSound.name }}
+          </div>
+          }@else {
+          <p>Drag Here</p>
+          }
+        </div>
       </div>
       <div>
         <span>Sound when flow sequence is completed:</span>
+        <div
+          cdkDropList
+          cdkDropListSortingDisabled
+          id="completedArea"
+          (cdkDropListDropped)="onDrop($event, 'completed')"
+          class="dropArea"
+          [ngStyle]="{ border: selectedCompletedSound ? 'hidden' : '' }"
+        >
+          @if (selectedCompletedSound) {
+          <div
+            cdkDrag
+            (cdkDragEnded)="checkDropOutside($event, 'completedArea')"
+            class="sound-item"
+          >
+            {{ selectedCompletedSound.name }}
+          </div>
+          }@else {
+          <p>Drag Here</p>
+          }
+        </div>
       </div>
     </div>
   </div>

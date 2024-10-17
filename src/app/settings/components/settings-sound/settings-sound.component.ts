@@ -1,16 +1,17 @@
-import { Component, inject } from '@angular/core';
+import { Component, DEFAULT_CURRENCY_CODE, inject } from '@angular/core';
 import { SettingsServiceService } from '../../../shared/services/settings-service.service';
 import {
   CdkDragDrop,
+  CdkDragEnd,
   DragDropModule,
-  moveItemInArray,
 } from '@angular/cdk/drag-drop';
 import { NotificationSound } from '../../../models/notification-sound.mode';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-settings-sound',
   standalone: true,
-  imports: [DragDropModule],
+  imports: [CommonModule, DragDropModule],
   templateUrl: './settings-sound.component.html',
   styleUrl: './settings-sound.component.scss',
 })
@@ -37,25 +38,60 @@ export class SettingsSoundComponent {
   public shortSounds: NotificationSound[] = [];
 
   public selectedFlowTimeSound: NotificationSound | null = null;
+  public selectedShortBreakSound: NotificationSound | null = null;
+  public selectedLongBreakSound: NotificationSound | null = null;
+  public selectedCompletedSound: NotificationSound | null = null;
 
-  onDrop(event: CdkDragDrop<any[]>, targetList: string) {
+  onDrop(event: CdkDragDrop<string[]>, targetList: string) {
+    if (event.previousContainer === event.container) {
+      return;
+    }
+
     const sound = event.item.data;
-    console.log(event);
 
     switch (targetList) {
       case 'flow':
         this.selectedFlowTimeSound = sound;
-        console.log(this.selectedFlowTimeSound);
-
         break;
-      // case 'shortBreak':
-      //   this.shortBreakSounds.push(sound);
-      //   break;
-      // case 'longBreak':
-      //   this.longBreakSounds.push(sound);
-      //   break;
+      case 'shortBreak':
+        this.selectedShortBreakSound = sound;
+        break;
+      case 'longBreak':
+        this.selectedLongBreakSound = sound;
+        break;
+      case 'completed':
+        this.selectedCompletedSound = sound;
+        break;
       default:
         console.warn('Unknown target list:', targetList);
+    }
+  }
+
+  checkDropOutside(event: CdkDragEnd, dropAreaId: string) {
+    const { x, y } = event.dropPoint;
+    const dropTarget = document.elementFromPoint(x, y);
+
+    if (!dropTarget || !dropTarget.closest('#' + dropAreaId)) {
+      this.removeSoundFromFlow(dropAreaId);
+    }
+  }
+
+  removeSoundFromFlow(dropAreaId: string) {
+    switch (dropAreaId) {
+      case 'flowArea':
+        this.selectedFlowTimeSound = null;
+        break;
+      case 'shortBreakArea':
+        this.selectedShortBreakSound = null;
+        break;
+      case 'longBreakArea':
+        this.selectedLongBreakSound = null;
+        break;
+      case 'completedArea':
+        this.selectedCompletedSound = null;
+        break;
+      default:
+        console.warn('Unknown drop Area');
     }
   }
 }
