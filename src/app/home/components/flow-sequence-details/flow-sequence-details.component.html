@@ -7,7 +7,7 @@
         [ngClass]="{ 'step-done': step.complete }"
         [ngStyle]="{
           'background-color': step.complete
-            ? settingsService.activeTheme.accentColor
+            ? settingsService.appSettings.theme.accentColor
             : ''
         }"
         src="assets/img/icons/flow-checkbox.svg"
@@ -32,14 +32,14 @@
     >
       <path
         d="M8.65657 9.946L1.58657 17.016C1.40062 17.2017 1.2531 17.4223 1.15245 17.6651C1.05181 17.9079 1 18.1682 1 18.431C1 18.6938 1.05181 18.9541 1.15245 19.1969C1.2531 19.4397 1.40062 19.6603 1.58657 19.846C1.96163 20.2209 2.47025 20.4316 3.00057 20.4316C3.5309 20.4316 4.03952 20.2209 4.41457 19.846L11.4846 12.774M15.7996 13.139L19.6776 17.017C20.0525 17.3921 20.2631 17.9007 20.2631 18.431C20.2631 18.9613 20.0525 19.4699 19.6776 19.845C19.3025 20.2199 18.7939 20.4306 18.2636 20.4306C17.7332 20.4306 17.2246 20.2199 16.8496 19.845L10.6406 13.637M5.33957 5.243L3.21657 5.949L1.09657 2.414L2.51057 1L6.04657 3.121L5.33957 5.243ZM5.33957 5.243L8.16957 8.073"
-        [attr.stroke]="settingsService.activeTheme.accentColor"
+        [attr.stroke]="settingsService.appSettings.theme.accentColor"
         stroke-width="1.5"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
       <path
         d="M8.65613 9.94582C7.81213 7.79282 7.97713 4.96782 9.71713 3.22782C11.4571 1.48782 14.6671 1.10682 16.4341 2.16782L13.3941 5.20782L13.1111 8.31882L16.2221 8.03682L19.2621 4.99582C20.3241 6.76382 19.9421 9.97382 18.2021 11.7128C16.4621 13.4528 13.6381 13.6178 11.4851 12.7738"
-        [attr.stroke]="settingsService.activeTheme.accentColor"
+        [attr.stroke]="settingsService.appSettings.theme.accentColor"
         stroke-width="1.5"
         stroke-linecap="round"
         stroke-linejoin="round"
@@ -52,7 +52,10 @@
       <div
         [ngStyle]="
           step.complete
-            ? { 'background-color': settingsService.activeTheme.accentColor }
+            ? {
+                'background-color':
+                  settingsService.appSettings.theme.accentColor
+              }
             : {}
         "
         class="flow-time"
@@ -61,7 +64,10 @@
       <div
         [ngStyle]="
           step.complete
-            ? { 'background-color': settingsService.activeTheme.accentColor }
+            ? {
+                'background-color':
+                  settingsService.appSettings.theme.accentColor
+              }
             : {}
         "
         class="long-break"
@@ -70,7 +76,10 @@
       <div
         [ngStyle]="
           step.complete
-            ? { 'background-color': settingsService.activeTheme.accentColor }
+            ? {
+                'background-color':
+                  settingsService.appSettings.theme.accentColor
+              }
             : {}
         "
         class="short-break"
@@ -85,7 +94,7 @@
         }"
         [ngStyle]="{
           'background-color': flowSequenceService.sequenceComplete
-            ? settingsService.activeTheme.accentColor
+            ? settingsService.appSettings.theme.accentColor
             : ''
         }"
         src="assets/img/icons/flow-checkbox.svg"
@@ -102,12 +111,12 @@
       >
         <path
           d="M1 41.6V2.4C1 2.0287 1.1475 1.6726 1.41005 1.41005C1.6726 1.1475 2.0287 1 2.4 1H41.6C41.9713 1 42.3274 1.1475 42.59 1.41005C42.8525 1.6726 43 2.0287 43 2.4V41.6C43 41.9713 42.8525 42.3274 42.59 42.59C42.3274 42.8525 41.9713 43 41.6 43H2.4C2.0287 43 1.6726 42.8525 1.41005 42.59C1.1475 42.3274 1 41.9713 1 41.6Z"
-          [attr.stroke]="settingsService.activeTheme.accentColor"
+          [attr.stroke]="settingsService.appSettings.theme.accentColor"
           stroke-width="2"
         />
         <path
           d="M8 36H36M22 26.6667V8M22 8L30.1667 16.1667M22 8L13.8333 16.1667"
-          [attr.stroke]="settingsService.activeTheme.accentColor"
+          [attr.stroke]="settingsService.appSettings.theme.accentColor"
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"

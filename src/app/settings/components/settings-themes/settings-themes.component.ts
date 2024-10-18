@@ -23,12 +23,13 @@ import { FormsModule } from '@angular/forms';
 })
 export class SettingsThemesComponent {
   public settingsService = inject(SettingsServiceService);
-  public selectedTheme: Theme = this.settingsService.activeTheme;
+  public selectedTheme: Theme = this.settingsService.appSettings.theme;
 
   chooseTheme() {
-    if (this.settingsService.activeTheme !== this.selectedTheme) {
+    if (this.settingsService.appSettings.theme !== this.selectedTheme) {
       // this.settingsService.transitionInProgress = true;
-      this.settingsService.activeTheme = this.selectedTheme;
+      this.settingsService.appSettings.theme = this.selectedTheme;
+      this.settingsService.appSettings.saveSettings();
     } else {
       console.log('ist schon dummy');
     }

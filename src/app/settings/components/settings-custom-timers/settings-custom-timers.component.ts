@@ -54,9 +54,9 @@ export class SettingsCustomTimersComponent {
   @ViewChildren('nameInput') nameInputFields: QueryList<ElementRef> | null =
     null;
 
-  ngOnInit() {
-    this.settingsService.loadCustomSequences();
-  }
+  // ngOnInit() {
+  //   this.settingsService.loadCustomSequences();
+  // }
 
   editSequence() {
     console.log('edit');

@@ -16,7 +16,7 @@
       [ngStyle]="{
         width:
           (this.flowSequenceService.secondsOfMinuteRemainung / 60) * 100 + '%',
-        'background-color': settingsService.activeTheme.accentColor
+        'background-color': settingsService.appSettings.theme.accentColor
       }"
       class="bar"
       [ngClass]="{

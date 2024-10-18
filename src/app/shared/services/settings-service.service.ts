@@ -7,11 +7,14 @@ import { FlowTime } from '../../models/flow-time.model';
 import { ShortBreak } from '../../models/short-break.model';
 import { LongBreak } from '../../models/long-break.model';
 import { Theme } from '../../models/theme.model';
+import { AppSettings } from '../../models/app-settings.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SettingsServiceService {
+  public appSettings = new AppSettings();
+
   public activeTab: string = 'sounds';
   public settingsOpen: boolean = true;
 
@@ -114,12 +117,12 @@ export class SettingsServiceService {
     ],
   });
 
-  public activeTheme: Theme = new Theme({
-    name: 'Monstera',
-    accentColor: 'rgba(106, 158, 157, 1)',
-    gradientColor: 'rgb(12, 23, 19) 0%',
-    backgroundImage: 'assets/img/backgrounds/background-1.webp',
-  });
+  // public activeTheme: Theme = new Theme({
+  //   name: 'Monstera',
+  //   accentColor: 'rgba(106, 158, 157, 1)',
+  //   gradientColor: 'rgb(12, 23, 19) 0%',
+  //   backgroundImage: 'assets/img/backgrounds/background-1.webp',
+  // });
 
   public themeList: Theme[] = [
     new Theme({
@@ -154,6 +157,12 @@ export class SettingsServiceService {
     );
 
     localStorage.setItem('customSequences', JSON.stringify(sequencesAsJson));
+  }
+
+  loadSettings() {
+    const settingsString = localStorage.getItem('appSettings');
+
+    console.log('Load Setting:', settingsString);
   }
 
   loadCustomSequences() {

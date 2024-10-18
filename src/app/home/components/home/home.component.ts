@@ -26,6 +26,11 @@ export class HomeComponent {
   public flowSequenceService = inject(FlowSequenceServiceService);
   public settingsService = inject(SettingsServiceService);
 
+  ngOnInit() {
+    this.settingsService.loadCustomSequences();
+    this.settingsService.loadSettings();
+  }
+
   openSettings() {
     console.log(this.settingsService.settingsOpen);
 
