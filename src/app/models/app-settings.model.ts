@@ -6,59 +6,62 @@ import {
 import { Theme, ThemeData } from './theme.model';
 
 export interface AppSettingsData {
-  themeData: ThemeData;
-  shortBreakSoundData: NotificationSoundData;
-  lognBreakSoundData: NotificationSoundData;
-  flowTimeSoundData: NotificationSoundData;
-  FlowSequenceSoundData: NotificationSoundData;
-  customSequenceData: string;
+  theme: ThemeData;
+  shortBreakSound: NotificationSoundData;
+  longBreakSound: NotificationSoundData;
+  flowTimeSound: NotificationSoundData;
+  flowSequenceSound: NotificationSoundData;
+  customSequence: string;
 }
 
 export class AppSettings {
   theme: Theme;
   shortBreakSound: NotificationSound | null;
-  lognBreakSound: NotificationSound | null;
+  longBreakSound: NotificationSound | null;
   flowTimeSound: NotificationSound | null;
-  FlowSequenceSound: NotificationSound | null;
-  customSequences: FlowSequence[];
+  flowSequenceSound: NotificationSound | null;
+  // customSequences: FlowSequence[];
 
   constructor(data?: AppSettingsData) {
     this.theme = data
-      ? new Theme(data.themeData)
+      ? new Theme(data.theme)
       : new Theme({
           name: 'Monstera',
           accentColor: 'rgba(106, 158, 157, 1)',
           gradientColor: 'rgb(12, 23, 19) 0%',
           backgroundImage: 'assets/img/backgrounds/background-1.webp',
         });
-    this.shortBreakSound = data
-      ? new NotificationSound(data.shortBreakSoundData)
+    this.shortBreakSound = data?.shortBreakSound
+      ? new NotificationSound(data.shortBreakSound)
       : null;
-    this.lognBreakSound = data
-      ? new NotificationSound(data.shortBreakSoundData)
+    this.longBreakSound = data?.longBreakSound
+      ? new NotificationSound(data.longBreakSound)
       : null;
-    this.flowTimeSound = data
-      ? new NotificationSound(data.shortBreakSoundData)
+    this.flowTimeSound = data?.flowTimeSound
+      ? new NotificationSound(data.flowTimeSound)
       : null;
-    this.FlowSequenceSound = data
-      ? new NotificationSound(data.shortBreakSoundData)
+    this.flowSequenceSound = data?.flowSequenceSound
+      ? new NotificationSound(data.flowSequenceSound)
       : null;
-    this.customSequences = data
-      ? this.setupCustomSequences(data.customSequenceData)
-      : [];
+    // this.customSequences = data
+    //   ? this.setupCustomSequences(data.customSequence)
+    //   : [];
   }
 
   setupCustomSequences(customSequenceData: string) {
-    const parsedSequences = JSON.parse(customSequenceData);
-
-    return parsedSequences.map(
-      (sequence: flowSequenceData) => new FlowSequence(sequence)
-    );
+    // const parsedSequences = JSON.parse(customSequenceData);
+    // return parsedSequences.map(
+    //   (sequence: flowSequenceData) => new FlowSequence(sequence)
+    // );
   }
 
   asJson() {
     return {
       theme: this.theme.asJson(),
+      shortBreakSound: this.shortBreakSound?.asJson(),
+      longBreakSound: this.longBreakSound?.asJson(),
+      flowTimeSound: this.flowTimeSound?.asJson(),
+      flowSequenceSound: this.flowSequenceSound?.asJson(),
     };
   }
 

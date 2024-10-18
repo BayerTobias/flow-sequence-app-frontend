@@ -37,10 +37,29 @@ export class SettingsSoundComponent {
   ];
   public shortSounds: NotificationSound[] = [];
 
-  public selectedFlowTimeSound: NotificationSound | null = null;
-  public selectedShortBreakSound: NotificationSound | null = null;
-  public selectedLongBreakSound: NotificationSound | null = null;
-  public selectedCompletedSound: NotificationSound | null = null;
+  public get selectedFlowTimeSound(): NotificationSound | null {
+    return this.settingsService.appSettings.flowTimeSound;
+  }
+
+  public get selectedShortBreakSound(): NotificationSound | null {
+    return this.settingsService.appSettings.shortBreakSound;
+  }
+
+  public get selectedLongBreakSound(): NotificationSound | null {
+    return this.settingsService.appSettings.longBreakSound;
+  }
+
+  public get selectedCompletedSound(): NotificationSound | null {
+    return this.settingsService.appSettings.flowSequenceSound;
+  }
+
+  // public selectedShortBreakSound: NotificationSound | null = null;
+  // public selectedLongBreakSound: NotificationSound | null = null;
+  // public selectedCompletedSound: NotificationSound | null = null;
+
+  constructor() {
+    console.log(this.selectedFlowTimeSound);
+  }
 
   onDrop(event: CdkDragDrop<string[]>, targetList: string) {
     if (event.previousContainer === event.container) {
@@ -51,16 +70,20 @@ export class SettingsSoundComponent {
 
     switch (targetList) {
       case 'flow':
-        this.selectedFlowTimeSound = sound;
+        this.settingsService.appSettings.flowTimeSound = sound;
+        this.settingsService.appSettings.saveSettings();
         break;
       case 'shortBreak':
-        this.selectedShortBreakSound = sound;
+        this.settingsService.appSettings.shortBreakSound = sound;
+        this.settingsService.appSettings.saveSettings();
         break;
       case 'longBreak':
-        this.selectedLongBreakSound = sound;
+        this.settingsService.appSettings.longBreakSound = sound;
+        this.settingsService.appSettings.saveSettings();
         break;
       case 'completed':
-        this.selectedCompletedSound = sound;
+        this.settingsService.appSettings.flowSequenceSound = sound;
+        this.settingsService.appSettings.saveSettings();
         break;
       default:
         console.warn('Unknown target list:', targetList);
@@ -79,16 +102,20 @@ export class SettingsSoundComponent {
   removeSoundFromFlow(dropAreaId: string) {
     switch (dropAreaId) {
       case 'flowArea':
-        this.selectedFlowTimeSound = null;
+        this.settingsService.appSettings.flowTimeSound = null;
+        this.settingsService.appSettings.saveSettings();
         break;
       case 'shortBreakArea':
-        this.selectedShortBreakSound = null;
+        this.settingsService.appSettings.shortBreakSound = null;
+        this.settingsService.appSettings.saveSettings();
         break;
       case 'longBreakArea':
-        this.selectedLongBreakSound = null;
+        this.settingsService.appSettings.longBreakSound = null;
+        this.settingsService.appSettings.saveSettings();
         break;
       case 'completedArea':
-        this.selectedCompletedSound = null;
+        this.settingsService.appSettings.flowSequenceSound = null;
+        this.settingsService.appSettings.saveSettings();
         break;
       default:
         console.warn('Unknown drop Area');

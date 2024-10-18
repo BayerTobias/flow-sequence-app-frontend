@@ -44,7 +44,7 @@ section {
   }
 
   .bottom-container {
-    @include dFlex($gp: 16px, $ai: flex-end);
+    @include dFlex($gp: 16px);
     width: 100%;
 
     .progress-container {

@@ -7,7 +7,7 @@ import { FlowTime } from '../../models/flow-time.model';
 import { ShortBreak } from '../../models/short-break.model';
 import { LongBreak } from '../../models/long-break.model';
 import { Theme } from '../../models/theme.model';
-import { AppSettings } from '../../models/app-settings.model';
+import { AppSettings, AppSettingsData } from '../../models/app-settings.model';
 
 @Injectable({
   providedIn: 'root',
@@ -117,13 +117,6 @@ export class SettingsServiceService {
     ],
   });
 
-  // public activeTheme: Theme = new Theme({
-  //   name: 'Monstera',
-  //   accentColor: 'rgba(106, 158, 157, 1)',
-  //   gradientColor: 'rgb(12, 23, 19) 0%',
-  //   backgroundImage: 'assets/img/backgrounds/background-1.webp',
-  // });
-
   public themeList: Theme[] = [
     new Theme({
       name: 'Monstera',
@@ -151,18 +144,21 @@ export class SettingsServiceService {
 
   constructor() {}
 
+  loadSettings() {
+    const settingsString = localStorage.getItem('appSettings');
+
+    if (settingsString) {
+      const parsedSettings: AppSettingsData = JSON.parse(settingsString);
+      this.appSettings = new AppSettings(parsedSettings);
+    }
+  }
+
   saveCustomSequences() {
     const sequencesAsJson = this.savedCustomSequences.map((sequence) =>
       sequence.asJson()
     );
 
     localStorage.setItem('customSequences', JSON.stringify(sequencesAsJson));
-  }
-
-  loadSettings() {
-    const settingsString = localStorage.getItem('appSettings');
-
-    console.log('Load Setting:', settingsString);
   }
 
   loadCustomSequences() {
