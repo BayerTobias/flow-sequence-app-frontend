@@ -11,7 +11,7 @@ export interface AppSettingsData {
   longBreakSound: NotificationSoundData;
   flowTimeSound: NotificationSoundData;
   flowSequenceSound: NotificationSoundData;
-  customSequence: string;
+  customSequence: flowSequenceData[];
 }
 
 export class AppSettings {
@@ -20,7 +20,7 @@ export class AppSettings {
   longBreakSound: NotificationSound | null;
   flowTimeSound: NotificationSound | null;
   flowSequenceSound: NotificationSound | null;
-  // customSequences: FlowSequence[];
+  customSequences: FlowSequence[];
 
   constructor(data?: AppSettingsData) {
     this.theme = data
@@ -43,16 +43,19 @@ export class AppSettings {
     this.flowSequenceSound = data?.flowSequenceSound
       ? new NotificationSound(data.flowSequenceSound)
       : null;
-    // this.customSequences = data
-    //   ? this.setupCustomSequences(data.customSequence)
-    //   : [];
+    this.customSequences = data?.customSequence
+      ? this.setupCustomSequences(data.customSequence)
+      : [];
   }
 
-  setupCustomSequences(customSequenceData: string) {
-    // const parsedSequences = JSON.parse(customSequenceData);
-    // return parsedSequences.map(
-    //   (sequence: flowSequenceData) => new FlowSequence(sequence)
-    // );
+  setupCustomSequences(customSequenceData: flowSequenceData[]) {
+    return customSequenceData.map(
+      (sequence: flowSequenceData) => new FlowSequence(sequence)
+    );
+  }
+
+  customSequencesAsJson() {
+    return this.customSequences.map((sequence) => sequence.asJson());
   }
 
   asJson() {
@@ -62,6 +65,7 @@ export class AppSettings {
       longBreakSound: this.longBreakSound?.asJson(),
       flowTimeSound: this.flowTimeSound?.asJson(),
       flowSequenceSound: this.flowSequenceSound?.asJson(),
+      customSequence: this.customSequencesAsJson(),
     };
   }
 

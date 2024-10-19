@@ -54,10 +54,6 @@ export class SettingsCustomTimersComponent {
   @ViewChildren('nameInput') nameInputFields: QueryList<ElementRef> | null =
     null;
 
-  // ngOnInit() {
-  //   this.settingsService.loadCustomSequences();
-  // }
-
   editSequence() {
     console.log('edit');
   }
@@ -68,14 +64,15 @@ export class SettingsCustomTimersComponent {
   }
 
   chooseSequence(index: number) {
-    console.log('choose');
     this.flowSequenceService.activeFlowSequence =
-      this.settingsService.savedCustomSequences[index];
+      this.settingsService.appSettings.customSequences[index];
+
+    // close overlay
   }
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(
-      this.settingsService.savedCustomSequences,
+      this.settingsService.appSettings.customSequences,
       event.previousIndex,
       event.currentIndex
     );
@@ -202,8 +199,10 @@ export class SettingsCustomTimersComponent {
     if (this.sequenceName && this.sequenceDescription) {
       this.newFlowSequence.name = this.sequenceName;
       this.newFlowSequence.description = this.sequenceDescription;
-      this.settingsService.savedCustomSequences.push(this.newFlowSequence);
-      this.settingsService.saveCustomSequences();
+      this.settingsService.appSettings.customSequences.push(
+        this.newFlowSequence
+      );
+      this.settingsService.appSettings.saveSettings();
       this.sequenceName = '';
       this.sequenceDescription = '';
       this.newFlowSequence = new FlowSequence();

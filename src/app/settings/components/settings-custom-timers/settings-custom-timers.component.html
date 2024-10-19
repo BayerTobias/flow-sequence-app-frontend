@@ -40,7 +40,8 @@
     class="saved-custom-timers-box"
     (cdkDropListDropped)="drop($event)"
   >
-    @for (sequence of settingsService.savedCustomSequences; track $index) {
+    @for (sequence of settingsService.appSettings.customSequences; track $index)
+    {
     <div class="sequence-card" cdkDrag>
       <div>
         <img src="assets\img\icons\dots.svg" alt="drag" />
