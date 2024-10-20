@@ -27,8 +27,8 @@ export class HomeComponent {
   public settingsService = inject(SettingsServiceService);
 
   ngOnInit() {
-    this.settingsService.loadCustomSequences();
-    this.settingsService.loadSettings();
+    // this.settingsService.loadCustomSequences();
+    // this.settingsService.loadSettings();
   }
 
   openSettings() {

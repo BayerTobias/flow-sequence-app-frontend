@@ -71,23 +71,25 @@ export class SettingsSoundComponent {
     switch (targetList) {
       case 'flow':
         this.settingsService.appSettings.flowTimeSound = sound;
-        this.settingsService.appSettings.saveSettings();
+
         break;
       case 'shortBreak':
         this.settingsService.appSettings.shortBreakSound = sound;
-        this.settingsService.appSettings.saveSettings();
+
         break;
       case 'longBreak':
         this.settingsService.appSettings.longBreakSound = sound;
-        this.settingsService.appSettings.saveSettings();
+
         break;
       case 'completed':
         this.settingsService.appSettings.flowSequenceSound = sound;
-        this.settingsService.appSettings.saveSettings();
+
         break;
       default:
         console.warn('Unknown target list:', targetList);
     }
+
+    this.settingsService.saveSettings();
   }
 
   checkDropOutside(event: CdkDragEnd, dropAreaId: string) {
@@ -103,22 +105,20 @@ export class SettingsSoundComponent {
     switch (dropAreaId) {
       case 'flowArea':
         this.settingsService.appSettings.flowTimeSound = null;
-        this.settingsService.appSettings.saveSettings();
         break;
       case 'shortBreakArea':
         this.settingsService.appSettings.shortBreakSound = null;
-        this.settingsService.appSettings.saveSettings();
         break;
       case 'longBreakArea':
         this.settingsService.appSettings.longBreakSound = null;
-        this.settingsService.appSettings.saveSettings();
         break;
       case 'completedArea':
         this.settingsService.appSettings.flowSequenceSound = null;
-        this.settingsService.appSettings.saveSettings();
         break;
       default:
         console.warn('Unknown drop Area');
     }
+
+    this.settingsService.saveSettings();
   }
 }

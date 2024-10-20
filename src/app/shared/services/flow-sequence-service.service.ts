@@ -1,7 +1,8 @@
-import { inject, Injectable } from '@angular/core';
+import { effect, inject, Injectable } from '@angular/core';
 import { FlowSequence } from '../../models/flow-sequence.model';
 import { Step } from '../../models/step.model';
 import { SettingsServiceService } from './settings-service.service';
+import { AppSettings } from '../../models/app-settings.model';
 
 @Injectable({
   providedIn: 'root',
@@ -21,20 +22,21 @@ export class FlowSequenceServiceService {
   public animateBar: boolean = false;
   public firstStart: boolean = true;
 
-  private shortBreakSound: HTMLAudioElement = new Audio(
-    'assets/sounds/correct-answer.mp3'
-  );
-  private lognBreakSound: HTMLAudioElement = new Audio(
-    'assets/sounds/dream-harp.mp3'
-  );
-  private flowTimeSound: HTMLAudioElement = new Audio(
-    'assets/sounds/celebration-big.mp3'
-  );
-  private FlowSequenceSound: HTMLAudioElement = new Audio(
-    'assets/sounds/big-band-celebration.mp3'
-  );
+  private shortBreakSound: HTMLAudioElement = new Audio();
+  private lognBreakSound: HTMLAudioElement = new Audio();
+  private flowTimeSound: HTMLAudioElement = new Audio();
+  private flowSequenceSound: HTMLAudioElement = new Audio();
 
-  constructor() {}
+  constructor() {
+    effect(() => {
+      const appSettings = this.settingsService.appSettingsSignal();
+
+      this.shortBreakSound.src = appSettings.shortBreakSound?.path || '';
+      this.lognBreakSound.src = appSettings.longBreakSound?.path || '';
+      this.flowTimeSound.src = appSettings.flowTimeSound?.path || '';
+      this.flowSequenceSound.src = appSettings.flowSequenceSound?.path || '';
+    });
+  }
 
   startSequence() {
     if (this.activeFlowSequence.steps.length > 0) {
@@ -159,7 +161,7 @@ export class FlowSequenceServiceService {
 
   playSound() {
     if (this.sequenceComplete) {
-      this.FlowSequenceSound.play();
+      this.flowSequenceSound.play();
     } else if (this.currentStep.type === 'shortBreak') {
       this.shortBreakSound.play();
     } else if (this.currentStep.type === 'longBreak') {

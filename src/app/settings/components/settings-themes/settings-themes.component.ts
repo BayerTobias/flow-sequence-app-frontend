@@ -29,7 +29,7 @@ export class SettingsThemesComponent {
     if (this.settingsService.appSettings.theme !== this.selectedTheme) {
       // this.settingsService.transitionInProgress = true;
       this.settingsService.appSettings.theme = this.selectedTheme;
-      this.settingsService.appSettings.saveSettings();
+      this.settingsService.saveSettings();
     } else {
       console.log('ist schon dummy');
     }

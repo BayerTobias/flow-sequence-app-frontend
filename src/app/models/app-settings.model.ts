@@ -68,8 +68,4 @@ export class AppSettings {
       customSequence: this.customSequencesAsJson(),
     };
   }
-
-  saveSettings() {
-    localStorage.setItem('appSettings', JSON.stringify(this.asJson()));
-  }
 }

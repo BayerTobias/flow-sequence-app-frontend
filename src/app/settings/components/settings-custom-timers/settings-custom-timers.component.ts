@@ -202,7 +202,7 @@ export class SettingsCustomTimersComponent {
       this.settingsService.appSettings.customSequences.push(
         this.newFlowSequence
       );
-      this.settingsService.appSettings.saveSettings();
+      this.settingsService.saveSettings();
       this.sequenceName = '';
       this.sequenceDescription = '';
       this.newFlowSequence = new FlowSequence();

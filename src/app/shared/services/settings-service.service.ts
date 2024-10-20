@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import {
   FlowSequence,
   flowSequenceData,
@@ -14,6 +14,8 @@ import { AppSettings, AppSettingsData } from '../../models/app-settings.model';
 })
 export class SettingsServiceService {
   public appSettings = new AppSettings();
+
+  public appSettingsSignal = signal<AppSettings>(this.loadSettings());
 
   public activeTab: string = 'sounds';
   public settingsOpen: boolean = true;
@@ -144,13 +146,27 @@ export class SettingsServiceService {
 
   constructor() {}
 
+  saveSettings() {
+    localStorage.setItem(
+      'appSettings',
+      JSON.stringify(this.appSettings.asJson())
+    );
+
+    this.appSettingsSignal.set(
+      Object.assign(new AppSettings(), this.appSettings)
+    );
+  }
+
   loadSettings() {
     const settingsString = localStorage.getItem('appSettings');
 
     if (settingsString) {
       const parsedSettings: AppSettingsData = JSON.parse(settingsString);
       this.appSettings = new AppSettings(parsedSettings);
+      return this.appSettings;
     }
+
+    return new AppSettings();
   }
 
   saveCustomSequences() {
