@@ -59,8 +59,10 @@ export class SettingsCustomTimersComponent {
   }
 
   toggleShowCountdown() {
-    this.settingsService.showCountdownInBrowserTab =
-      !this.settingsService.showCountdownInBrowserTab;
+    this.settingsService.appSettings.countdownInBrowserTab =
+      !this.settingsService.appSettings.countdownInBrowserTab;
+
+    this.settingsService.saveSettings();
   }
 
   chooseSequence(index: number) {

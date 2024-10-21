@@ -17,8 +17,8 @@ export class SettingsServiceService {
 
   public appSettingsSignal = signal<AppSettings>(this.loadSettings());
 
-  public activeTab: string = 'sounds';
-  public settingsOpen: boolean = true;
+  public activeTab: string = 'general';
+  public settingsOpen: boolean = false;
 
   public showCountdownInBrowserTab: boolean = true;
 

@@ -53,10 +53,6 @@ export class SettingsSoundComponent {
     return this.settingsService.appSettings.flowSequenceSound;
   }
 
-  // public selectedShortBreakSound: NotificationSound | null = null;
-  // public selectedLongBreakSound: NotificationSound | null = null;
-  // public selectedCompletedSound: NotificationSound | null = null;
-
   constructor() {
     console.log(this.selectedFlowTimeSound);
   }

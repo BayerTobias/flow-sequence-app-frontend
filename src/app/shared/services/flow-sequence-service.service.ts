@@ -85,7 +85,7 @@ export class FlowSequenceServiceService {
     this.currentStepTimeRemaining--;
     this.minutesRemaining = Math.floor(this.currentStepTimeRemaining / 60 + 1);
     this.secondsOfMinuteRemainung = this.currentStepTimeRemaining % 60;
-    if (this.settingsService.showCountdownInBrowserTab) {
+    if (this.settingsService.appSettings.countdownInBrowserTab) {
       document.title = ` ${this.minutesRemaining}min ${this.secondsOfMinuteRemainung}sec `;
     } else {
       document.title = 'FlowSequenceFrontend';

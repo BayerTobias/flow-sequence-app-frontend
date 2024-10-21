@@ -6,7 +6,7 @@
 
   <div class="timer-settings">
     <div>
-      @if (settingsService.showCountdownInBrowserTab) {
+      @if (settingsService.appSettings.countdownInBrowserTab) {
       <img
         (click)="toggleShowCountdown()"
         src="assets\img\icons\checkbox-checked.svg"
@@ -32,7 +32,9 @@
       <img src="assets\img\icons\settings.svg" alt="settings" />
       <span>Saved Custom Timers</span>
     </div>
-    <span>( {{ settingsService.savedCustomSequences.length }} of 10 )</span>
+    <span
+      >( {{ settingsService.appSettings.customSequences.length }} of 10 )</span
+    >
   </div>
 
   <div

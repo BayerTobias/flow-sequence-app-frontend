@@ -7,6 +7,7 @@ import { Theme, ThemeData } from './theme.model';
 
 export interface AppSettingsData {
   theme: ThemeData;
+  countdownInBrowserTab: boolean;
   shortBreakSound: NotificationSoundData;
   longBreakSound: NotificationSoundData;
   flowTimeSound: NotificationSoundData;
@@ -16,6 +17,7 @@ export interface AppSettingsData {
 
 export class AppSettings {
   theme: Theme;
+  countdownInBrowserTab: boolean;
   shortBreakSound: NotificationSound | null;
   longBreakSound: NotificationSound | null;
   flowTimeSound: NotificationSound | null;
@@ -31,6 +33,7 @@ export class AppSettings {
           gradientColor: 'rgb(12, 23, 19) 0%',
           backgroundImage: 'assets/img/backgrounds/background-1.webp',
         });
+    this.countdownInBrowserTab = data?.countdownInBrowserTab || false;
     this.shortBreakSound = data?.shortBreakSound
       ? new NotificationSound(data.shortBreakSound)
       : null;
@@ -61,6 +64,7 @@ export class AppSettings {
   asJson() {
     return {
       theme: this.theme.asJson(),
+      countdownInBrowserTab: this.countdownInBrowserTab,
       shortBreakSound: this.shortBreakSound?.asJson(),
       longBreakSound: this.longBreakSound?.asJson(),
       flowTimeSound: this.flowTimeSound?.asJson(),
