@@ -8,6 +8,7 @@ import { SettingsServiceService } from '../../../shared/services/settings-servic
 import { SettingsOverlayComponent } from '../../../settings/components/settings-overlay/settings-overlay.component';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
+import { FooterComponent } from '../../../shared/components/footer/footer.component';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +21,7 @@ import { HeaderComponent } from '../../../shared/components/header/header.compon
     FlowSequenceDetailsComponent,
     SettingsOverlayComponent,
     HeaderComponent,
+    FooterComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
