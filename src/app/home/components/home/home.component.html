@@ -1,41 +1,43 @@
-<main
+<div
+  class="wrapper"
   [style.background-image]="
     'url(' + settingsService.appSettings.theme.backgroundImage + ')'
   "
 >
-  <div
-    [ngStyle]="{
-      background:
-        'linear-gradient(180deg,' +
-        settingsService.appSettings.theme.gradientColor +
-        ', rgba(12, 23, 19, 0) 100%)'
-    }"
-    class="gradient-top"
-  ></div>
-  <div
-    [ngStyle]="{
-      background:
-        'linear-gradient(0deg,' +
-        settingsService.appSettings.theme.gradientColor +
-        ', rgba(12, 23, 19, 0) 100%)'
-    }"
-    class="gradient-bottom"
-  ></div>
+  <app-header></app-header>
+  <main>
+    <div
+      [ngStyle]="{
+        background:
+          'linear-gradient(180deg,' +
+          settingsService.appSettings.theme.gradientColor +
+          ', rgba(12, 23, 19, 0) 100%)'
+      }"
+      class="gradient-top"
+    ></div>
+    <div
+      [ngStyle]="{
+        background:
+          'linear-gradient(0deg,' +
+          settingsService.appSettings.theme.gradientColor +
+          ', rgba(12, 23, 19, 0) 100%)'
+      }"
+      class="gradient-bottom"
+    ></div>
 
-  @if (settingsService.settingsOpen) {
-  <app-settings-overlay></app-settings-overlay>}
-
-  <div (click)="openSettings()" class="open-settings"></div>
-  @if (flowSequenceService.activeFlowSequence) {
-  <div class="timer-active">
-    <div class="left">
-      <app-timer></app-timer>
-      <app-media-controls></app-media-controls>
+    @if (settingsService.settingsOpen) {
+    <app-settings-overlay></app-settings-overlay>} @if
+    (flowSequenceService.activeFlowSequence) {
+    <div class="timer-active">
+      <div class="left">
+        <app-timer></app-timer>
+        <app-media-controls></app-media-controls>
+      </div>
+      <div class="right">
+        <app-flow-sequence-details></app-flow-sequence-details>
+      </div>
     </div>
-    <div class="right">
-      <app-flow-sequence-details></app-flow-sequence-details>
-    </div>
-  </div>
 
-  } @else {<app-welcome></app-welcome>}
-</main>
+    } @else {<app-welcome></app-welcome>}
+  </main>
+</div>

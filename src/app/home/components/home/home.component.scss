@@ -1,14 +1,19 @@
 @import "./../../../../mixin.scss";
 
-main {
-  @include dFlex();
+.wrapper {
+  background-size: cover;
+  background-position: center;
   min-width: 100vw;
   min-width: 100svw;
   min-height: 100vh;
   min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
 
-  background-size: cover;
-  background-position: center;
+main {
+  @include dFlex();
+  flex-grow: 1;
 
   transition: opacity 0.5s ease-in-out;
 }

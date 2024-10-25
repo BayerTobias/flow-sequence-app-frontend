@@ -7,6 +7,7 @@ import { FlowSequenceServiceService } from '../../../shared/services/flow-sequen
 import { SettingsServiceService } from '../../../shared/services/settings-service.service';
 import { SettingsOverlayComponent } from '../../../settings/components/settings-overlay/settings-overlay.component';
 import { CommonModule } from '@angular/common';
+import { HeaderComponent } from '../../../shared/components/header/header.component';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +19,7 @@ import { CommonModule } from '@angular/common';
     MediaControlsComponent,
     FlowSequenceDetailsComponent,
     SettingsOverlayComponent,
+    HeaderComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -25,16 +27,4 @@ import { CommonModule } from '@angular/common';
 export class HomeComponent {
   public flowSequenceService = inject(FlowSequenceServiceService);
   public settingsService = inject(SettingsServiceService);
-
-  ngOnInit() {
-    // this.settingsService.loadCustomSequences();
-    // this.settingsService.loadSettings();
-  }
-
-  openSettings() {
-    console.log(this.settingsService.settingsOpen);
-
-    this.settingsService.settingsOpen = true;
-    console.log(this.settingsService.settingsOpen);
-  }
 }

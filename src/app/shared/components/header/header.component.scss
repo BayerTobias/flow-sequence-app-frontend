@@ -1,0 +1,13 @@
+@import "./../../../../mixin.scss";
+
+header {
+  @include dFlex($jc: space-between);
+  // background-color: aqua;
+  padding: 16px;
+
+  img {
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+  }
+}
