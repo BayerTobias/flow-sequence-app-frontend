@@ -106,6 +106,8 @@
           <input matInput [(ngModel)]="flowTimeDuration" placeholder="Min" />
         </mat-form-field>
         <app-simple-settings-button
+          [width]="120"
+          [height]="42"
           [content]="'Flow Time'"
           (submitEvent)="addFlowTime()"
         ></app-simple-settings-button>
@@ -117,6 +119,8 @@
           <input matInput [(ngModel)]="shortBreakDuration" placeholder="Min" />
         </mat-form-field>
         <app-simple-settings-button
+          [width]="120"
+          [height]="42"
           [content]="'Short Break'"
           (submitEvent)="addShortBreak()"
         ></app-simple-settings-button>
@@ -128,6 +132,8 @@
           <input matInput [(ngModel)]="longBreakDuration" placeholder="Min" />
         </mat-form-field>
         <app-simple-settings-button
+          [width]="120"
+          [height]="42"
           [content]="'Long Break'"
           (submitEvent)="addLongBreak()"
         ></app-simple-settings-button>
@@ -177,6 +183,7 @@
       </div>
       } @if (newFlowSequence.steps.length > 0) {
       <app-simple-settings-button
+        [height]="42"
         [content]="'Save Timer'"
         (submitEvent)="saveNewFlowSequence()"
       ></app-simple-settings-button>
