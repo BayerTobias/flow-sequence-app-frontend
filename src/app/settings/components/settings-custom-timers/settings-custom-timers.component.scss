@@ -59,6 +59,10 @@ section {
   span {
     font-size: 16px;
     color: $copy-light;
+
+    .required {
+      color: $interface-accent-2;
+    }
   }
 
   > div {
@@ -169,6 +173,12 @@ section {
     @include dFlex($gp: 16px, $ai: flex-end);
     flex-direction: column;
   }
+}
+
+.error {
+  color: rgba(229, 69, 72, 1);
+  font-size: 14px;
+  text-align: right;
 }
 
 .time-card {

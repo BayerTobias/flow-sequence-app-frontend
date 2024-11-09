@@ -73,7 +73,11 @@
   </div>
 
   <div class="timer-info">
-    <span>Timer Name:</span>
+    <span
+      >Timer Name: @if (sequenceName.length === 0) {<span class="required"
+        >*</span
+      >}</span
+    >
     <div>
       <input
         placeholder="Flowsequence Name"
@@ -86,7 +90,12 @@
   </div>
 
   <div class="timer-info">
-    <span>Timer Description:</span>
+    <span
+      >Timer Description: @if (sequenceDescription.length === 0) {<span
+        class="required"
+        >*</span
+      >}</span
+    >
     <div>
       <textarea
         placeholder="Flowsequence Description"
@@ -187,6 +196,10 @@
         [content]="'Save Timer'"
         (submitEvent)="saveNewFlowSequence()"
       ></app-simple-settings-button>
+      } @if (error && (!sequenceName || !sequenceDescription) ) {
+      <span class="error"
+        >* Please set a name for your new flow sequence before saving.</span
+      >
       }
     </div>
   </div>

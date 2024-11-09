@@ -49,6 +49,8 @@ export class SettingsCustomTimersComponent {
   public sequenceName: string = '';
   public sequenceDescription: string = '';
 
+  public error: boolean = false;
+
   public newFlowSequence: FlowSequence = new FlowSequence();
 
   @ViewChildren('nameInput') nameInputFields: QueryList<ElementRef> | null =
@@ -208,6 +210,8 @@ export class SettingsCustomTimersComponent {
       this.sequenceName = '';
       this.sequenceDescription = '';
       this.newFlowSequence = new FlowSequence();
+    } else {
+      this.error = true;
     }
   }
 }
