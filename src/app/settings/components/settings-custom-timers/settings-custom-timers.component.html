@@ -80,6 +80,7 @@
     >
     <div>
       <input
+        #sequenceNameInput
         placeholder="Flowsequence Name"
         [(ngModel)]="sequenceName"
         maxlength="100"
@@ -98,6 +99,7 @@
     >
     <div>
       <textarea
+        #sequenceDescriptionInput
         placeholder="Flowsequence Description"
         [(ngModel)]="sequenceDescription"
         maxlength="1000"
@@ -196,10 +198,14 @@
         [content]="'Save Timer'"
         (submitEvent)="saveNewFlowSequence()"
       ></app-simple-settings-button>
-      } @if (error && (!sequenceName || !sequenceDescription) ) {
+      } @if (nameError && (!sequenceName || !sequenceDescription) ) {
       <span class="error"
-        >* Please set a name for your new flow sequence before saving.</span
+        >* Please set a name and description for your new flow sequence before
+        saving.</span
       >
+      }@else if(sequenceCountError &&
+      settingsService.appSettings.customSequences.length >= 10){
+      <span class="error">zu viele timer du suchti.</span>
       }
     </div>
   </div>

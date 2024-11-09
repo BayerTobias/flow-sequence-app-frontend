@@ -3,6 +3,7 @@ import {
   ElementRef,
   inject,
   QueryList,
+  ViewChild,
   ViewChildren,
 } from '@angular/core';
 import { SimpleSettingsButtonComponent } from '../../../shared/components/buttons/simple-settings-button/simple-settings-button.component';
@@ -43,13 +44,17 @@ export class SettingsCustomTimersComponent {
   public settingsService = inject(SettingsServiceService);
   public flowSequenceService = inject(FlowSequenceServiceService);
 
+  @ViewChild('sequenceNameInput') sequenceNameInput!: ElementRef;
+  @ViewChild('sequenceDescriptionInput') sequenceDescriptionInput!: ElementRef;
+
   public flowTimeDuration: number = 30;
   public shortBreakDuration: number = 5;
   public longBreakDuration: number = 15;
   public sequenceName: string = '';
   public sequenceDescription: string = '';
 
-  public error: boolean = false;
+  public nameError: boolean = false;
+  public sequenceCountError = false;
 
   public newFlowSequence: FlowSequence = new FlowSequence();
 
@@ -200,18 +205,39 @@ export class SettingsCustomTimersComponent {
   }
 
   saveNewFlowSequence() {
-    if (this.sequenceName && this.sequenceDescription) {
-      this.newFlowSequence.name = this.sequenceName;
-      this.newFlowSequence.description = this.sequenceDescription;
-      this.settingsService.appSettings.customSequences.push(
-        this.newFlowSequence
-      );
-      this.settingsService.saveSettings();
-      this.sequenceName = '';
-      this.sequenceDescription = '';
-      this.newFlowSequence = new FlowSequence();
+    if (
+      this.sequenceName &&
+      this.sequenceDescription &&
+      this.settingsService.appSettings.customSequences.length < 10
+    ) {
+      this.handleFormIsValid();
     } else {
-      this.error = true;
+      this.handleError();
+    }
+  }
+
+  handleFormIsValid() {
+    this.newFlowSequence.name = this.sequenceName;
+    this.newFlowSequence.description = this.sequenceDescription;
+    this.settingsService.appSettings.customSequences.push(this.newFlowSequence);
+    this.settingsService.saveSettings();
+    this.sequenceName = '';
+    this.sequenceDescription = '';
+    this.newFlowSequence = new FlowSequence();
+    this.nameError = false;
+    this.sequenceCountError = false;
+  }
+
+  handleError() {
+    if (!this.sequenceName) {
+      this.nameError = true;
+      this.sequenceNameInput.nativeElement.focus();
+    } else if (!this.sequenceDescription) {
+      this.nameError = true;
+      this.sequenceDescriptionInput.nativeElement.focus();
+    } else {
+      this.sequenceCountError = true;
+      console.log(this.settingsService.appSettings.customSequences.length);
     }
   }
 }
