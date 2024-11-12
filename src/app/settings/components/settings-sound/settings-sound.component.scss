@@ -47,6 +47,19 @@ section {
   .drag-right {
     @include dFlex($gp: 16px, $ai: flex-start);
     flex-direction: column;
+
+    > div {
+      @include dFlex($ai: flex-start, $gp: 4px);
+      flex-direction: column;
+
+      > div {
+        @include dFlex($gp: 8px);
+
+        img {
+          cursor: pointer;
+        }
+      }
+    }
   }
 }
 
