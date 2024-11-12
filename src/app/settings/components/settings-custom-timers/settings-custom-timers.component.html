@@ -56,6 +56,7 @@
         />
         <app-simple-settings-button
           [content]="'Edit'"
+          [style]="'secondary'"
           (submitEvent)="editSequence()"
         ></app-simple-settings-button>
         <app-simple-settings-button
@@ -204,8 +205,13 @@
         saving.</span
       >
       }@else if(sequenceCountError &&
-      settingsService.appSettings.customSequences.length >= 10){
-      <span class="error">zu viele timer du suchti.</span>
+      settingsService.appSettings.customSequences.length >= 6){
+      <span class="error"
+        >You can save up to 10 flow sequences. In order to upgrade to Premium,
+        send an Email to my dear husband contact&#64;tobias-bayer.dev and ask
+        him to create a database structure and implement login screen for my
+        amazing app instead of saving all this shit in local storage! ^^</span
+      >
       }
     </div>
   </div>

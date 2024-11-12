@@ -66,7 +66,7 @@ section {
   }
 
   > div {
-    @include dFlex($ai: flex-end);
+    @include dFlex($ai: flex-end, $gp: 4px);
     flex-direction: column;
     flex: 1;
 

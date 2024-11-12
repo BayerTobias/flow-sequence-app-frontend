@@ -3,6 +3,7 @@
     width: width ? width + 'px' : null,
     height: height ? height + 'px' : null
   }"
+  [ngClass]="{ primary: style === 'primary', secondary: style === 'secondary' }"
   (click)="submit()"
 >
   {{ content }}
