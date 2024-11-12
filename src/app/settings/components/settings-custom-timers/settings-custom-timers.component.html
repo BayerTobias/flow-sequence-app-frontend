@@ -1,7 +1,7 @@
 <section>
   <div class="headline">
     <img src="assets\img\icons\clock.svg" alt="settings" />
-    <span>Custom Timers</span>
+    <span>Custom Flow Sequence</span>
   </div>
 
   <div class="timer-settings">
@@ -30,7 +30,7 @@
   <div class="saved-custom-timers-headline">
     <div class="headline">
       <img src="assets\img\icons\settings.svg" alt="settings" />
-      <span>Saved Custom Timers</span>
+      <span>Saved Flow Sequences</span>
     </div>
     <span
       >( {{ settingsService.appSettings.customSequences.length }} of 10 )</span
@@ -70,13 +70,12 @@
 
   <div class="headline">
     <img src="assets\img\icons\settings.svg" alt="settings" />
-    <span>Create Custom Timer</span>
+    <span>Create Flow Sequence</span>
   </div>
 
   <div class="timer-info">
     <span
-      >Timer Name: @if (sequenceName.length === 0) {<span class="required"
-        >*</span
+      >Name: @if (sequenceName.length === 0) {<span class="required">*</span
       >}</span
     >
     <div>
@@ -93,7 +92,7 @@
 
   <div class="timer-info">
     <span
-      >Timer Description: @if (sequenceDescription.length === 0) {<span
+      >Description: @if (sequenceDescription.length === 0) {<span
         class="required"
         >*</span
       >}</span
@@ -196,7 +195,7 @@
       } @if (newFlowSequence.steps.length > 0) {
       <app-simple-settings-button
         [height]="42"
-        [content]="'Save Timer'"
+        [content]="'Save Sequence'"
         (submitEvent)="saveNewFlowSequence()"
       ></app-simple-settings-button>
       } @if (nameError && (!sequenceName || !sequenceDescription) ) {

@@ -1,7 +1,8 @@
 <button
   [ngStyle]="{
     width: width ? width + 'px' : null,
-    height: height ? height + 'px' : null
+    height: height ? height + 'px' : null,
+    'font-weight': fontWeight ? fontWeight : null
   }"
   [ngClass]="{ primary: style === 'primary', secondary: style === 'secondary' }"
   (click)="submit()"

@@ -12,6 +12,7 @@ export class SimpleSettingsButtonComponent {
   @Input() content: string = '';
   @Input() width: number | null = null;
   @Input() height: number | null = null;
+  @Input() fontWeight: number | null = null;
   @Input() style: string = 'primary';
 
   @Output() submitEvent = new EventEmitter<void>();
