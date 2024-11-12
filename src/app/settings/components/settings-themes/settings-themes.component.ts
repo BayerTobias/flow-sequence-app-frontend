@@ -6,11 +6,13 @@ import { SimpleSettingsButtonComponent } from '../../../shared/components/button
 import { SettingsServiceService } from '../../../shared/services/settings-service.service';
 import { Theme } from '../../../models/theme.model';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-settings-themes',
   standalone: true,
   imports: [
+    CommonModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,

@@ -36,14 +36,6 @@ section {
   }
 }
 
-// ::ng-deep .mat-form-field-outline {
-//   stroke: blue; /* Deine gewünschte Farbe */
-// }
-
-// ::ng-deep .mat-form-field-outline-thick {
-//   stroke: green; /* Farbe für die dicke Outline beim Fokussieren */
-// }
-
 :host {
   display: flex;
   flex-direction: column;
@@ -58,7 +50,24 @@ section {
     color: $copy-light;
   }
 
-  img {
-    width: 600px;
+  > div {
+    position: relative;
+    height: 100%;
+
+    img {
+      display: block;
+      width: 600px;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    div {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      height: 46px;
+      width: 46px;
+    }
   }
 }

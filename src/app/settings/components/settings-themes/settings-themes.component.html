@@ -25,7 +25,12 @@
 
     <div class="preview-wrapper">
       <span>Preview:</span>
-      <img [src]="selectedTheme.backgroundImage" alt="background" />
+      <div>
+        <img [src]="selectedTheme.backgroundImage" alt="background" />
+        <div
+          [ngStyle]="{ 'background-color': selectedTheme.accentColor }"
+        ></div>
+      </div>
     </div>
   </div>
 </section>
