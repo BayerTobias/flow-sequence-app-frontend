@@ -1,0 +1,20 @@
+@import "./../../../../mixin.scss";
+@import "./../../../../styles.scss";
+
+main {
+  @include dFlex();
+  min-height: 100vh;
+  min-height: 100svh;
+  min-width: 100vw;
+  min-width: 100svw;
+}
+
+section {
+  @include dFlex();
+  flex-direction: column;
+  background-color: aqua;
+
+  > div {
+    cursor: pointer;
+  }
+}
