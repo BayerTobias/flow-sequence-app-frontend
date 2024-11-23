@@ -1,4 +1,168 @@
-<footer>
-  <a [routerLink]="'/privacy-policy'" target="_blank">privacy policy</a>
-  <a [routerLink]="'/imprint'" target="_blank">Imprint</a>
+<footer [ngStyle]="{ opacity: 1 }">
+  <div class="left-wrapper">
+    <div class="social-media-wrapper">
+      <span>Social Media</span>
+
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clip-path="url(#clip0_1817_1362)">
+          <path
+            d="M12 16C13.0609 16 14.0783 15.5786 14.8284 14.8284C15.5786 14.0783 16 13.0609 16 12C16 10.9391 15.5786 9.92172 14.8284 9.17157C14.0783 8.42143 13.0609 8 12 8C10.9391 8 9.92172 8.42143 9.17157 9.17157C8.42143 9.92172 8 10.9391 8 12C8 13.0609 8.42143 14.0783 9.17157 14.8284C9.92172 15.5786 10.9391 16 12 16Z"
+            [attr.stroke]="settingsService.appSettings.theme.accentColor"
+            stroke-width="1.25"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M3 16V8C3 6.67392 3.52678 5.40215 4.46447 4.46447C5.40215 3.52678 6.67392 3 8 3H16C17.3261 3 18.5979 3.52678 19.5355 4.46447C20.4732 5.40215 21 6.67392 21 8V16C21 17.3261 20.4732 18.5979 19.5355 19.5355C18.5979 20.4732 17.3261 21 16 21H8C6.67392 21 5.40215 20.4732 4.46447 19.5355C3.52678 18.5979 3 17.3261 3 16Z"
+            [attr.stroke]="settingsService.appSettings.theme.accentColor"
+            stroke-width="1.25"
+          />
+          <path
+            d="M17.5 6.51002L17.51 6.49902"
+            [attr.stroke]="settingsService.appSettings.theme.accentColor"
+            stroke-width="1.25"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_1817_1362">
+            <rect width="24" height="24" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clip-path="url(#clip0_1817_1368)">
+          <path
+            d="M5.5 16C10.5 18.5 13.5 18.5 18.5 16"
+            [attr.stroke]="settingsService.appSettings.theme.accentColor"
+            stroke-width="1.25"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M15.5 17.5L16.5 19.5C16.5 19.5 20.671 18.172 22 16C22 15 22.53 7.853 19 5.5C17.5 4.5 15 4 15 4L14 6H12"
+            [attr.stroke]="settingsService.appSettings.theme.accentColor"
+            stroke-width="1.25"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M8.52827 17.5L7.52827 19.5C7.52827 19.5 3.35727 18.172 2.02827 16C2.02827 15 1.49827 7.853 5.02827 5.5C6.52827 4.5 9.02827 4 9.02827 4L10.0283 6H12.0283"
+            [attr.stroke]="settingsService.appSettings.theme.accentColor"
+            stroke-width="1.25"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M8.5 14C7.672 14 7 13.105 7 12C7 10.895 7.672 10 8.5 10C9.328 10 10 10.895 10 12C10 13.105 9.328 14 8.5 14ZM15.5 14C14.672 14 14 13.105 14 12C14 10.895 14.672 10 15.5 10C16.328 10 17 10.895 17 12C17 13.105 16.328 14 15.5 14Z"
+            [attr.stroke]="settingsService.appSettings.theme.accentColor"
+            stroke-width="1.25"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_1817_1368">
+            <rect width="24" height="24" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="footer-item">
+      <span>Contact</span>
+
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clip-path="url(#clip0_1817_1377)">
+          <path
+            d="M7 12L12 15.5L17 12"
+            [attr.stroke]="settingsService.appSettings.theme.accentColor"
+            stroke-width="1.25"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M2 20V9.13205C2 8.78668 2.08943 8.44719 2.25959 8.14665C2.42976 7.8461 2.67485 7.59474 2.971 7.41705L10.971 2.61705C11.2818 2.43055 11.6375 2.33203 12 2.33203C12.3625 2.33203 12.7182 2.43055 13.029 2.61705L21.029 7.41705C21.3252 7.59474 21.5702 7.8461 21.7404 8.14665C21.9106 8.44719 22 8.78668 22 9.13205V20C22 20.5305 21.7893 21.0392 21.4142 21.4143C21.0391 21.7893 20.5304 22 20 22H4C3.46957 22 2.96086 21.7893 2.58579 21.4143C2.21071 21.0392 2 20.5305 2 20Z"
+            [attr.stroke]="settingsService.appSettings.theme.accentColor"
+            stroke-width="1.25"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_1817_1377">
+            <rect width="24" height="24" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="footer-item">
+      <span>Buy Us A Coffee</span>
+
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clip-path="url(#clip0_1817_1384)">
+          <path
+            d="M12 9C12 8 12.714 7 14.143 7C14.9007 7 15.6274 6.699 16.1632 6.1632C16.699 5.62741 17 4.90072 17 4.143V3.5M8 9V8.5C8 7.70435 8.31607 6.94129 8.87868 6.37868C9.44129 5.81607 10.2044 5.5 11 5.5C11.5304 5.5 12.0391 5.28929 12.4142 4.91421C12.7893 4.53914 13 4.03043 13 3.5V3M17 11.6V15C17 16.5913 16.3679 18.1174 15.2426 19.2426C14.1174 20.3679 12.5913 21 11 21H9C7.4087 21 5.88258 20.3679 4.75736 19.2426C3.63214 18.1174 3 16.5913 3 15V11.6C3 11.4409 3.06321 11.2883 3.17574 11.1757C3.28826 11.0632 3.44087 11 3.6 11H16.4C16.5591 11 16.7117 11.0632 16.8243 11.1757C16.9368 11.2883 17 11.4409 17 11.6Z"
+            [attr.stroke]="settingsService.appSettings.theme.accentColor"
+            stroke-width="1.25"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M16 11H18.5C19.163 11 19.7989 11.2634 20.2678 11.7322C20.7366 12.2011 21 12.837 21 13.5C21 14.163 20.7366 14.7989 20.2678 15.2678C19.7989 15.7366 19.163 16 18.5 16H17"
+            [attr.stroke]="settingsService.appSettings.theme.accentColor"
+            stroke-width="1.25"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_1817_1384">
+            <rect width="24" height="24" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+  </div>
+
+  <div class="right-wrapper">
+    <div class="footer-item">
+      <span>&copy; 2024 FLOWSEQ. All rights reserved.</span>
+    </div>
+
+    <div class="footer-item">
+      <span>Privacy Policy</span>
+    </div>
+
+    <div class="footer-item">
+      <span>Terms & Conditions</span>
+    </div>
+  </div>
+  <!-- <a [routerLink]="'/privacy-policy'" target="_blank">privacy policy</a>
+  <a [routerLink]="'/imprint'" target="_blank">Imprint</a> -->
 </footer>

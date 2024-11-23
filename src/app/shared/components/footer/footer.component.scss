@@ -1,8 +1,51 @@
 @import "./../../../../mixin.scss";
+@import "./../../../../styles.scss";
 
 footer {
-  @include dFlex($gp: 36px);
+  @include dFlex($jc: space-between);
   padding: 16px;
   position: relative;
   z-index: 1;
+  font-size: 14px;
+  transition: opacity 250ms ease-in-out;
+}
+
+.left-wrapper,
+.right-wrapper {
+  @include dFlex($jc: flex-start, $gp: 80px);
+}
+
+.social-media-wrapper {
+  @include dFlex($gp: 4px);
+
+  span {
+    color: $copy-light;
+  }
+
+  svg {
+    cursor: pointer;
+
+    &:hover path {
+      stroke: $copy-light !important;
+    }
+  }
+}
+
+.footer-item {
+  @include dFlex($gp: 4px);
+  cursor: pointer;
+
+  span {
+    color: $copy-light;
+  }
+
+  &:hover svg path {
+    stroke: $copy-light !important;
+  }
+}
+
+svg {
+  path {
+    transition: stroke 250ms ease-in-out;
+  }
 }

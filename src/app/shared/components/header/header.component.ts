@@ -12,9 +12,10 @@ export class HeaderComponent {
   public settingsService = inject(SettingsServiceService);
 
   openSettings() {
-    console.log(this.settingsService.settingsOpen);
-
     this.settingsService.settingsOpen = true;
-    console.log(this.settingsService.settingsOpen);
+  }
+
+  openUserMenue() {
+    console.log('Open user Menue');
   }
 }
