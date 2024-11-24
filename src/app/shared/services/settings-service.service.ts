@@ -163,6 +163,10 @@ export class SettingsServiceService {
     if (settingsString) {
       const parsedSettings: AppSettingsData = JSON.parse(settingsString);
       this.appSettings = new AppSettings(parsedSettings);
+
+      console.log(parsedSettings);
+      console.log(this.appSettings);
+
       return this.appSettings;
     }
 
@@ -187,5 +191,10 @@ export class SettingsServiceService {
         (sequence: flowSequenceData) => new FlowSequence(sequence)
       );
     }
+  }
+
+  toggleFocusMode() {
+    this.appSettings.focusMode = !this.appSettings.focusMode;
+    this.saveSettings();
   }
 }

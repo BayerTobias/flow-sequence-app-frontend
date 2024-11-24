@@ -8,10 +8,13 @@ header {
 }
 
 .right-wrapper {
-  display: flex;
-  gap: 24px;
+  @include dFlex($gp: 24px);
 
   img {
     cursor: pointer;
   }
+}
+
+.fade400 {
+  transition: opacity 400ms ease-in-out;
 }

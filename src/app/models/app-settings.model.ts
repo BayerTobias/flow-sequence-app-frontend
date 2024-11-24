@@ -13,6 +13,7 @@ export interface AppSettingsData {
   flowTimeSound: NotificationSoundData;
   flowSequenceSound: NotificationSoundData;
   customSequence: flowSequenceData[];
+  focusMode: boolean;
 }
 
 export class AppSettings {
@@ -23,6 +24,7 @@ export class AppSettings {
   flowTimeSound: NotificationSound | null;
   flowSequenceSound: NotificationSound | null;
   customSequences: FlowSequence[];
+  focusMode: boolean;
 
   constructor(data?: AppSettingsData) {
     this.theme = data
@@ -49,6 +51,7 @@ export class AppSettings {
     this.customSequences = data?.customSequence
       ? this.setupCustomSequences(data.customSequence)
       : [];
+    this.focusMode = false;
   }
 
   setupCustomSequences(customSequenceData: flowSequenceData[]) {
@@ -70,6 +73,7 @@ export class AppSettings {
       flowTimeSound: this.flowTimeSound?.asJson(),
       flowSequenceSound: this.flowSequenceSound?.asJson(),
       customSequence: this.customSequencesAsJson(),
+      focusMode: this.focusMode,
     };
   }
 }

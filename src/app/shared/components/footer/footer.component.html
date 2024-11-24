@@ -1,4 +1,9 @@
-<footer [ngStyle]="{ opacity: 1 }">
+<footer
+  [ngStyle]="{
+    opacity: settingsService.appSettings.focusMode ? 0 : 1,
+    'pointer-events': settingsService.appSettings.focusMode ? 'none' : 'unset'
+  }"
+>
   <div class="left-wrapper">
     <div class="social-media-wrapper">
       <span>Social Media</span>
