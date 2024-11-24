@@ -33,7 +33,6 @@ footer {
 
 .footer-item {
   @include dFlex($gp: 4px);
-  cursor: pointer;
 
   span {
     color: $copy-light;
@@ -48,4 +47,8 @@ svg {
   path {
     transition: stroke 250ms ease-in-out;
   }
+}
+
+.pointer {
+  cursor: pointer;
 }

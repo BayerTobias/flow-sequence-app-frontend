@@ -10,11 +10,28 @@ header {
 .right-wrapper {
   @include dFlex($gp: 24px);
 
-  img {
+  svg {
     cursor: pointer;
   }
 }
 
 .fade400 {
   transition: opacity 400ms ease-in-out;
+}
+
+.focus-mode-icon {
+  transition: opacity 200ms ease-in-out;
+  opacity: 0;
+}
+
+.fade-out {
+  opacity: 0 !important;
+}
+
+.fade-in-20 {
+  opacity: 0.2;
+}
+
+.fade-in-100 {
+  opacity: 1;
 }

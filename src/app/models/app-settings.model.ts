@@ -51,7 +51,7 @@ export class AppSettings {
     this.customSequences = data?.customSequence
       ? this.setupCustomSequences(data.customSequence)
       : [];
-    this.focusMode = false;
+    this.focusMode = data?.focusMode || false;
   }
 
   setupCustomSequences(customSequenceData: flowSequenceData[]) {
