@@ -8,7 +8,7 @@ header {
 }
 
 .right-wrapper {
-  @include dFlex($gp: 24px);
+  @include dFlex($gp: 16px);
 
   svg {
     cursor: pointer;
