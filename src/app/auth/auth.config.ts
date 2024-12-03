@@ -16,7 +16,7 @@ export const authConfig: AuthConfig = {
   scope: 'openid profile email ',
   strictDiscoveryDocumentValidation: false, // Strikte Prüfung deaktivieren
 
-  responseType: 'code', // Code Flow verwenden
-  useSilentRefresh: true, // Silenter Login wird unterstützt
-  showDebugInformation: true, // Debug-Infos aktivieren
+  // responseType: 'code', // Code Flow verwenden
+  // useSilentRefresh: true, // Silenter Login wird unterstützt
+  // showDebugInformation: true, // Debug-Infos aktivieren
 };

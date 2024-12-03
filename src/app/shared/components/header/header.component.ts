@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { SettingsServiceService } from '../../services/settings-service.service';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent {
   public settingsService = inject(SettingsServiceService);
+  private authService = inject(AuthService);
   public focusModeOnIcon: boolean = false;
   public focusModeOffIcon: boolean = true;
   public switching: boolean = false;
@@ -35,6 +37,7 @@ export class HeaderComponent {
 
   openUserMenu() {
     console.log('Open user Menu');
+    this.authService.logout();
   }
 
   toggleFocusMode() {

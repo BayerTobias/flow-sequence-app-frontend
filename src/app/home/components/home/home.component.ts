@@ -9,6 +9,7 @@ import { SettingsOverlayComponent } from '../../../settings/components/settings-
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { FooterComponent } from '../../../shared/components/footer/footer.component';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -29,4 +30,9 @@ import { FooterComponent } from '../../../shared/components/footer/footer.compon
 export class HomeComponent {
   public flowSequenceService = inject(FlowSequenceServiceService);
   public settingsService = inject(SettingsServiceService);
+  public authService = inject(AuthService);
+
+  async ngOnInit() {
+    this.authService.getUserInfo();
+  }
 }
