@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { FooterComponent } from '../../../shared/components/footer/footer.component';
 import { AuthService } from '../../../auth/services/auth.service';
+import { GoogleCalendarService } from '../../../shared/services/google-calendar.service';
 
 @Component({
   selector: 'app-home',
@@ -31,6 +32,7 @@ export class HomeComponent {
   public flowSequenceService = inject(FlowSequenceServiceService);
   public settingsService = inject(SettingsServiceService);
   public authService = inject(AuthService);
+  public calendarService = inject(GoogleCalendarService);
 
   async ngOnInit() {
     this.authService.getUserInfo();

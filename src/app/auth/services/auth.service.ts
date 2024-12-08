@@ -18,12 +18,12 @@ export class AuthService {
 
   configure() {
     this.oAuthService.configure(authConfig);
+    this.oAuthService.setupAutomaticSilentRefresh();
     this.oAuthService.loadDiscoveryDocumentAndTryLogin();
   }
 
   login() {
     this.oAuthService.initLoginFlow();
-    // this.oAuthService.initCodeFlow();
   }
 
   logout() {
@@ -37,10 +37,12 @@ export class AuthService {
   async getUserInfo() {
     const url = 'https://www.googleapis.com/oauth2/v2/userinfo';
 
-    const resp = this.http.get(url, {
-      headers: { Authorization: `Bearer ${this.accessToken}` },
-    });
+    const resp = await lastValueFrom(
+      this.http.get(url, {
+        headers: { Authorization: `Bearer ${this.accessToken}` },
+      })
+    );
 
-    console.log(lastValueFrom(resp));
+    console.log(resp);
   }
 }
