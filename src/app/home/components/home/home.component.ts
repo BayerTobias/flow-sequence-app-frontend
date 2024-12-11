@@ -34,7 +34,5 @@ export class HomeComponent {
   public authService = inject(AuthService);
   public calendarService = inject(GoogleCalendarService);
 
-  async ngOnInit() {
-    this.authService.getUserInfo();
-  }
+  async ngOnInit() {}
 }

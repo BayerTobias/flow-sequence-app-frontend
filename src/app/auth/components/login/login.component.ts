@@ -15,7 +15,7 @@ export class LoginComponent {
 
   loginWithGoogle() {
     console.log('google Login');
-    this.authService.login();
+    this.authService.loginWithGoogle();
   }
 
   redirectToHomeWithoutLogin() {

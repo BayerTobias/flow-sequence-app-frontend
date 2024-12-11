@@ -16,22 +16,19 @@ export class GoogleCalendarService {
   constructor() {}
 
   async testGetEvents() {
-    const accessToken = this.authService.accessToken;
-
-    if (!accessToken) {
-      console.error('No Access Token');
-      return;
-    }
-
-    const headers = { Authorization: `Bearer ${accessToken}` };
-
-    try {
-      const resp = await lastValueFrom(
-        this.http.get(`${this.url}/calendar/primary/events`, { headers })
-      );
-      console.log(resp);
-    } catch (err) {
-      console.error('Error fetching events:', err);
-    }
+    // const accessToken = this.authService.accessToken;
+    // if (!accessToken) {
+    //   console.error('No Access Token');
+    //   return;
+    // }
+    // const headers = { Authorization: `Bearer ${accessToken}` };
+    // try {
+    //   const resp = await lastValueFrom(
+    //     this.http.get(`${this.url}/calendar/primary/events`, { headers })
+    //   );
+    //   console.log(resp);
+    // } catch (err) {
+    //   console.error('Error fetching events:', err);
+    // }
   }
 }

@@ -37,7 +37,6 @@ export class HeaderComponent {
 
   openUserMenu() {
     console.log('Open user Menu');
-    this.authService.logout();
   }
 
   toggleFocusMode() {
