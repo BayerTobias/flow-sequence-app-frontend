@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { effect, inject, Injectable, signal } from '@angular/core';
 import {
   FlowSequence,
   flowSequenceData,
@@ -8,14 +8,18 @@ import { ShortBreak } from '../../models/short-break.model';
 import { LongBreak } from '../../models/long-break.model';
 import { Theme } from '../../models/theme.model';
 import { AppSettings, AppSettingsData } from '../../models/app-settings.model';
+import { FirestoreServiceService } from './firestore-service.service';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SettingsServiceService {
   public appSettings = new AppSettings();
+  private authService = inject(AuthService);
+  private firestoreService = inject(FirestoreServiceService);
 
-  public appSettingsSignal = signal<AppSettings>(this.loadSettings());
+  public appSettingsSignal = signal<AppSettings>(new AppSettings());
 
   public activeTab: string = 'general';
   public settingsOpen: boolean = false;
@@ -144,16 +148,53 @@ export class SettingsServiceService {
 
   public savedCustomSequences: FlowSequence[] = [];
 
-  constructor() {}
+  constructor() {
+    this.initSettings();
+    effect(() => {
+      const user = this.authService.userSignal();
+
+      if (user) {
+        this.loadSettingsFromFirestore(user.uid);
+      } else {
+        this.loadSettings();
+      }
+    });
+  }
+
+  async initSettings() {
+    console.log('init');
+
+    const uid = this.authService.userSignal()?.uid;
+
+    if (uid) {
+      console.log('UID');
+      await this.loadSettingsFromFirestore(uid);
+    } else {
+      console.log('Local Storage');
+      this.loadSettings();
+    }
+  }
 
   saveSettings() {
-    localStorage.setItem(
-      'appSettings',
-      JSON.stringify(this.appSettings.asJson())
-    );
+    const uid = this.authService.userSignal()?.uid;
+    console.log(uid);
+
+    if (uid) {
+      this.firestoreService.saveSettings(uid, this.appSettings.asJson());
+      this.setLocalStorage();
+    } else {
+      this.setLocalStorage();
+    }
 
     this.appSettingsSignal.set(
       Object.assign(new AppSettings(), this.appSettings)
+    );
+  }
+
+  setLocalStorage() {
+    localStorage.setItem(
+      'appSettings',
+      JSON.stringify(this.appSettings.asJson())
     );
   }
 
@@ -167,6 +208,17 @@ export class SettingsServiceService {
     }
 
     return new AppSettings();
+  }
+
+  async loadSettingsFromFirestore(uid: string) {
+    const settings = await this.firestoreService.getSettings(uid);
+
+    if (settings) {
+      this.appSettings = new AppSettings(settings as AppSettingsData);
+      console.log('Settings von Firestore geladen');
+    } else {
+      console.error('Error Loading Settings');
+    }
   }
 
   saveCustomSequences() {

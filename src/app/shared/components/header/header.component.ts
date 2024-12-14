@@ -35,8 +35,9 @@ export class HeaderComponent {
     this.settingsService.settingsOpen = true;
   }
 
-  openUserMenu() {
+  async openUserMenu() {
     console.log('Open user Menu');
+    await this.authService.logout();
   }
 
   toggleFocusMode() {

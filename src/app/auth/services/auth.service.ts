@@ -1,33 +1,62 @@
-import { inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { inject, Injectable, signal } from '@angular/core';
 
-import { lastValueFrom } from 'rxjs';
-import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
+import {
+  Auth,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithPopup,
+  User,
+  UserCredential,
+} from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private http = inject(HttpClient);
+  private auth = inject(Auth);
+  private router = inject(Router);
 
   private provider = new GoogleAuthProvider();
 
-  constructor(private auth: Auth) {}
+  public userSignal = signal<User | null>(null);
+
+  constructor() {
+    this.initializeAuthStateListener();
+  }
 
   async loginWithGoogle() {
     try {
-      const result = await signInWithPopup(this.auth, this.provider);
-      const user = result.user;
+      const result: UserCredential = await signInWithPopup(
+        this.auth,
+        this.provider
+      );
 
-      console.log(result);
-
-      // if (this.userIsInDatabase(user)) {
-      //   console.log('login successful:', user);
-      // } else {
-      //   this.createNewGoogleUser(user);
-      // }
+      this.userSignal.set(result.user);
     } catch (err) {
       console.error(err);
     }
+  }
+
+  async logout() {
+    try {
+      await this.auth.signOut();
+      this.userSignal.set(null);
+      this.router.navigateByUrl('/login');
+      console.log('Erfolgreich ausgeloggt');
+    } catch (err) {
+      console.error('Logout fehlgeschlagen:', err);
+    }
+  }
+
+  private initializeAuthStateListener() {
+    onAuthStateChanged(this.auth, (user) => {
+      this.userSignal.set(user);
+      if (user) {
+        console.log('Benutzer eingeloggt:', user.uid);
+      } else {
+        console.log('Kein Benutzer eingeloggt.');
+      }
+    });
   }
 }

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -13,9 +13,10 @@ export class LoginComponent {
   private router = inject(Router);
   private authService = inject(AuthService);
 
-  loginWithGoogle() {
+  async loginWithGoogle() {
     console.log('google Login');
-    this.authService.loginWithGoogle();
+    await this.authService.loginWithGoogle();
+    this.router.navigateByUrl('/home');
   }
 
   redirectToHomeWithoutLogin() {
