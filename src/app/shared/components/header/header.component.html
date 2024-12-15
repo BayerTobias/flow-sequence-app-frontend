@@ -71,6 +71,9 @@
     <svg
       class="focus-mode-icon"
       [ngClass]="{ 'fade-out': switching, 'fade-in-100': fadeInFinished }"
+      matTooltip="Turn on Focus Mode to work distraction-free. Elements like the logo, user icon or footer will fade away. 
+      You can bring them back anytime clicking the eye icon in the top-right corner."
+      [matTooltipPosition]="'below'"
       (click)="toggleFocusMode()"
       opacity="0"
       width="27"

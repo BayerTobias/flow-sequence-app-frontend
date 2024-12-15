@@ -2,11 +2,25 @@ import { Component, inject } from '@angular/core';
 import { SettingsServiceService } from '../../services/settings-service.service';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../auth/services/auth.service';
+import {
+  MAT_TOOLTIP_DEFAULT_OPTIONS,
+  MatTooltipDefaultOptions,
+  MatTooltipModule,
+} from '@angular/material/tooltip';
+
+export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
+  showDelay: 500,
+  hideDelay: 250,
+  touchendHideDelay: 1000,
+};
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  providers: [
+    { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults },
+  ],
+  imports: [CommonModule, MatTooltipModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
