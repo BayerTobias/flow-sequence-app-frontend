@@ -7,11 +7,13 @@ import {
 } from '@angular/cdk/drag-drop';
 import { NotificationSound } from '../../../models/notification-sound.mode';
 import { CommonModule } from '@angular/common';
+import { MatSliderModule } from '@angular/material/slider';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-settings-sound',
   standalone: true,
-  imports: [CommonModule, DragDropModule],
+  imports: [CommonModule, DragDropModule, MatSliderModule, FormsModule],
   templateUrl: './settings-sound.component.html',
   styleUrl: './settings-sound.component.scss',
 })
@@ -36,6 +38,7 @@ export class SettingsSoundComponent {
     }),
   ];
   public shortSounds: NotificationSound[] = [];
+  public value: number = 0;
 
   public get selectedFlowTimeSound(): NotificationSound | null {
     return this.settingsService.appSettings.flowTimeSound;
@@ -116,5 +119,9 @@ export class SettingsSoundComponent {
     }
 
     this.settingsService.saveSettings();
+  }
+
+  changeVolume() {
+    console.log(this.value);
   }
 }

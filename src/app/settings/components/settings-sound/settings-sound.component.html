@@ -4,6 +4,15 @@
     <span>Sounds</span>
   </div>
 
+  <mat-slider>
+    <input
+      matSliderThumb
+      [(ngModel)]="value"
+      (change)="changeVolume()"
+      #slider
+    />
+  </mat-slider>
+
   <div class="select-sounds-wrapper">
     <p>
       Test the different sounds by clicking the buttons and then drag and drop

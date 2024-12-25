@@ -4,11 +4,25 @@ import { FlowSequenceServiceService } from '../../../shared/services/flow-sequen
 import { SettingsServiceService } from '../../../shared/services/settings-service.service';
 import { AuthService } from '../../../auth/services/auth.service';
 import { CommonModule } from '@angular/common';
+import {
+  MAT_TOOLTIP_DEFAULT_OPTIONS,
+  MatTooltipDefaultOptions,
+  MatTooltipModule,
+} from '@angular/material/tooltip';
+
+export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
+  showDelay: 500,
+  hideDelay: 250,
+  touchendHideDelay: 1000,
+};
 
 @Component({
   selector: 'app-welcome',
   standalone: true,
-  imports: [GlassButtonComponent, CommonModule],
+  providers: [
+    { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults },
+  ],
+  imports: [GlassButtonComponent, CommonModule, MatTooltipModule],
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.scss',
 })
