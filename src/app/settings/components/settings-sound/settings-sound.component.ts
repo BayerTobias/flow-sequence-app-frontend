@@ -118,7 +118,16 @@ export class SettingsSoundComponent {
         console.warn('Unknown drop Area');
     }
 
+    console.log(this.settingsService.appSettings.asJson());
+
     this.settingsService.saveSettings();
+  }
+
+  playSound(sound: NotificationSound) {
+    const audio = new Audio(sound.path);
+    audio.volume = this.settingsService.appSettings.volume / 100;
+
+    audio.play();
   }
 
   async changeVolume() {

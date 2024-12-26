@@ -157,14 +157,22 @@ export class FlowSequenceServiceService {
     }
   }
 
+  get soundVolume() {
+    return this.settingsService.appSettings.volume / 100;
+  }
+
   playSound() {
     if (this.sequenceComplete) {
+      this.flowSequenceSound.volume = this.soundVolume;
       this.flowSequenceSound.play();
     } else if (this.currentStep.type === 'shortBreak') {
+      this.shortBreakSound.volume = this.soundVolume;
       this.shortBreakSound.play();
     } else if (this.currentStep.type === 'longBreak') {
+      this.lognBreakSound.volume = this.soundVolume;
       this.lognBreakSound.play();
     } else if (this.currentStep.type === 'flowTime') {
+      this.flowTimeSound.volume = this.soundVolume;
       this.flowTimeSound.play();
     }
   }

@@ -36,7 +36,12 @@
           class="drag-area"
         >
           @for (sound of longSounds; track $index) {
-          <div class="sound-item" cdkDrag [cdkDragData]="sound">
+          <div
+            (click)="playSound(sound)"
+            class="sound-item"
+            cdkDrag
+            [cdkDragData]="sound"
+          >
             {{ sound.name }}
           </div>
           }
@@ -60,6 +65,7 @@
           >
             @if (selectedFlowTimeSound) {
             <div
+              (click)="playSound(selectedFlowTimeSound)"
               cdkDrag
               (cdkDragEnded)="checkDropOutside($event, 'flowArea')"
               class="sound-item"
@@ -90,6 +96,7 @@
           >
             @if (selectedShortBreakSound) {
             <div
+              (click)="playSound(selectedShortBreakSound)"
               cdkDrag
               (cdkDragEnded)="checkDropOutside($event, 'shortBreakArea')"
               class="sound-item"
@@ -120,6 +127,7 @@
           >
             @if (selectedLongBreakSound) {
             <div
+              (click)="playSound(selectedLongBreakSound)"
               cdkDrag
               (cdkDragEnded)="checkDropOutside($event, 'longBreakArea')"
               class="sound-item"
@@ -150,6 +158,7 @@
           >
             @if (selectedCompletedSound) {
             <div
+              (click)="playSound(selectedCompletedSound)"
               cdkDrag
               (cdkDragEnded)="checkDropOutside($event, 'completedArea')"
               class="sound-item"
