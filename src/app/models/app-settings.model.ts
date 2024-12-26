@@ -12,6 +12,7 @@ export interface AppSettingsData {
   longBreakSound: NotificationSoundData;
   flowTimeSound: NotificationSoundData;
   flowSequenceSound: NotificationSoundData;
+  volume: number;
   customSequence: flowSequenceData[];
   focusMode: boolean;
 }
@@ -23,6 +24,7 @@ export class AppSettings {
   longBreakSound: NotificationSound | null;
   flowTimeSound: NotificationSound | null;
   flowSequenceSound: NotificationSound | null;
+  volume: number;
   customSequences: FlowSequence[];
   focusMode: boolean;
 
@@ -48,6 +50,7 @@ export class AppSettings {
     this.flowSequenceSound = data?.flowSequenceSound
       ? new NotificationSound(data.flowSequenceSound)
       : null;
+    this.volume = data?.volume || 100;
     this.customSequences = data?.customSequence
       ? this.setupCustomSequences(data.customSequence)
       : [];
@@ -72,6 +75,7 @@ export class AppSettings {
       longBreakSound: this.longBreakSound?.asJson(),
       flowTimeSound: this.flowTimeSound?.asJson(),
       flowSequenceSound: this.flowSequenceSound?.asJson(),
+      volume: this.volume,
       customSequence: this.customSequencesAsJson(),
       focusMode: this.focusMode,
     };

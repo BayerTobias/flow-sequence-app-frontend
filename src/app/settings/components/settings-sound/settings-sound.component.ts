@@ -38,7 +38,7 @@ export class SettingsSoundComponent {
     }),
   ];
   public shortSounds: NotificationSound[] = [];
-  public value: number = 0;
+  public volumeLevel: number = 0;
 
   public get selectedFlowTimeSound(): NotificationSound | null {
     return this.settingsService.appSettings.flowTimeSound;
@@ -57,7 +57,7 @@ export class SettingsSoundComponent {
   }
 
   constructor() {
-    console.log(this.selectedFlowTimeSound);
+    this.volumeLevel = this.settingsService.appSettings.volume;
   }
 
   onDrop(event: CdkDragDrop<string[]>, targetList: string) {
@@ -121,7 +121,8 @@ export class SettingsSoundComponent {
     this.settingsService.saveSettings();
   }
 
-  changeVolume() {
-    console.log(this.value);
+  async changeVolume() {
+    this.settingsService.appSettings.volume = this.volumeLevel;
+    await this.settingsService.saveSettings();
   }
 }

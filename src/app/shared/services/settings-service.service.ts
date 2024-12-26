@@ -175,12 +175,12 @@ export class SettingsServiceService {
     }
   }
 
-  saveSettings() {
+  async saveSettings() {
     const uid = this.authService.userSignal()?.uid;
     console.log(uid);
 
     if (uid) {
-      this.firestoreService.saveSettings(uid, this.appSettings.asJson());
+      await this.firestoreService.saveSettings(uid, this.appSettings.asJson());
       this.setLocalStorage();
     } else {
       this.setLocalStorage();
