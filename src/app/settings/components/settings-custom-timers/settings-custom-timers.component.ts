@@ -208,7 +208,7 @@ export class SettingsCustomTimersComponent {
     if (
       this.sequenceName &&
       this.sequenceDescription &&
-      this.settingsService.appSettings.customSequences.length < 6
+      this.settingsService.appSettings.customSequences.length < 10
     ) {
       this.handleFormIsValid();
     } else {

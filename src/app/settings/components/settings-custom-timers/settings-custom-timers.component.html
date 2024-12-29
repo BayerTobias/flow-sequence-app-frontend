@@ -33,6 +33,9 @@
       <span>Saved Flow Sequences</span>
     </div>
     <span
+      [ngClass]="{
+        red: settingsService.appSettings.customSequences.length === 10
+      }"
       >( {{ settingsService.appSettings.customSequences.length }} of 10 )</span
     >
   </div>
@@ -204,7 +207,7 @@
         saving.</span
       >
       }@else if(sequenceCountError &&
-      settingsService.appSettings.customSequences.length >= 6){
+      settingsService.appSettings.customSequences.length >= 10){
       <span class="error"
         >You can save up to 10 flow sequences. In order to upgrade to Premium,
         send an Email to my dear husband contact&#64;tobias-bayer.dev and ask
