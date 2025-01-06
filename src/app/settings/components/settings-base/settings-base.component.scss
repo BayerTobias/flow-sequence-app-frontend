@@ -9,6 +9,8 @@ section {
   height: 100svh;
   padding: 48px;
 
+  min-width: 800px;
+
   background-color: $settings-background;
   transform: translateX(100%);
   transition: transform 750ms ease-in-out;
