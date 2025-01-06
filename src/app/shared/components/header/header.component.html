@@ -47,94 +47,66 @@
 
   <div class="right-wrapper">
     @if (focusModeOnIcon) {
-    <svg
-      class="focus-mode-icon"
-      (click)="toggleFocusMode()"
-      [ngClass]="{ 'fade-out': switching, 'fade-in-20': fadeInFinished }"
-      opacity="0"
-      width="33"
-      height="33"
-      viewBox="0 0 33 33"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M26.8125 22L23.4094 17.3305M16.5 24.0625V19.25M6.1875 22L9.58237 17.3415M4.125 11C9.075 22 23.925 22 28.875 11"
-        stroke="#E7E7E7"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
+    <div (click)="toggleFocusMode()" class="svg-wrapper">
+      <svg
+        class="focus-mode-icon"
+        [ngClass]="{ 'fade-out': switching, 'fade-in-20': fadeInFinished }"
+        opacity="0"
+        width="33"
+        height="33"
+        viewBox="0 0 33 33"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M26.8125 22L23.4094 17.3305M16.5 24.0625V19.25M6.1875 22L9.58237 17.3415M4.125 11C9.075 22 23.925 22 28.875 11"
+          stroke="#E7E7E7"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
     } @else {
-
-    <svg
-      class="focus-mode-icon"
-      [ngClass]="{ 'fade-out': switching, 'fade-in-100': fadeInFinished }"
-      matTooltip="Turn on Focus Mode to work distraction-free. Elements like the logo, user icon or footer will fade away. 
-      You can bring them back anytime clicking the eye icon in the top-right corner."
+    <div
+      matTooltip="Turn on Focus Mode to work distraction-free. Elements like the logo, user icon or footer will fade away. You can bring them back anytime clicking the eye icon in the top-right corner."
       [matTooltipPosition]="'below'"
       (click)="toggleFocusMode()"
-      opacity="0"
-      width="27"
-      height="17"
-      viewBox="0 0 27 17"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+      class="svg-wrapper"
     >
-      <path
-        d="M1.125 9.875C6.075 -1.125 20.925 -1.125 25.875 9.875"
-        stroke="#E7E7E7"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-      <path
-        d="M13.5 15.375C12.9583 15.375 12.4219 15.2683 11.9214 15.061C11.421 14.8537 10.9662 14.5499 10.5832 14.1668C10.2001 13.7838 9.8963 13.329 9.689 12.8286C9.4817 12.3281 9.375 11.7917 9.375 11.25C9.375 10.7083 9.4817 10.1719 9.689 9.67143C9.8963 9.17096 10.2001 8.71623 10.5832 8.33318C10.9662 7.95014 11.421 7.6463 11.9214 7.439C12.4219 7.2317 12.9583 7.125 13.5 7.125C14.594 7.125 15.6432 7.5596 16.4168 8.33318C17.1904 9.10677 17.625 10.156 17.625 11.25C17.625 12.344 17.1904 13.3932 16.4168 14.1668C15.6432 14.9404 14.594 15.375 13.5 15.375Z"
-        fill="#E7E7E7"
-        stroke="#E7E7E7"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
+      <svg
+        class="focus-mode-icon"
+        [ngClass]="{ 'fade-out': switching, 'fade-in-100': fadeInFinished }"
+        opacity="0"
+        width="27"
+        height="17"
+        viewBox="0 0 27 17"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1.125 9.875C6.075 -1.125 20.925 -1.125 25.875 9.875"
+          stroke="#E7E7E7"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M13.5 15.375C12.9583 15.375 12.4219 15.2683 11.9214 15.061C11.421 14.8537 10.9662 14.5499 10.5832 14.1668C10.2001 13.7838 9.8963 13.329 9.689 12.8286C9.4817 12.3281 9.375 11.7917 9.375 11.25C9.375 10.7083 9.4817 10.1719 9.689 9.67143C9.8963 9.17096 10.2001 8.71623 10.5832 8.33318C10.9662 7.95014 11.421 7.6463 11.9214 7.439C12.4219 7.2317 12.9583 7.125 13.5 7.125C14.594 7.125 15.6432 7.5596 16.4168 8.33318C17.1904 9.10677 17.625 10.156 17.625 11.25C17.625 12.344 17.1904 13.3932 16.4168 14.1668C15.6432 14.9404 14.594 15.375 13.5 15.375Z"
+          fill="#E7E7E7"
+          stroke="#E7E7E7"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
     }
 
     <svg
-      (click)="openUserMenu()"
-      [ngStyle]="{ opacity: settingsService.appSettings.focusMode ? 0.2 : 1 }"
-      class="fade400"
-      width="33"
-      height="33"
-      viewBox="0 0 33 33"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <g clip-path="url(#clip0_1824_792)">
-        <path
-          d="M16.5 16.5C17.9587 16.5 19.3576 15.9205 20.3891 14.8891C21.4205 13.8576 22 12.4587 22 11C22 9.54131 21.4205 8.14236 20.3891 7.11091C19.3576 6.07946 17.9587 5.5 16.5 5.5C15.0413 5.5 13.6424 6.07946 12.6109 7.11091C11.5795 8.14236 11 9.54131 11 11C11 12.4587 11.5795 13.8576 12.6109 14.8891C13.6424 15.9205 15.0413 16.5 16.5 16.5Z"
-          stroke="#E7E7E7"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M6.875 27.5V26.125C6.87467 24.5011 7.28521 22.9035 8.06841 21.481C8.85162 20.0584 9.98202 18.8571 11.3544 17.989C12.7267 17.1208 14.2965 16.614 15.9174 16.5157C17.5383 16.4174 19.1578 16.7308 20.625 17.4268M28.875 30.25L30.25 22L25.4375 24.475L23.375 22L21.3125 24.475L16.5 22L17.875 30.25H28.875Z"
-          stroke="#E7E7E7"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </g>
-      <defs>
-        <clipPath id="clip0_1824_792">
-          <rect width="33" height="33" fill="white" />
-        </clipPath>
-      </defs>
-    </svg>
-
-    <svg
       (click)="openSettings()"
+      matTooltip="Settings"
+      [matTooltipPosition]="'below'"
       [ngStyle]="{ opacity: settingsService.appSettings.focusMode ? 0.2 : 1 }"
       class="fade400"
       width="33"

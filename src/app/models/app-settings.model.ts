@@ -50,7 +50,7 @@ export class AppSettings {
     this.flowSequenceSound = data?.flowSequenceSound
       ? new NotificationSound(data.flowSequenceSound)
       : null;
-    this.volume = data?.volume || 100;
+    this.volume = data?.volume || 50;
     this.customSequences = data?.customSequence
       ? this.setupCustomSequences(data.customSequence)
       : [];

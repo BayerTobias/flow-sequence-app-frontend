@@ -49,10 +49,10 @@ export class HeaderComponent {
     this.settingsService.settingsOpen = true;
   }
 
-  async openUserMenu() {
-    console.log('Open user Menu');
-    await this.authService.logout();
-  }
+  // async openUserMenu() {
+  //   console.log('Open user Menu');
+  //   await this.authService.logout();
+  // }
 
   toggleFocusMode() {
     this.switching = true;
