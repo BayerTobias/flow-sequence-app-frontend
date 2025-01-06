@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { SettingsGeneralComponent } from '../settings-general/settings-general.component';
 import { SettingsCustomTimersComponent } from '../settings-custom-timers/settings-custom-timers.component';
 import { SettingsServiceService } from '../../../shared/services/settings-service.service';
@@ -22,4 +22,10 @@ import { SettingsSoundComponent } from '../settings-sound/settings-sound.compone
 export class SettingsBaseComponent {
   @Input() startAnimation: boolean = false;
   public settingsService = inject(SettingsServiceService);
+
+  @Output() closeOverlayEvent = new EventEmitter();
+
+  closeOverlay() {
+    this.closeOverlayEvent.emit();
+  }
 }

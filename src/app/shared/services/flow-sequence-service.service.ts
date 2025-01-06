@@ -31,19 +31,10 @@ export class FlowSequenceServiceService {
     effect(() => {
       const appSettings = this.settingsService.appSettingsSignal();
 
-      console.log('effect');
-
       this.shortBreakSound.src = appSettings.shortBreakSound?.path || '';
       this.lognBreakSound.src = appSettings.longBreakSound?.path || '';
       this.flowTimeSound.src = appSettings.flowTimeSound?.path || '';
       this.flowSequenceSound.src = appSettings.flowSequenceSound?.path || '';
-
-      console.log(appSettings.shortBreakSound);
-
-      console.log(this.shortBreakSound.src);
-      console.log(this.lognBreakSound.src);
-      console.log(this.flowTimeSound.src);
-      console.log(this.flowSequenceSound.src);
     });
   }
 

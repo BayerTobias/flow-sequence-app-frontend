@@ -1,3 +1,6 @@
 <section (click)="closeOverlay()" [ngClass]="{ 'start-animation': start }">
-  <app-settings-base [startAnimation]="start"></app-settings-base>
+  <app-settings-base
+    (closeOverlayEvent)="closeOverlay()"
+    [startAnimation]="start"
+  ></app-settings-base>
 </section>

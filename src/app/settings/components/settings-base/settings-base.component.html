@@ -180,7 +180,9 @@
     @if (settingsService.activeTab === 'general') {
     <app-settings-general></app-settings-general>
     } @else if (settingsService.activeTab === "timers") {
-    <app-settings-custom-timers></app-settings-custom-timers>
+    <app-settings-custom-timers
+      (closeOverlayEvent)="closeOverlay()"
+    ></app-settings-custom-timers>
     } @else if (settingsService.activeTab === "themes") {
     <app-settings-themes></app-settings-themes>
     }@else if (settingsService.activeTab === 'sounds') {

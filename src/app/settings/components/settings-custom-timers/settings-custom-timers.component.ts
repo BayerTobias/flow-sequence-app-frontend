@@ -1,7 +1,9 @@
 import {
   Component,
   ElementRef,
+  EventEmitter,
   inject,
+  Output,
   QueryList,
   ViewChild,
   ViewChildren,
@@ -58,6 +60,8 @@ export class SettingsCustomTimersComponent {
 
   public newFlowSequence: FlowSequence = new FlowSequence();
 
+  @Output() closeOverlayEvent = new EventEmitter();
+
   @ViewChildren('nameInput') nameInputFields: QueryList<ElementRef> | null =
     null;
 
@@ -75,6 +79,7 @@ export class SettingsCustomTimersComponent {
   chooseSequence(index: number) {
     this.flowSequenceService.activeFlowSequence =
       this.settingsService.appSettings.customSequences[index];
+    this.closeOverlayEvent.emit();
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -235,7 +240,6 @@ export class SettingsCustomTimersComponent {
       this.sequenceDescriptionInput.nativeElement.focus();
     } else {
       this.sequenceCountError = true;
-      console.log(this.settingsService.appSettings.customSequences.length);
     }
   }
 }
