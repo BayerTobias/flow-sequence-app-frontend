@@ -75,8 +75,6 @@ export class SettingsCustomTimersComponent {
   chooseSequence(index: number) {
     this.flowSequenceService.activeFlowSequence =
       this.settingsService.appSettings.customSequences[index];
-
-    // close overlay
   }
 
   drop(event: CdkDragDrop<string[]>) {

@@ -150,15 +150,18 @@ export class SettingsServiceService {
 
   constructor() {
     this.initSettings();
-    effect(() => {
-      const user = this.authService.userSignal();
+    effect(
+      () => {
+        const user = this.authService.userSignal();
 
-      if (user) {
-        this.loadSettingsFromFirestore(user.uid);
-      } else {
-        this.loadSettings();
-      }
-    });
+        if (user) {
+          this.loadSettingsFromFirestore(user.uid);
+        } else {
+          this.loadSettings();
+        }
+      },
+      { allowSignalWrites: true }
+    );
   }
 
   async initSettings() {
@@ -204,6 +207,7 @@ export class SettingsServiceService {
     if (settingsString) {
       const parsedSettings: AppSettingsData = JSON.parse(settingsString);
       this.appSettings = new AppSettings(parsedSettings);
+      this.appSettingsSignal.set(new AppSettings(parsedSettings));
       return this.appSettings;
     }
 
@@ -215,6 +219,7 @@ export class SettingsServiceService {
 
     if (settings) {
       this.appSettings = new AppSettings(settings as AppSettingsData);
+      this.appSettingsSignal.set(new AppSettings(settings as AppSettingsData));
       console.log('Settings von Firestore geladen');
     } else {
       console.error('Error Loading Settings');
