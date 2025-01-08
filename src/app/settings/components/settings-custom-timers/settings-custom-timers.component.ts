@@ -69,6 +69,12 @@ export class SettingsCustomTimersComponent {
     console.log('edit');
   }
 
+  deleteSequence(index: number) {
+    const sequences = this.settingsService.appSettings.customSequences;
+    sequences.splice(index, 1);
+    this.settingsService.saveSettings();
+  }
+
   toggleShowCountdown() {
     this.settingsService.appSettings.countdownInBrowserTab =
       !this.settingsService.appSettings.countdownInBrowserTab;

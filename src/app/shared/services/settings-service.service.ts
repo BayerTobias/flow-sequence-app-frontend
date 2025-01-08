@@ -131,13 +131,13 @@ export class SettingsServiceService {
       backgroundImage: 'assets/img/backgrounds/background-1.webp',
     }),
     new Theme({
-      name: 'theme2',
+      name: 'Orchid',
       accentColor: 'rgba(210, 212, 147, 1)',
       gradientColor: 'rgb(0, 28, 40) 0%',
       backgroundImage: 'assets/img/backgrounds/background-2.webp',
     }),
     new Theme({
-      name: 'theme3',
+      name: 'Strawflower',
       accentColor: 'rgba(200, 94, 106, 1)',
       gradientColor: 'rgb(35, 41, 41)  0%',
       backgroundImage: 'assets/img/backgrounds/background-3.webp',
@@ -145,8 +145,6 @@ export class SettingsServiceService {
   ];
 
   public transitionInProgress: boolean = false;
-
-  public savedCustomSequences: FlowSequence[] = [];
 
   constructor() {
     this.initSettings();
@@ -223,26 +221,6 @@ export class SettingsServiceService {
       console.log('Settings von Firestore geladen');
     } else {
       console.error('Error Loading Settings');
-    }
-  }
-
-  saveCustomSequences() {
-    const sequencesAsJson = this.savedCustomSequences.map((sequence) =>
-      sequence.asJson()
-    );
-
-    localStorage.setItem('customSequences', JSON.stringify(sequencesAsJson));
-  }
-
-  loadCustomSequences() {
-    const sequences = localStorage.getItem('customSequences');
-
-    if (sequences) {
-      const parsedSequences = JSON.parse(sequences);
-
-      this.savedCustomSequences = parsedSequences.map(
-        (sequence: flowSequenceData) => new FlowSequence(sequence)
-      );
     }
   }
 
