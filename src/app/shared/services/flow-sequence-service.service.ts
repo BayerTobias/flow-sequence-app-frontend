@@ -79,6 +79,11 @@ export class FlowSequenceServiceService {
     this.sequenceComplete = false;
   }
 
+  resetTimer() {
+    this.currentStepindex = 0;
+    this.setupTimer();
+  }
+
   countDownSecond() {
     this.currentStepTimeRemaining--;
     this.minutesRemaining = Math.floor(this.currentStepTimeRemaining / 60 + 1);
