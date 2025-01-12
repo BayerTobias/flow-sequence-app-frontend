@@ -47,18 +47,14 @@ export class WelcomeComponent {
 
   startStandardSequence() {
     const standardSequence = this.settingsService.standardSequence;
-    const step1 = standardSequence.steps[0];
     this.flowSequenceService.activeFlowSequence = standardSequence;
-    this.flowSequenceService.minutesRemaining = step1.duration;
-    this.flowSequenceService.secondsOfMinuteRemainung = 60;
+    this.flowSequenceService.resetTimer();
   }
 
   startReverseSequence() {
     const reverseSequence = this.settingsService.reverseSequence;
-    const step1 = reverseSequence.steps[0];
     this.flowSequenceService.activeFlowSequence = reverseSequence;
-    this.flowSequenceService.minutesRemaining = step1.duration;
-    this.flowSequenceService.secondsOfMinuteRemainung = 60;
+    this.flowSequenceService.resetTimer();
   }
 
   openCreateTimerMenu() {

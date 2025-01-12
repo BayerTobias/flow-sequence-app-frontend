@@ -11,11 +11,14 @@
 
   <span class="time-text">minutes</span>
 
-  <div class="seconds-bar-wrapper">
+  <div class="progress-bar-wrapper">
     <div
       [ngStyle]="{
         width:
-          (this.flowSequenceService.secondsOfMinuteRemainung / 60) * 100 + '%',
+          (this.flowSequenceService.currentStepTimeRemaining /
+            (this.flowSequenceService.currentStep.duration * 60)) *
+            100 +
+          '%',
         'background-color': settingsService.appSettings.theme.accentColor
       }"
       class="bar"

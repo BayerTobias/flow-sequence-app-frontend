@@ -12,13 +12,13 @@ export class FlowSequenceServiceService {
 
   public activeFlowSequence!: FlowSequence;
   private currentStepindex: number = 0;
-  private currentStepTimeRemaining: number = 0;
+  public currentStepTimeRemaining: number = 0;
   public minutesRemaining: number = 0;
   public secondsOfMinuteRemainung: number = 0;
   private interval: ReturnType<typeof setInterval> | undefined;
   public sequenceComplete: boolean = false;
   private isPaused: boolean = false;
-  private currentStep!: Step;
+  public currentStep!: Step;
   public animateBar: boolean = false;
   public firstStart: boolean = true;
 
@@ -61,10 +61,6 @@ export class FlowSequenceServiceService {
 
         console.log('sekunden: ', this.secondsOfMinuteRemainung);
 
-        if (this.secondsOfMinuteRemainung === 0) {
-          this.checkAnimateBar();
-        }
-
         if (this.currentStepTimeRemaining === 0) {
           this.nextStep();
         }
@@ -73,6 +69,9 @@ export class FlowSequenceServiceService {
   }
 
   setupTimer() {
+    this.currentStep = this.activeFlowSequence.steps[this.currentStepindex];
+    console.log(this.currentStep);
+
     this.minutesRemaining = this.currentStep.duration;
     this.currentStepTimeRemaining = this.currentStep.duration * 60;
     this.currentStep.complete = false;
@@ -86,7 +85,7 @@ export class FlowSequenceServiceService {
 
   countDownSecond() {
     this.currentStepTimeRemaining--;
-    this.minutesRemaining = Math.floor(this.currentStepTimeRemaining / 60 + 1);
+    this.minutesRemaining = Math.floor(this.currentStepTimeRemaining / 60);
     this.secondsOfMinuteRemainung = this.currentStepTimeRemaining % 60;
     if (this.settingsService.appSettings.countdownInBrowserTab) {
       document.title = ` ${this.minutesRemaining}min ${this.secondsOfMinuteRemainung}sec `;

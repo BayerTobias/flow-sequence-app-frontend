@@ -85,6 +85,9 @@ export class SettingsCustomTimersComponent {
   chooseSequence(index: number) {
     this.flowSequenceService.activeFlowSequence =
       this.settingsService.appSettings.customSequences[index];
+
+    console.log(this.flowSequenceService.activeFlowSequence);
+
     this.flowSequenceService.resetTimer();
 
     this.closeOverlayEvent.emit();

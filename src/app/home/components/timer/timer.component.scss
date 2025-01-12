@@ -32,12 +32,12 @@ section {
     font-weight: 300;
   }
 
-  .seconds-bar-wrapper {
+  .progress-bar-wrapper {
     position: absolute;
     bottom: 0;
     left: 0;
-    right: 6px;
-    height: 8px;
+    right: 0;
+    height: 16px;
     background-color: rgba(255, 255, 255, 0.75);
     overflow: hidden;
 
