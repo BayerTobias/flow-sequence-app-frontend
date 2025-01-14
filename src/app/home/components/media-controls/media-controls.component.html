@@ -54,7 +54,7 @@
     </g>
   </svg>
 
-  @if (playButton) {
+  @if (flowSequenceService.isPaused) {
   <svg
     (click)="play()"
     (mouseenter)="setHoverd(true, 'play')"

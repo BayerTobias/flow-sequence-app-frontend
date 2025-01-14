@@ -21,12 +21,10 @@ export class MediaControlsComponent {
   }
 
   play() {
-    this.playButton = false;
     this.flowSequenceService.startSequence();
   }
 
   pause() {
-    this.playButton = true;
     this.flowSequenceService.pauseTimer();
   }
 

@@ -17,7 +17,7 @@ export class FlowSequenceServiceService {
   public secondsOfMinuteRemainung: number = 0;
   private interval: ReturnType<typeof setInterval> | undefined;
   public sequenceComplete: boolean = false;
-  private isPaused: boolean = false;
+  public isPaused: boolean = true;
   public currentStep!: Step;
   public animateBar: boolean = false;
   public firstStart: boolean = true;
@@ -102,6 +102,7 @@ export class FlowSequenceServiceService {
   completeFlowSequence() {
     this.clearTimerInterval();
     this.sequenceComplete = true;
+    this.currentStepTimeRemaining = 0;
     this.minutesRemaining = 0;
     this.secondsOfMinuteRemainung = 0;
     this.playSound();
@@ -159,6 +160,23 @@ export class FlowSequenceServiceService {
         this.startStepTimer();
       }
     }
+  }
+
+  restartStep(index: number) {
+    this.pauseTimer();
+    this.currentStepindex = index;
+    this.setupTimer();
+    this.updateStepStatuses();
+  }
+
+  updateStepStatuses() {
+    this.activeFlowSequence.steps.forEach((step, index) => {
+      if (index < this.currentStepindex) {
+        step.complete = true;
+      } else {
+        step.complete = false;
+      }
+    });
   }
 
   get soundVolume() {

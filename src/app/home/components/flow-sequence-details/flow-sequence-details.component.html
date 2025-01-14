@@ -15,7 +15,11 @@
       />
       <div>
         <span>{{ step.name }}</span>
-        <img src="assets\img\icons\restart.svg" alt="" />
+        <img
+          (click)="flowSequenceService.restartStep($index)"
+          src="assets\img\icons\restart.svg"
+          alt=""
+        />
       </div>
     </div>
     }
