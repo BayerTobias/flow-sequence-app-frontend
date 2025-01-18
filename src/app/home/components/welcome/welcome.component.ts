@@ -11,7 +11,6 @@ import {
 } from '@angular/material/tooltip';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { FooterComponent } from '../../../shared/components/footer/footer.component';
-import { SettingsOverlayComponent } from '../../../settings/components/settings-overlay/settings-overlay.component';
 import { Router } from '@angular/router';
 
 export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
@@ -29,7 +28,6 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   imports: [
     HeaderComponent,
     FooterComponent,
-    SettingsOverlayComponent,
     GlassButtonComponent,
     CommonModule,
     MatTooltipModule,
@@ -61,14 +59,18 @@ export class WelcomeComponent {
     const standardSequence = this.settingsService.standardSequence;
     this.flowSequenceService.activeFlowSequence = standardSequence;
     this.flowSequenceService.resetTimer();
-    this.router.navigateByUrl('home');
+    this.router.navigate(['flowsequencetimer'], {
+      queryParams: { id: standardSequence.id },
+    });
   }
 
   startReverseSequence() {
     const reverseSequence = this.settingsService.reverseSequence;
     this.flowSequenceService.activeFlowSequence = reverseSequence;
     this.flowSequenceService.resetTimer();
-    this.router.navigateByUrl('home');
+    this.router.navigate(['flowsequencetimer'], {
+      queryParams: { id: reverseSequence.id },
+    });
   }
 
   openCreateTimerMenu() {

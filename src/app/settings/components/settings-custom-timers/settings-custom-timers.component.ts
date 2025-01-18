@@ -26,6 +26,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Step } from '../../../models/step.model';
 import { FlowSequenceServiceService } from '../../../shared/services/flow-sequence-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings-custom-timers',
@@ -45,6 +46,7 @@ import { FlowSequenceServiceService } from '../../../shared/services/flow-sequen
 export class SettingsCustomTimersComponent {
   public settingsService = inject(SettingsServiceService);
   public flowSequenceService = inject(FlowSequenceServiceService);
+  private router = inject(Router);
 
   @ViewChild('sequenceNameInput') sequenceNameInput!: ElementRef;
   @ViewChild('sequenceDescriptionInput') sequenceDescriptionInput!: ElementRef;
@@ -83,14 +85,18 @@ export class SettingsCustomTimersComponent {
   }
 
   chooseSequence(index: number) {
-    this.flowSequenceService.activeFlowSequence =
+    const chosenSequece =
       this.settingsService.appSettings.customSequences[index];
+    this.flowSequenceService.activeFlowSequence = chosenSequece;
 
     console.log(this.flowSequenceService.activeFlowSequence);
 
     this.flowSequenceService.resetTimer();
-
-    this.closeOverlayEvent.emit();
+    this.settingsService.settingsOpen = false;
+    // this.closeOverlayEvent.emit();
+    this.router.navigate(['flowsequencetimer'], {
+      queryParams: { id: chosenSequece.id },
+    });
   }
 
   drop(event: CdkDragDrop<string[]>) {
