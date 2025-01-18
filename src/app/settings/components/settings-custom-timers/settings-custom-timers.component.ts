@@ -231,6 +231,7 @@ export class SettingsCustomTimersComponent {
   }
 
   handleFormIsValid() {
+    this.newFlowSequence.id = Date.now();
     this.newFlowSequence.name = this.sequenceName;
     this.newFlowSequence.description = this.sequenceDescription;
     this.settingsService.appSettings.customSequences.push(this.newFlowSequence);

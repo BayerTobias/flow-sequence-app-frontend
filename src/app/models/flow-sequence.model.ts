@@ -4,20 +4,23 @@ import { ShortBreak } from './short-break.model';
 import { Step, StepData } from './step.model';
 
 export interface flowSequenceData {
+  id: number;
   name: string;
   description: string;
   steps?: Step[];
 }
 
 export class FlowSequence {
+  id: number;
   name: string = '';
   description: string = '';
   steps: Step[];
 
   constructor(data?: flowSequenceData) {
-    this.steps = data?.steps || [];
+    this.id = data?.id || -1;
     this.name = data?.name || '';
     this.description = data?.description || '';
+    this.steps = data?.steps || [];
 
     if (data?.steps) {
       this.steps = this.resolveSteps(data.steps);
@@ -52,6 +55,7 @@ export class FlowSequence {
 
   asJson() {
     return {
+      id: this.id,
       name: this.name,
       description: this.description,
       steps: this.steps.map((step) => step.asJson()),
