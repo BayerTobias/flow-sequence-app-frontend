@@ -27,8 +27,8 @@
     ></div>
 
     @if (settingsService.settingsOpen) {
-    <app-settings-overlay></app-settings-overlay>} @if
-    (flowSequenceService.activeFlowSequence) {
+    <app-settings-overlay></app-settings-overlay>}
+
     <div class="timer-active">
       <div class="left">
         <app-timer></app-timer>
@@ -38,8 +38,6 @@
         <app-flow-sequence-details></app-flow-sequence-details>
       </div>
     </div>
-
-    } @else {<app-welcome></app-welcome>}
   </main>
   <app-footer></app-footer>
 </div>

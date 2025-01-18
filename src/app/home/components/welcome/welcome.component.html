@@ -1,41 +1,55 @@
-<section>
-  <div class="welcome-wrapper">
-    <h1>Hallo{{ displayName }},</h1>
+<div
+  class="wrapper"
+  [style.background-image]="
+    'url(' + settingsService.appSettings.theme.backgroundImage + ')'
+  "
+>
+  <app-header></app-header>
 
-    <span>was möchtest du heute machen?</span>
-  </div>
+  <main>
+    <div class="welcome-wrapper">
+      <h1>Hallo{{ displayName }},</h1>
 
-  <div class="buttons-wrapper">
-    <app-glass-button
-      matTooltip="The Standard Flow Sequence is a preset timer based on the well-known Pomodoro technique. It helps you stay productive by guiding you through 25-minute work sessions (Flows) followed by short 5-minute breaks. After completing four Flows, you’ll enjoy a longer break to maintain focus and avoid burnout."
-      [matTooltipPosition]="'above'"
-      [btnAction]="'Start'"
-      [btnName]="'Standard'"
-      [btnType]="'Flow Sequence'"
-      (buttonClicked)="startStandardSequence()"
-    ></app-glass-button>
+      <span>was möchtest du heute machen?</span>
+    </div>
 
-    <app-glass-button
-      [btnAction]="'Start'"
-      matTooltip="The Reverse Flow Sequence offers an alternative approach that helps you jump into work with renewed energy. After a relaxing 25-minute break, you focus on just 5 minutes of work to boost productivity. This method is great for tackling tasks when you need a little extra motivation to get started."
-      [matTooltipPosition]="'above'"
-      [btnName]="'Reverse'"
-      [btnType]="'Flow Sequence'"
-      (buttonClicked)="startReverseSequence()"
-    ></app-glass-button>
+    <div class="buttons-wrapper">
+      <app-glass-button
+        matTooltip="The Standard Flow Sequence is a preset timer based on the well-known Pomodoro technique. It helps you stay productive by guiding you through 25-minute work sessions (Flows) followed by short 5-minute breaks. After completing four Flows, you’ll enjoy a longer break to maintain focus and avoid burnout."
+        [matTooltipPosition]="'above'"
+        [btnAction]="'Start'"
+        [btnName]="'Standard'"
+        [btnType]="'Flow Sequence'"
+        (buttonClicked)="startStandardSequence()"
+      ></app-glass-button>
 
-    <app-glass-button
-      [btnAction]="'Create'"
-      [btnName]="'Custom'"
-      [btnType]="'Flow Sequence'"
-      (buttonClicked)="openCreateTimerMenu()"
-    ></app-glass-button>
+      <app-glass-button
+        [btnAction]="'Start'"
+        matTooltip="The Reverse Flow Sequence offers an alternative approach that helps you jump into work with renewed energy. After a relaxing 25-minute break, you focus on just 5 minutes of work to boost productivity. This method is great for tackling tasks when you need a little extra motivation to get started."
+        [matTooltipPosition]="'above'"
+        [btnName]="'Reverse'"
+        [btnType]="'Flow Sequence'"
+        (buttonClicked)="startReverseSequence()"
+      ></app-glass-button>
 
-    <app-glass-button
-      [btnAction]="'Browse'"
-      [btnName]="'Saved'"
-      [btnType]="'Flow Sequences'"
-      (buttonClicked)="openSavedTimersMenu()"
-    ></app-glass-button>
-  </div>
-</section>
+      <app-glass-button
+        [btnAction]="'Create'"
+        [btnName]="'Custom'"
+        [btnType]="'Flow Sequence'"
+        (buttonClicked)="openCreateTimerMenu()"
+      ></app-glass-button>
+
+      <app-glass-button
+        [btnAction]="'Browse'"
+        [btnName]="'Saved'"
+        [btnType]="'Flow Sequences'"
+        (buttonClicked)="openSavedTimersMenu()"
+      ></app-glass-button>
+    </div>
+  </main>
+
+  @if (settingsService.settingsOpen) {
+  <app-settings-overlay></app-settings-overlay>}
+
+  <app-footer></app-footer>
+</div>

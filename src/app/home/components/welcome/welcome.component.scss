@@ -1,9 +1,24 @@
 @import "./../../../../mixin.scss";
 @import "./../../../../styles.scss";
 
-section {
+.wrapper {
+  background-size: cover;
+  background-position: center;
+  min-width: 100vw;
+  min-width: 100svw;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  @include dFlex();
   @include dFlex($gp: 80px);
   flex-direction: column;
+  flex-grow: 1;
+
+  transition: opacity 0.5s ease-in-out;
 }
 
 .welcome-wrapper {

@@ -16,10 +16,10 @@ export class LoginComponent {
   async loginWithGoogle() {
     console.log('google Login');
     await this.authService.loginWithGoogle();
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/welcome');
   }
 
   redirectToHomeWithoutLogin() {
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/welcome');
   }
 }

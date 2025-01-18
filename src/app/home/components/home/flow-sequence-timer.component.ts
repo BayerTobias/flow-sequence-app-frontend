@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { WelcomeComponent } from '../welcome/welcome.component';
 import { TimerComponent } from '../timer/timer.component';
 import { MediaControlsComponent } from '../media-controls/media-controls.component';
 import { FlowSequenceDetailsComponent } from '../flow-sequence-details/flow-sequence-details.component';
@@ -9,15 +8,12 @@ import { SettingsOverlayComponent } from '../../../settings/components/settings-
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { FooterComponent } from '../../../shared/components/footer/footer.component';
-import { AuthService } from '../../../auth/services/auth.service';
-import { GoogleCalendarService } from '../../../shared/services/google-calendar.service';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-flow-sequence-timer',
   standalone: true,
   imports: [
     CommonModule,
-    WelcomeComponent,
     TimerComponent,
     MediaControlsComponent,
     FlowSequenceDetailsComponent,
@@ -25,14 +21,12 @@ import { GoogleCalendarService } from '../../../shared/services/google-calendar.
     HeaderComponent,
     FooterComponent,
   ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  templateUrl: './flow-sequence-timer.component.html',
+  styleUrl: './flow-sequence-timer.component.scss',
 })
-export class HomeComponent {
+export class FlowSequenceTimerComponent {
   public flowSequenceService = inject(FlowSequenceServiceService);
   public settingsService = inject(SettingsServiceService);
-  public authService = inject(AuthService);
-  public calendarService = inject(GoogleCalendarService);
 
   async ngOnInit() {}
 }

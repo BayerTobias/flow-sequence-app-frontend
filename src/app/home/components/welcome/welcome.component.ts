@@ -9,6 +9,10 @@ import {
   MatTooltipDefaultOptions,
   MatTooltipModule,
 } from '@angular/material/tooltip';
+import { HeaderComponent } from '../../../shared/components/header/header.component';
+import { FooterComponent } from '../../../shared/components/footer/footer.component';
+import { SettingsOverlayComponent } from '../../../settings/components/settings-overlay/settings-overlay.component';
+import { Router } from '@angular/router';
 
 export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   showDelay: 500,
@@ -22,14 +26,22 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   providers: [
     { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults },
   ],
-  imports: [GlassButtonComponent, CommonModule, MatTooltipModule],
+  imports: [
+    HeaderComponent,
+    FooterComponent,
+    SettingsOverlayComponent,
+    GlassButtonComponent,
+    CommonModule,
+    MatTooltipModule,
+  ],
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.scss',
 })
 export class WelcomeComponent {
   private flowSequenceService = inject(FlowSequenceServiceService);
-  private settingsService = inject(SettingsServiceService);
+  public settingsService = inject(SettingsServiceService);
   public authService = inject(AuthService);
+  private router = inject(Router);
   public displayName: string | null = null;
 
   constructor() {
@@ -49,12 +61,14 @@ export class WelcomeComponent {
     const standardSequence = this.settingsService.standardSequence;
     this.flowSequenceService.activeFlowSequence = standardSequence;
     this.flowSequenceService.resetTimer();
+    this.router.navigateByUrl('home');
   }
 
   startReverseSequence() {
     const reverseSequence = this.settingsService.reverseSequence;
     this.flowSequenceService.activeFlowSequence = reverseSequence;
     this.flowSequenceService.resetTimer();
+    this.router.navigateByUrl('home');
   }
 
   openCreateTimerMenu() {

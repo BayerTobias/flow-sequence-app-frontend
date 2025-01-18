@@ -1,18 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { HomeComponent } from './home.component';
+import { FlowSequenceTimerComponent } from './flow-sequence-timer.component';
 
 describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+  let component: FlowSequenceTimerComponent;
+  let fixture: ComponentFixture<FlowSequenceTimerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomeComponent]
-    })
-    .compileComponents();
+      imports: [FlowSequenceTimerComponent],
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(FlowSequenceTimerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
