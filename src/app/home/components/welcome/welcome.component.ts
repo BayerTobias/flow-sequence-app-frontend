@@ -43,6 +43,7 @@ export class WelcomeComponent {
   public displayName: string | null = null;
 
   constructor() {
+    this.flowSequenceService.clearTimerInterval();
     effect(() => {
       const fullName = this.authService.userSignal()?.displayName;
 

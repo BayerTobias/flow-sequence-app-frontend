@@ -27,7 +27,7 @@ export class SettingsServiceService {
   public showCountdownInBrowserTab: boolean = true;
 
   public reverseSequence: FlowSequence = new FlowSequence({
-    id: 1,
+    id: 2,
     name: 'Reverse Flow Sequence',
     description: 'reverse flow sequence customised by Katrin Wertl <3',
     steps: [
@@ -62,7 +62,7 @@ export class SettingsServiceService {
     ],
   });
   public standardSequence: FlowSequence = new FlowSequence({
-    id: 2,
+    id: 1,
     name: 'Standard Flow Sequence',
     description: 'standard flow sequence customised by Katrin Wertl <3',
     steps: [
@@ -165,22 +165,17 @@ export class SettingsServiceService {
   }
 
   async initSettings() {
-    console.log('init');
-
     const uid = this.authService.userSignal()?.uid;
 
     if (uid) {
-      console.log('UID');
       await this.loadSettingsFromFirestore(uid);
     } else {
-      console.log('Local Storage');
       this.loadSettings();
     }
   }
 
   async saveSettings() {
     const uid = this.authService.userSignal()?.uid;
-    console.log(uid);
 
     if (uid) {
       await this.firestoreService.saveSettings(uid, this.appSettings.asJson());

@@ -118,8 +118,6 @@ export class SettingsSoundComponent {
         console.warn('Unknown drop Area');
     }
 
-    console.log(this.settingsService.appSettings.asJson());
-
     this.settingsService.saveSettings();
   }
 

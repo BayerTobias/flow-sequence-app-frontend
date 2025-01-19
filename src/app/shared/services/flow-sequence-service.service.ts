@@ -2,20 +2,22 @@ import { effect, inject, Injectable } from '@angular/core';
 import { FlowSequence } from '../../models/flow-sequence.model';
 import { Step } from '../../models/step.model';
 import { SettingsServiceService } from './settings-service.service';
-import { AppSettings } from '../../models/app-settings.model';
+import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FlowSequenceServiceService {
   private settingsService = inject(SettingsServiceService);
+  private location = inject(Location);
 
   public activeFlowSequence!: FlowSequence;
-  private currentStepindex: number = 0;
+  public currentStepindex: number = 0;
   public currentStepTimeRemaining: number = 0;
   public minutesRemaining: number = 0;
   public secondsOfMinuteRemainung: number = 0;
-  private interval: ReturnType<typeof setInterval> | undefined;
+  public interval: ReturnType<typeof setInterval> | undefined;
   public sequenceComplete: boolean = false;
   public isPaused: boolean = true;
   public currentStep!: Step;
@@ -59,8 +61,6 @@ export class FlowSequenceServiceService {
       this.interval = setInterval(() => {
         this.countDownSecond();
 
-        console.log('sekunden: ', this.secondsOfMinuteRemainung);
-
         if (this.currentStepTimeRemaining === 0) {
           this.nextStep();
         }
@@ -69,17 +69,33 @@ export class FlowSequenceServiceService {
   }
 
   setupTimer() {
+    console.log('Setup Timer curent step index', this.currentStepindex);
     this.currentStep = this.activeFlowSequence.steps[this.currentStepindex];
-    console.log(this.currentStep);
 
     this.minutesRemaining = this.currentStep.duration;
+    console.log('minutes', this.minutesRemaining);
+
     this.currentStepTimeRemaining = this.currentStep.duration * 60;
     this.currentStep.complete = false;
     this.sequenceComplete = false;
+    this.updateStepStatuses();
   }
+
+  // setupQeryParamTimer(stepIndex: number) {
+  //   this.currentStepindex = stepIndex;
+  //   this.currentStep = this.activeFlowSequence.steps[this.currentStepindex];
+  //   this.currentStepTimeRemaining = timeRemaining;
+  //   this.minutesRemaining = Math.floor(timeRemaining / 60);
+  //   this.currentStep.complete = false;
+  //   this.sequenceComplete = false;
+  //   this.updateStepStatuses();
+  // }
 
   resetTimer() {
     this.currentStepindex = 0;
+    this.activeFlowSequence.steps.forEach((step) => {
+      step.complete = false;
+    });
     this.setupTimer();
   }
 
@@ -87,11 +103,25 @@ export class FlowSequenceServiceService {
     this.currentStepTimeRemaining--;
     this.minutesRemaining = Math.floor(this.currentStepTimeRemaining / 60);
     this.secondsOfMinuteRemainung = this.currentStepTimeRemaining % 60;
+    this.setQueryParams();
     if (this.settingsService.appSettings.countdownInBrowserTab) {
       document.title = ` ${this.minutesRemaining}min ${this.secondsOfMinuteRemainung}sec `;
     } else {
       document.title = 'FlowSequenceFrontend';
     }
+  }
+
+  setQueryParams() {
+    const baseUrl = this.location.path();
+    const fullUrl = new URL(window.location.href);
+    const searchParams = new URLSearchParams(fullUrl.search);
+
+    searchParams.set('stepIndex', String(this.currentStepindex));
+    // searchParams.set('timeRemaining', String(this.currentStepTimeRemaining));
+
+    this.location.replaceState(
+      `${baseUrl.split('?')[0]}?${searchParams.toString()}`
+    );
   }
 
   clearTimerInterval() {

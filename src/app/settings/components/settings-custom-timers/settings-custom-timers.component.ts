@@ -89,8 +89,6 @@ export class SettingsCustomTimersComponent {
       this.settingsService.appSettings.customSequences[index];
     this.flowSequenceService.activeFlowSequence = chosenSequece;
 
-    console.log(this.flowSequenceService.activeFlowSequence);
-
     this.flowSequenceService.resetTimer();
     this.settingsService.settingsOpen = false;
     // this.closeOverlayEvent.emit();
@@ -125,7 +123,6 @@ export class SettingsCustomTimersComponent {
     });
     this.newFlowSequence.addStep(step);
     this.asignPostion();
-    console.log(this.newFlowSequence);
 
     setTimeout(() => {
       this.focusLastImput();
