@@ -5,6 +5,7 @@ import { SettingsCustomTimersComponent } from '../settings-custom-timers/setting
 import { SettingsServiceService } from '../../../shared/services/settings-service.service';
 import { SettingsThemesComponent } from '../settings-themes/settings-themes.component';
 import { SettingsSoundComponent } from '../settings-sound/settings-sound.component';
+import { SettingsCompletedSequencesComponent } from '../settings-completed-sequences/settings-completed-sequences.component';
 
 @Component({
   selector: 'app-settings-base',
@@ -15,6 +16,7 @@ import { SettingsSoundComponent } from '../settings-sound/settings-sound.compone
     SettingsCustomTimersComponent,
     SettingsThemesComponent,
     SettingsSoundComponent,
+    SettingsCompletedSequencesComponent
   ],
   templateUrl: './settings-base.component.html',
   styleUrl: './settings-base.component.scss',
