@@ -21,8 +21,8 @@ export class SettingsServiceService {
 
   public appSettingsSignal = signal<AppSettings>(new AppSettings());
 
-  public activeTab: string = 'account';
-  public settingsOpen: boolean = false;
+  public activeTab: string = 'completed';
+  public settingsOpen: boolean = true;
 
   public showCountdownInBrowserTab: boolean = true;
 

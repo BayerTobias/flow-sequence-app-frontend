@@ -16,7 +16,7 @@ import { SettingsCompletedSequencesComponent } from '../settings-completed-seque
     SettingsCustomTimersComponent,
     SettingsThemesComponent,
     SettingsSoundComponent,
-    SettingsCompletedSequencesComponent
+    SettingsCompletedSequencesComponent,
   ],
   templateUrl: './settings-base.component.html',
   styleUrl: './settings-base.component.scss',

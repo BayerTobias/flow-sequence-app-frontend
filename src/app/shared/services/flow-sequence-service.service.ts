@@ -3,7 +3,7 @@ import { FlowSequence } from '../../models/flow-sequence.model';
 import { Step } from '../../models/step.model';
 import { SettingsServiceService } from './settings-service.service';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { CompletedSequence } from '../../models/completed-sequence.model';
 
 @Injectable({
   providedIn: 'root',
@@ -136,11 +136,35 @@ export class FlowSequenceServiceService {
     this.minutesRemaining = 0;
     this.secondsOfMinuteRemainung = 0;
     this.playSound();
+    this.uploadCompletedSequence();
     if (this.settingsService.showCountdownInBrowserTab) {
       document.title = `Flow sequence Completed`;
     } else {
       document.title = 'FlowSequenceFrontend';
     }
+  }
+
+  async uploadCompletedSequence() {
+    const data = new CompletedSequence();
+    const date = new Date();
+
+    data.name = this.activeFlowSequence.name;
+    data.completed = date.toLocaleString('de-DE', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+    data.duration = this.activeFlowSequence.steps.reduce(
+      (totalDuration, step) => {
+        return totalDuration + step.duration;
+      },
+      0
+    );
+
+    this.settingsService.appSettings.completedSequences.push(data);
+    await this.settingsService.saveSettings();
   }
 
   checkAnimateBar() {

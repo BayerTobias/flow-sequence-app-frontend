@@ -1,1 +1,24 @@
-<p>settings-completed-sequences works!</p>
+<section>
+  <div class="headline">
+    <img src="assets\img\icons\clock.svg" alt="settings" />
+    <span>Congratulations!</span>
+  </div>
+
+  <p>You completed the following flow sequences in the past 30 days.</p>
+
+  <div class="completed-sequences-list">
+    <div class="list-headline">
+      <div>Name of the flow sequence:</div>
+      <div>Completed on:</div>
+      <div>Duration:</div>
+    </div>
+    @for (sequence of settingsService.appSettings.completedSequences; track
+    $index) {
+    <div class="list-row">
+      <div class="name-row">{{ sequence.name }}</div>
+      <div>{{ formatCompleted(sequence) }}</div>
+      <div>{{ formatDuration(sequence) }}</div>
+    </div>
+    }
+  </div>
+</section>

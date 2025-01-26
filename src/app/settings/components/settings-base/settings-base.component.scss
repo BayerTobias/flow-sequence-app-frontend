@@ -83,7 +83,8 @@ nav {
   flex-grow: 1;
   width: 100%;
 
-  app-settings-general {
+  app-settings-general,
+  app-settings-completed-sequences {
     display: flex;
     flex-grow: 1;
   }

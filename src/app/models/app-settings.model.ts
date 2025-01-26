@@ -1,3 +1,8 @@
+import { sequence } from '@angular/animations';
+import {
+  CompletedSequence,
+  CompletedSequenceData,
+} from './completed-sequence.model';
 import { FlowSequence, flowSequenceData } from './flow-sequence.model';
 import {
   NotificationSound,
@@ -14,6 +19,7 @@ export interface AppSettingsData {
   flowSequenceSound: NotificationSoundData;
   volume: number;
   customSequence: flowSequenceData[];
+  completedSequences: CompletedSequenceData[];
   focusMode: boolean;
 }
 
@@ -26,6 +32,7 @@ export class AppSettings {
   flowSequenceSound: NotificationSound | null;
   volume: number;
   customSequences: FlowSequence[];
+  completedSequences: CompletedSequence[];
   focusMode: boolean;
 
   constructor(data?: AppSettingsData) {
@@ -54,7 +61,13 @@ export class AppSettings {
     this.customSequences = data?.customSequence
       ? this.setupCustomSequences(data.customSequence)
       : [];
+    this.completedSequences = data?.completedSequences
+      ? data.completedSequences.map(
+          (sequenceData) => new CompletedSequence(sequenceData)
+        )
+      : [];
     this.focusMode = data?.focusMode || false;
+    console.log(this.completedSequences);
   }
 
   setupCustomSequences(customSequenceData: flowSequenceData[]) {
@@ -67,6 +80,10 @@ export class AppSettings {
     return this.customSequences.map((sequence) => sequence.asJson());
   }
 
+  completedSequencesAsJson() {
+    return this.completedSequences.map((sequence) => sequence.asJson());
+  }
+
   asJson() {
     return {
       theme: this.theme.asJson(),
@@ -77,6 +94,7 @@ export class AppSettings {
       flowSequenceSound: this.flowSequenceSound?.asJson() || null,
       volume: this.volume,
       customSequence: this.customSequencesAsJson(),
+      completedSequences: this.completedSequencesAsJson(),
       focusMode: this.focusMode,
     };
   }
