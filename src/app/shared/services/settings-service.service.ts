@@ -10,6 +10,7 @@ import { Theme } from '../../models/theme.model';
 import { AppSettings, AppSettingsData } from '../../models/app-settings.model';
 import { FirestoreServiceService } from './firestore-service.service';
 import { AuthService } from '../../auth/services/auth.service';
+import { filter } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -155,7 +156,10 @@ export class SettingsServiceService {
         const user = this.authService.userSignal();
 
         if (user) {
-          this.loadSettingsFromFirestore(user.uid);
+          (async () => {
+            await this.loadSettingsFromFirestore(user.uid);
+            await this.deleteOldCompletedSequences();
+          })();
         } else {
           this.loadSettings();
         }
@@ -172,6 +176,33 @@ export class SettingsServiceService {
     } else {
       this.loadSettings();
     }
+  }
+
+  async deleteOldCompletedSequences() {
+    const thirtyDaysInMs = 30 * 24 * 60 * 60 * 1000;
+    const now = new Date();
+
+    const filterdSequences = this.appSettings.completedSequences.filter(
+      (sequence) => {
+        const completedDate = this.parseDate(sequence.completed);
+        return completedDate.getTime() > now.getTime() - thirtyDaysInMs;
+      }
+    );
+
+    if (
+      this.appSettings.completedSequences.length !== filterdSequences.length
+    ) {
+      this.appSettings.completedSequences = filterdSequences;
+      await this.saveSettings();
+    }
+  }
+
+  parseDate(dateString: string): Date {
+    const [datePart, timePart] = dateString.split(', ');
+    const [day, month, year] = datePart.split('.').map(Number);
+    const [hours, minutes] = timePart.split(':').map(Number);
+
+    return new Date(year, month - 1, day, hours, minutes);
   }
 
   async saveSettings() {
@@ -215,7 +246,7 @@ export class SettingsServiceService {
     if (settings) {
       this.appSettings = new AppSettings(settings as AppSettingsData);
       this.appSettingsSignal.set(new AppSettings(settings as AppSettingsData));
-      console.log('Settings von Firestore geladen');
+      console.log('Settings von Firestore geladen', settings);
     } else {
       console.error('Error Loading Settings');
     }

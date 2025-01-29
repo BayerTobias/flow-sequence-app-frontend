@@ -69,12 +69,8 @@ export class FlowSequenceServiceService {
   }
 
   setupTimer() {
-    console.log('Setup Timer curent step index', this.currentStepindex);
     this.currentStep = this.activeFlowSequence.steps[this.currentStepindex];
-
     this.minutesRemaining = this.currentStep.duration;
-    console.log('minutes', this.minutesRemaining);
-
     this.currentStepTimeRemaining = this.currentStep.duration * 60;
     this.currentStep.complete = false;
     this.sequenceComplete = false;

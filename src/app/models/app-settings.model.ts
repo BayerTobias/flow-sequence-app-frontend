@@ -1,4 +1,3 @@
-import { sequence } from '@angular/animations';
 import {
   CompletedSequence,
   CompletedSequenceData,
@@ -67,7 +66,6 @@ export class AppSettings {
         )
       : [];
     this.focusMode = data?.focusMode || false;
-    console.log(this.completedSequences);
   }
 
   setupCustomSequences(customSequenceData: flowSequenceData[]) {

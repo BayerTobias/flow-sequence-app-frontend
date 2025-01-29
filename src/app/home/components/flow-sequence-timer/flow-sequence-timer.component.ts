@@ -37,7 +37,6 @@ export class FlowSequenceTimerComponent {
     this.route.queryParams.subscribe((params) => {
       const id: number = params['id'];
       const index = params['stepIndex'];
-      console.log(id, index);
 
       // const timeRemaining = params['timeRemaining'];
 
@@ -61,7 +60,6 @@ export class FlowSequenceTimerComponent {
 
   ngOnInit() {
     this.flowSequenceService.clearTimerInterval();
-    console.log('init');
   }
 
   matchIdAndSetupSequence() {
@@ -86,15 +84,12 @@ export class FlowSequenceTimerComponent {
   setupFlowSequence(sequence: FlowSequence) {
     this.flowSequenceService.activeFlowSequence = sequence;
     if (this.stepIndex) {
-      console.log('setup Step Index', this.stepIndex);
-
       this.flowSequenceService.currentStepindex = this.stepIndex;
     } else {
       console.log('no Step Index', this.stepIndex);
 
       this.flowSequenceService.currentStepindex = 0;
     }
-    console.log('setup');
 
     this.flowSequenceService.setupTimer();
   }
