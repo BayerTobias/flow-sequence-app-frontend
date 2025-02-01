@@ -22,7 +22,7 @@ export class SettingsServiceService {
 
   public appSettingsSignal = signal<AppSettings>(new AppSettings());
 
-  public activeTab: string = 'completed';
+  public activeTab: string = 'timers';
   public settingsOpen: boolean = true;
 
   public showCountdownInBrowserTab: boolean = true;

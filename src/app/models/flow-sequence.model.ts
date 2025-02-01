@@ -17,7 +17,7 @@ export class FlowSequence {
   steps: Step[];
 
   constructor(data?: flowSequenceData) {
-    this.id = data?.id || -1;
+    this.id = data?.id || 0;
     this.name = data?.name || '';
     this.description = data?.description || '';
     this.steps = data?.steps || [];

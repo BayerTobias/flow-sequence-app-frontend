@@ -67,8 +67,13 @@ export class SettingsCustomTimersComponent {
   @ViewChildren('nameInput') nameInputFields: QueryList<ElementRef> | null =
     null;
 
-  editSequence() {
-    console.log('edit');
+  editSequence(sequence: FlowSequence) {
+    console.log('edit', sequence);
+
+    this.newFlowSequence = sequence;
+    this.sequenceName = sequence.name;
+    this.sequenceDescription = sequence.description;
+    console.log(this.newFlowSequence);
   }
 
   deleteSequence(index: number) {
@@ -222,23 +227,53 @@ export class SettingsCustomTimersComponent {
   }
 
   saveNewFlowSequence() {
-    if (
-      this.sequenceName &&
-      this.sequenceDescription &&
-      this.settingsService.appSettings.customSequences.length < 10
-    ) {
+    if (this.formIsValid()) {
       this.handleFormIsValid();
     } else {
       this.handleError();
     }
   }
 
+  formIsValid() {
+    return (
+      this.sequenceName &&
+      this.sequenceDescription &&
+      this.settingsService.appSettings.customSequences.length < 10
+    );
+  }
+
   handleFormIsValid() {
-    this.newFlowSequence.id = Date.now();
     this.newFlowSequence.name = this.sequenceName;
     this.newFlowSequence.description = this.sequenceDescription;
-    this.settingsService.appSettings.customSequences.push(this.newFlowSequence);
+
+    if (this.newFlowSequence.id) {
+      this.handleEditSequence();
+    } else {
+      this.newFlowSequence.id = Date.now();
+      this.settingsService.appSettings.customSequences.push(
+        this.newFlowSequence
+      );
+    }
+
     this.settingsService.saveSettings();
+    this.resetForm();
+  }
+
+  handleEditSequence() {
+    const index = this.settingsService.appSettings.customSequences.findIndex(
+      (seq) => seq.id === this.newFlowSequence.id
+    );
+
+    console.log('Index = ', index);
+
+    if (index !== -1) {
+      this.settingsService.appSettings.customSequences[index] =
+        this.newFlowSequence;
+      console.log(this.settingsService.appSettings.customSequences);
+    }
+  }
+
+  resetForm() {
     this.sequenceName = '';
     this.sequenceDescription = '';
     this.newFlowSequence = new FlowSequence();
