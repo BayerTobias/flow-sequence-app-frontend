@@ -8,6 +8,7 @@ import {
   MatTooltipModule,
 } from '@angular/material/tooltip';
 import { SettingsOverlayComponent } from '../../../settings/components/settings-overlay/settings-overlay.component';
+import { PreviewOverlayComponent } from '../preview-overlay/preview-overlay.component';
 
 export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   showDelay: 500,
@@ -21,7 +22,12 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   providers: [
     { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults },
   ],
-  imports: [SettingsOverlayComponent, CommonModule, MatTooltipModule],
+  imports: [
+    PreviewOverlayComponent,
+    SettingsOverlayComponent,
+    CommonModule,
+    MatTooltipModule,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

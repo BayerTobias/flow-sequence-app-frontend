@@ -68,12 +68,9 @@ export class SettingsCustomTimersComponent {
     null;
 
   editSequence(sequence: FlowSequence) {
-    console.log('edit', sequence);
-
     this.newFlowSequence = sequence;
     this.sequenceName = sequence.name;
     this.sequenceDescription = sequence.description;
-    console.log(this.newFlowSequence);
   }
 
   deleteSequence(index: number) {
@@ -100,6 +97,12 @@ export class SettingsCustomTimersComponent {
     this.router.navigate(['flowsequencetimer'], {
       queryParams: { id: chosenSequece.id },
     });
+  }
+
+  viewSequence(sequence: FlowSequence) {
+    console.log(sequence);
+    this.settingsService.previewOpen = true;
+    this.flowSequenceService.previewSequence = sequence;
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -264,12 +267,9 @@ export class SettingsCustomTimersComponent {
       (seq) => seq.id === this.newFlowSequence.id
     );
 
-    console.log('Index = ', index);
-
     if (index !== -1) {
       this.settingsService.appSettings.customSequences[index] =
         this.newFlowSequence;
-      console.log(this.settingsService.appSettings.customSequences);
     }
   }
 

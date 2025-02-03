@@ -13,6 +13,7 @@ export class FlowSequenceServiceService {
   private location = inject(Location);
 
   public activeFlowSequence!: FlowSequence;
+  public previewSequence: FlowSequence | null = null;
   public currentStepindex: number = 0;
   public currentStepTimeRemaining: number = 0;
   public minutesRemaining: number = 0;

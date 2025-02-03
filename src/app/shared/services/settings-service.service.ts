@@ -1,8 +1,5 @@
 import { effect, inject, Injectable, signal } from '@angular/core';
-import {
-  FlowSequence,
-  flowSequenceData,
-} from '../../models/flow-sequence.model';
+import { FlowSequence } from '../../models/flow-sequence.model';
 import { FlowTime } from '../../models/flow-time.model';
 import { ShortBreak } from '../../models/short-break.model';
 import { LongBreak } from '../../models/long-break.model';
@@ -10,7 +7,6 @@ import { Theme } from '../../models/theme.model';
 import { AppSettings, AppSettingsData } from '../../models/app-settings.model';
 import { FirestoreServiceService } from './firestore-service.service';
 import { AuthService } from '../../auth/services/auth.service';
-import { filter } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +20,7 @@ export class SettingsServiceService {
 
   public activeTab: string = 'timers';
   public settingsOpen: boolean = true;
+  public previewOpen: boolean = false;
 
   public showCountdownInBrowserTab: boolean = true;
 
