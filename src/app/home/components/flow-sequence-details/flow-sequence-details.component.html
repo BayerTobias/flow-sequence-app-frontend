@@ -1,4 +1,4 @@
-<section>
+<section (click)="$event.stopPropagation()">
   <div class="sequence-box">
     @for (step of flowSequence.steps; track $index) {
 
@@ -15,11 +15,12 @@
       />
       <div>
         <span>{{ step.name }}</span>
+        @if(!preview){
         <img
           (click)="flowSequenceService.restartStep($index)"
           src="assets\img\icons\restart.svg"
           alt=""
-        />
+        />}
       </div>
     </div>
     }
@@ -27,7 +28,6 @@
 
   <div class="bottom-container">
     <svg
-      class="pointer"
       width="22"
       height="22"
       viewBox="0 0 22 22"
@@ -106,7 +106,6 @@
       />
 
       <svg
-        class="pointer"
         width="38"
         height="38"
         viewBox="0 0 44 44"
@@ -129,6 +128,9 @@
     </div>
   </div>
   @if (preview) {
-  <button>Choose</button>
+  <app-simple-settings-button
+    [content]="'Choose'"
+    (submitEvent)="chooseSequence()"
+  ></app-simple-settings-button>
   }
 </section>

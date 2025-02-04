@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FlowSequenceServiceService } from '../../../shared/services/flow-sequence-service.service';
 import { SettingsServiceService } from '../../../shared/services/settings-service.service';
 import { FlowSequence } from '../../../models/flow-sequence.model';
+import { SimpleSettingsButtonComponent } from '../../../shared/components/buttons/simple-settings-button/simple-settings-button.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-flow-sequence-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SimpleSettingsButtonComponent],
   templateUrl: './flow-sequence-details.component.html',
   styleUrl: './flow-sequence-details.component.scss',
 })
@@ -17,6 +19,8 @@ export class FlowSequenceDetailsComponent {
 
   public flowSequence: FlowSequence = new FlowSequence();
   public preview: boolean = false;
+
+  private router = inject(Router);
 
   constructor() {
     effect(() => {
@@ -36,5 +40,17 @@ export class FlowSequenceDetailsComponent {
       this.flowSequence = sequence;
       this.preview = false;
     }
+  }
+
+  chooseSequence() {
+    const chosenSequece = this.flowSequence;
+    this.flowSequenceService.activeFlowSequence.set(chosenSequece);
+    this.flowSequenceService.resetTimer();
+    this.settingsService.previewOpen = false;
+    this.settingsService.settingsOpen = false;
+
+    this.router.navigate(['flowsequencetimer'], {
+      queryParams: { id: chosenSequece.id },
+    });
   }
 }

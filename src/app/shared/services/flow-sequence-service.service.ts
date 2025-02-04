@@ -126,14 +126,14 @@ export class FlowSequenceServiceService {
     this.interval = undefined;
   }
 
-  completeFlowSequence() {
+  async completeFlowSequence() {
     this.clearTimerInterval();
     this.sequenceComplete = true;
     this.currentStepTimeRemaining = 0;
     this.minutesRemaining = 0;
     this.secondsOfMinuteRemainung = 0;
+    await this.uploadCompletedSequence();
     this.playSound();
-    this.uploadCompletedSequence();
     if (this.settingsService.showCountdownInBrowserTab) {
       document.title = `Flow sequence Completed`;
     } else {
@@ -145,7 +145,7 @@ export class FlowSequenceServiceService {
     const data = new CompletedSequence();
     const date = new Date();
 
-    data.name = this.activeFlowSequence.name;
+    data.name = this.activeFlowSequence().name;
     data.completed = date.toLocaleString('de-DE', {
       day: '2-digit',
       month: '2-digit',
@@ -161,6 +161,7 @@ export class FlowSequenceServiceService {
     );
 
     this.settingsService.appSettings.completedSequences.push(data);
+
     await this.settingsService.saveSettings();
   }
 
