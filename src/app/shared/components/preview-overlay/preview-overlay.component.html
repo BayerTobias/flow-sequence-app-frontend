@@ -1,3 +1,5 @@
 <section (click)="closeOverlay()">
-  <app-flow-sequence-details></app-flow-sequence-details>
+  <div class="content-wrapper" [ngClass]="{ 'start-animation': start }">
+    <app-flow-sequence-details></app-flow-sequence-details>
+  </div>
 </section>

@@ -11,3 +11,12 @@ section {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 100;
 }
+
+.content-wrapper {
+  transform: translateX(calc(50vw + 50%));
+  transition: transform 750ms ease-in-out;
+}
+
+.start-animation {
+  transform: translateX(0);
+}

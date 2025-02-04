@@ -13,7 +13,7 @@ import { SettingsBaseComponent } from '../settings-base/settings-base.component'
 export class SettingsOverlayComponent {
   private settingsService = inject(SettingsServiceService);
 
-  start: boolean = false;
+  public start: boolean = false;
 
   ngAfterViewInit() {
     setTimeout(() => {
