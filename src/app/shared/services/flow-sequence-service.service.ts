@@ -1,4 +1,4 @@
-import { effect, inject, Injectable } from '@angular/core';
+import { effect, inject, Injectable, signal } from '@angular/core';
 import { FlowSequence } from '../../models/flow-sequence.model';
 import { Step } from '../../models/step.model';
 import { SettingsServiceService } from './settings-service.service';
@@ -12,7 +12,7 @@ export class FlowSequenceServiceService {
   private settingsService = inject(SettingsServiceService);
   private location = inject(Location);
 
-  public activeFlowSequence!: FlowSequence;
+  public activeFlowSequence = signal<FlowSequence>(new FlowSequence());
   public previewSequence: FlowSequence | null = null;
   public currentStepindex: number = 0;
   public currentStepTimeRemaining: number = 0;
@@ -42,13 +42,13 @@ export class FlowSequenceServiceService {
   }
 
   startSequence() {
-    if (this.activeFlowSequence.steps.length > 0) {
+    if (this.activeFlowSequence().steps.length > 0) {
       this.startStepTimer();
     } else console.log('nope');
   }
 
   startStepTimer() {
-    this.currentStep = this.activeFlowSequence.steps[this.currentStepindex];
+    this.currentStep = this.activeFlowSequence().steps[this.currentStepindex];
 
     if (!this.interval) {
       if (!this.isPaused) {
@@ -70,7 +70,7 @@ export class FlowSequenceServiceService {
   }
 
   setupTimer() {
-    this.currentStep = this.activeFlowSequence.steps[this.currentStepindex];
+    this.currentStep = this.activeFlowSequence().steps[this.currentStepindex];
     this.minutesRemaining = this.currentStep.duration;
     this.currentStepTimeRemaining = this.currentStep.duration * 60;
     this.currentStep.complete = false;
@@ -90,7 +90,7 @@ export class FlowSequenceServiceService {
 
   resetTimer() {
     this.currentStepindex = 0;
-    this.activeFlowSequence.steps.forEach((step) => {
+    this.activeFlowSequence().steps.forEach((step) => {
       step.complete = false;
     });
     this.setupTimer();
@@ -153,7 +153,7 @@ export class FlowSequenceServiceService {
       hour: '2-digit',
       minute: '2-digit',
     });
-    data.duration = this.activeFlowSequence.steps.reduce(
+    data.duration = this.activeFlowSequence().steps.reduce(
       (totalDuration, step) => {
         return totalDuration + step.duration;
       },
@@ -168,7 +168,7 @@ export class FlowSequenceServiceService {
     if (
       !this.firstStart &&
       !this.isPaused &&
-      this.currentStepindex !== this.activeFlowSequence.steps.length - 1
+      this.currentStepindex !== this.activeFlowSequence().steps.length - 1
     ) {
       this.animateBar = true;
       setTimeout(() => {
@@ -185,7 +185,7 @@ export class FlowSequenceServiceService {
   }
 
   nextStep() {
-    if (this.currentStepindex !== this.activeFlowSequence.steps.length - 1) {
+    if (this.currentStepindex !== this.activeFlowSequence().steps.length - 1) {
       this.clearTimerInterval();
       this.currentStep.complete = true;
       this.playSound();
@@ -200,7 +200,7 @@ export class FlowSequenceServiceService {
   previousStep() {
     if (this.currentStepindex !== 0) {
       if (
-        this.currentStepindex === this.activeFlowSequence.steps.length - 1 &&
+        this.currentStepindex === this.activeFlowSequence().steps.length - 1 &&
         this.sequenceComplete
       ) {
         this.clearTimerInterval();
@@ -221,7 +221,7 @@ export class FlowSequenceServiceService {
   }
 
   updateStepStatuses() {
-    this.activeFlowSequence.steps.forEach((step, index) => {
+    this.activeFlowSequence().steps.forEach((step, index) => {
       if (index < this.currentStepindex) {
         step.complete = true;
       } else {

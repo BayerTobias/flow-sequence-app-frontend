@@ -58,7 +58,7 @@ export class WelcomeComponent {
 
   startStandardSequence() {
     const standardSequence = this.settingsService.standardSequence;
-    this.flowSequenceService.activeFlowSequence = standardSequence;
+    this.flowSequenceService.activeFlowSequence.set(standardSequence);
     this.flowSequenceService.resetTimer();
     this.router.navigate(['flowsequencetimer'], {
       queryParams: { id: standardSequence.id },
@@ -67,7 +67,7 @@ export class WelcomeComponent {
 
   startReverseSequence() {
     const reverseSequence = this.settingsService.reverseSequence;
-    this.flowSequenceService.activeFlowSequence = reverseSequence;
+    this.flowSequenceService.activeFlowSequence.set(reverseSequence);
     this.flowSequenceService.resetTimer();
     this.router.navigate(['flowsequencetimer'], {
       queryParams: { id: reverseSequence.id },

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlowSequenceServiceService } from '../../../shared/services/flow-sequence-service.service';
 import { SettingsServiceService } from '../../../shared/services/settings-service.service';
@@ -18,12 +18,14 @@ export class FlowSequenceDetailsComponent {
   public flowSequence: FlowSequence = new FlowSequence();
   public preview: boolean = false;
 
-  ngOnInit() {
-    console.log('init Details');
-    this.setupSequence();
+  constructor() {
+    effect(() => {
+      const sequence = this.flowSequenceService.activeFlowSequence();
+      this.setupSequence(sequence);
+    });
   }
 
-  setupSequence() {
+  setupSequence(sequence: FlowSequence) {
     if (
       this.settingsService.previewOpen &&
       this.flowSequenceService.previewSequence
@@ -31,7 +33,7 @@ export class FlowSequenceDetailsComponent {
       this.flowSequence = this.flowSequenceService.previewSequence;
       this.preview = true;
     } else {
-      this.flowSequence = this.flowSequenceService.activeFlowSequence;
+      this.flowSequence = sequence;
       this.preview = false;
     }
   }

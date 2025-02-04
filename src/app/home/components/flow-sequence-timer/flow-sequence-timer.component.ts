@@ -82,7 +82,8 @@ export class FlowSequenceTimerComponent {
   }
 
   setupFlowSequence(sequence: FlowSequence) {
-    this.flowSequenceService.activeFlowSequence = sequence;
+    this.flowSequenceService.activeFlowSequence.set(sequence);
+    // this.flowSequenceService.activeFlowSequence = sequence;
     if (this.stepIndex) {
       this.flowSequenceService.currentStepindex = this.stepIndex;
     } else {

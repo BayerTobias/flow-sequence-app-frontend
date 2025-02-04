@@ -89,7 +89,7 @@ export class SettingsCustomTimersComponent {
   chooseSequence(index: number) {
     const chosenSequece =
       this.settingsService.appSettings.customSequences[index];
-    this.flowSequenceService.activeFlowSequence = chosenSequece;
+    this.flowSequenceService.activeFlowSequence.set(chosenSequece);
 
     this.flowSequenceService.resetTimer();
     this.settingsService.settingsOpen = false;

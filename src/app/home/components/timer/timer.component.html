@@ -1,8 +1,8 @@
 <section>
   <p>
     {{
-      flowSequenceService.activeFlowSequence.name
-        ? flowSequenceService.activeFlowSequence.name
+      flowSequenceService.activeFlowSequence().name
+        ? flowSequenceService.activeFlowSequence().name
         : "Choose your Flow Sequence"
     }}
   </p>
