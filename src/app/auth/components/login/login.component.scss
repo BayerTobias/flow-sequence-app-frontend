@@ -2,19 +2,27 @@
 @import "./../../../../styles.scss";
 
 main {
-  @include dFlex();
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   min-height: 100svh;
   min-width: 100vw;
   min-width: 100svw;
+  background-image: url("/assets/img/backgrounds/background-1.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 section {
   @include dFlex();
-  flex-direction: column;
-  background-color: aqua;
+  flex-grow: 1;
+}
 
-  > div {
-    cursor: pointer;
-  }
+.login-wrapper {
+  @include dFlex();
+  @include glassStyle();
+  padding: 80px;
+  border-radius: 24px;
+  flex-direction: column;
 }

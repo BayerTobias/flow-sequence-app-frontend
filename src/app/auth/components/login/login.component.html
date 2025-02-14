@@ -1,6 +1,12 @@
 <main>
+  <app-header></app-header>
+
   <section>
-    <div (click)="loginWithGoogle()">Google Login</div>
-    <div (click)="redirectToHomeWithoutLogin()">Continue without Login</div>
+    <div class="login-wrapper">
+      <div (click)="loginWithGoogle()">Google Login</div>
+      <div (click)="redirectToHomeWithoutLogin()">Continue without Login</div>
+    </div>
   </section>
+
+  <app-footer></app-footer>
 </main>

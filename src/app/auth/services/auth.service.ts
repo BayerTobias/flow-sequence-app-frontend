@@ -54,6 +54,7 @@ export class AuthService {
       this.userSignal.set(user);
       if (user) {
         console.log('Benutzer eingeloggt:', user.uid);
+        // if url = login route to welcome
       } else {
         console.log('Kein Benutzer eingeloggt.');
       }
