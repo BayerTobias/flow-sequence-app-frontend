@@ -9,6 +9,7 @@ import {
   UserCredential,
 } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { SettingsServiceService } from '../../shared/services/settings-service.service';
 
 @Injectable({
   providedIn: 'root',
@@ -43,6 +44,7 @@ export class AuthService {
       await this.auth.signOut();
       this.userSignal.set(null);
       this.router.navigateByUrl('/login');
+
       console.log('Erfolgreich ausgeloggt');
     } catch (err) {
       console.error('Logout fehlgeschlagen:', err);
@@ -54,7 +56,10 @@ export class AuthService {
       this.userSignal.set(user);
       if (user) {
         console.log('Benutzer eingeloggt:', user.uid);
-        // if url = login route to welcome
+
+        if (this.router.url === '/login') {
+          this.router.navigate(['/welcome']);
+        }
       } else {
         console.log('Kein Benutzer eingeloggt.');
       }

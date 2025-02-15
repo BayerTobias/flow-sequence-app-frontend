@@ -24,5 +24,10 @@
       <span>Account Type:</span>
       <span>Premium</span>
     </div>
+
+    <app-simple-settings-button
+      [content]="'Logout'"
+      (submitEvent)="logoutAndCloseSettings()"
+    ></app-simple-settings-button>
   </div>
 </section>

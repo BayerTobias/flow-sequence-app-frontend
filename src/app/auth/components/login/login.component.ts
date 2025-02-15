@@ -1,5 +1,5 @@
 import { Component, Inject, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { FooterComponent } from '../../../shared/components/footer/footer.component';
@@ -7,7 +7,7 @@ import { FooterComponent } from '../../../shared/components/footer/footer.compon
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent],
+  imports: [HeaderComponent, FooterComponent, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })

@@ -20,9 +20,119 @@ section {
 }
 
 .login-wrapper {
-  @include dFlex();
+  @include dFlex($ai: flex-start, $gp: 64px);
   @include glassStyle();
   padding: 80px;
   border-radius: 24px;
+}
+
+.left {
+  @include dFlex($gp: 48px);
   flex-direction: column;
+  max-width: 400px;
+  color: $copy-light;
+
+  .top {
+    @include dFlex($gp: 16px);
+    flex-direction: column;
+
+    h2 {
+      font-size: 24px;
+      line-height: 28px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  .bottom {
+    @include dFlex($gp: 16px);
+    flex-direction: column;
+
+    p {
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+}
+
+.right {
+  @include dFlex($gp: 42px);
+  flex-direction: column;
+  width: 400px;
+  color: $copy-light;
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  .px-15 {
+    font-size: 15px;
+  }
+
+  .px-12 {
+    font-size: 12px;
+  }
+
+  > div {
+    @include dFlex($gp: 32px);
+    flex-direction: column;
+    width: 100%;
+  }
+
+  p {
+    text-align: center;
+    line-height: 16px;
+  }
+
+  a {
+    color: $copy-light;
+    text-decoration: none;
+    font-weight: 700;
+  }
+}
+
+.seperator {
+  @include dFlex($gp: 8px);
+  width: 100%;
+
+  > div {
+    border-top: 1px solid $copy-light;
+    flex-grow: 1;
+  }
+}
+
+button {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: unset;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  color: $copy-dark;
+  height: 40px;
+
+  transition: filter 250ms ease-in-out;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+
+  &:active {
+    filter: brightness(0.7);
+  }
+}
+
+.google {
+  @include dFlex($gp: 8px);
+  border: 1.5px solid rgba(73, 87, 110, 0.2);
+  background-color: white;
+}
+
+.without-button {
+  background: rgb(106, 158, 157);
 }

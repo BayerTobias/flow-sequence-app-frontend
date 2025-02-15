@@ -45,6 +45,7 @@
     </defs>
   </svg>
 
+  @if(showMenu){
   <div class="right-wrapper">
     @if (focusModeOnIcon) {
     <div (click)="toggleFocusMode()" class="svg-wrapper">
@@ -131,6 +132,7 @@
       </defs>
     </svg>
   </div>
+  }
 </header>
 
 @if (settingsService.settingsOpen) {

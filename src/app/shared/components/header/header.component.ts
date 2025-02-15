@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { SettingsServiceService } from '../../services/settings-service.service';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../../auth/services/auth.service';
+
 import {
   MAT_TOOLTIP_DEFAULT_OPTIONS,
   MatTooltipDefaultOptions,
@@ -9,6 +9,8 @@ import {
 } from '@angular/material/tooltip';
 import { SettingsOverlayComponent } from '../../../settings/components/settings-overlay/settings-overlay.component';
 import { PreviewOverlayComponent } from '../preview-overlay/preview-overlay.component';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   showDelay: 500,
@@ -33,12 +35,29 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
 })
 export class HeaderComponent {
   public settingsService = inject(SettingsServiceService);
-  private authService = inject(AuthService);
+  private router = inject(Router);
+  private activatedRoute = inject(ActivatedRoute);
+
   public focusModeOnIcon: boolean = false;
   public focusModeOffIcon: boolean = true;
   public switching: boolean = false;
   public fadeInStrat: boolean = false;
   public fadeInFinished: boolean = true;
+  public showMenu: boolean = false;
+
+  constructor() {
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        const path = this.activatedRoute.snapshot.url.join('/');
+
+        if (path === 'flowsequencetimer' || path === 'welcome') {
+          this.showMenu = true;
+        } else {
+          this.showMenu = false;
+        }
+      });
+  }
 
   ngOnInit() {
     const FocusMode = this.settingsService.appSettings.focusMode;
