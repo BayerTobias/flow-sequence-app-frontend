@@ -1,0 +1,9 @@
+@import "./../../../../../mixin.scss";
+@import "./../../../../../styles.scss";
+
+.wrapper {
+  @include dFlex($ai: flex-start, $gp: 64px);
+  @include glassStyle();
+  padding: 80px;
+  border-radius: 24px;
+}

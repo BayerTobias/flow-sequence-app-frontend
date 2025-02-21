@@ -7,7 +7,7 @@ import { FooterComponent } from '../../../shared/components/footer/footer.compon
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, RouterLink],
+  imports: [RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })

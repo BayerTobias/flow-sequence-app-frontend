@@ -1,24 +1,6 @@
 @import "./../../../../mixin.scss";
 @import "./../../../../styles.scss";
 
-main {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  min-height: 100svh;
-  min-width: 100vw;
-  min-width: 100svw;
-  background-image: url("/assets/img/backgrounds/background-1.webp");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-section {
-  @include dFlex();
-  flex-grow: 1;
-}
-
 .login-wrapper {
   @include dFlex($ai: flex-start, $gp: 64px);
   @include glassStyle();

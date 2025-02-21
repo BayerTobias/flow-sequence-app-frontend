@@ -1,66 +1,57 @@
-<main>
-  <app-header></app-header>
+<div class="login-wrapper">
+  <div class="left">
+    <div class="top">
+      <img src="/assets/img/icons/logo.svg" alt="logo" />
 
-  <section>
-    <div class="login-wrapper">
-      <div class="left">
-        <div class="top">
-          <img src="/assets/img/icons/logo.svg" alt="logo" />
+      <h2>Time Management Tool</h2>
 
-          <h2>Time Management Tool</h2>
+      <p>
+        Create your own custom workflow sequences &ndash; alternating phases of
+        focused deep-work sprints and relaxation breaks
+      </p>
 
-          <p>
-            Create your own custom workflow sequences &ndash; alternating phases
-            of focused deep-work sprints and relaxation breaks
-          </p>
-
-          <p>
-            Clean design, free from distractions or overwhelm, visual progress
-            tracking, smooth animations & sound notifications, Focus Mode
-            &ndash; Simple & Elegant.
-          </p>
-        </div>
-
-        <div class="bottom">
-          <p>
-            Sign in with your <b>Google account</b> &ndash; all your Flow
-            Sequences and settings are securely encrypted in a database.
-            (recommended)
-          </p>
-
-          <p>
-            Or continue <b>without registration</b> &ndash; all your Flow
-            Sequences and settings will be stored locally in your browser.
-          </p>
-        </div>
-      </div>
-
-      <div class="right">
-        <h1>Sign in</h1>
-        <div>
-          <span class="px-15">Continue with Google</span>
-          <button class="google" (click)="loginWithGoogle()">
-            <img src="/assets/img/icons/google.png" alt="google.png" />
-            <span>Google</span>
-          </button>
-          <div class="seperator">
-            <div></div>
-            <span class="px-12">or continue</span>
-            <div></div>
-          </div>
-          <button class="without-button" (click)="redirectToHomeWithoutLogin()">
-            without registration
-          </button>
-          <p class="px-12">
-            By continuing, you agree to<br />FlowSeq&rsquo;s
-            <a routerLink="/tos" target="_blank">Terms of Service</a>
-            and
-            <a routerLink="/privacy-policy" target="_blank">Privacy Policy</a>.
-          </p>
-        </div>
-      </div>
+      <p>
+        Clean design, free from distractions or overwhelm, visual progress
+        tracking, smooth animations & sound notifications, Focus Mode &ndash;
+        Simple & Elegant.
+      </p>
     </div>
-  </section>
 
-  <app-footer></app-footer>
-</main>
+    <div class="bottom">
+      <p>
+        Sign in with your <b>Google account</b> &ndash; all your Flow Sequences
+        and settings are securely encrypted in a database. (recommended)
+      </p>
+
+      <p>
+        Or continue <b>without registration</b> &ndash; all your Flow Sequences
+        and settings will be stored locally in your browser.
+      </p>
+    </div>
+  </div>
+
+  <div class="right">
+    <h1>Sign in</h1>
+    <div>
+      <span class="px-15">Continue with Google</span>
+      <button class="google" (click)="loginWithGoogle()">
+        <img src="/assets/img/icons/google.png" alt="google.png" />
+        <span>Google</span>
+      </button>
+      <div class="seperator">
+        <div></div>
+        <span class="px-12">or continue</span>
+        <div></div>
+      </div>
+      <button class="without-button" (click)="redirectToHomeWithoutLogin()">
+        without registration
+      </button>
+      <p class="px-12">
+        By continuing, you agree to<br />FlowSeq&rsquo;s
+        <a routerLink="/tos" target="_blank">Terms of Service</a>
+        and
+        <a routerLink="/privacy-policy" target="_blank">Privacy Policy</a>.
+      </p>
+    </div>
+  </div>
+</div>
