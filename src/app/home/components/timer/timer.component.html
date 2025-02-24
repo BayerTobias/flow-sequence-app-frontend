@@ -6,10 +6,19 @@
         : "Choose your Flow Sequence"
     }}
   </p>
-
-  <span class="minutes">{{ flowSequenceService.minutesRemaining }}</span>
-
+  @if (flowSequenceService.sequenceComplete){
+  <span class="gratulation">Congratulations!</span>
+  } @else if(flowSequenceService.minutesRemaining < 1) {
+  <span class="push">final push</span>
+  }@else {
+  <span class="minutes">{{ flowSequenceService.minutesRemaining }}</span
+  >} @if (flowSequenceService.sequenceComplete){
+  <span class="time-text">You completed your flow sequence</span>
+  } @else if(flowSequenceService.minutesRemaining < 1) {
+  <span class="time-text">the last 60 seconds</span>
+  }@else {
   <span class="time-text">minutes</span>
+  }
 
   <div class="progress-bar-wrapper">
     <div

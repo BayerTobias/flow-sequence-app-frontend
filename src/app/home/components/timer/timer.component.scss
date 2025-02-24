@@ -26,10 +26,26 @@ section {
     line-height: 236px;
   }
 
+  .push {
+    color: $copy-light;
+    font-size: 65px;
+    font-weight: 300;
+    line-height: 236px;
+  }
+
+  .gratulation {
+    color: $copy-light;
+    font-size: 32px;
+    line-height: 236px;
+    font-weight: 600;
+  }
+
   .time-text {
     color: rgba(255, 255, 255, 0.25);
     font-size: 24px;
     font-weight: 300;
+    text-align: center;
+    text-wrap: pretty;
   }
 
   .progress-bar-wrapper {
