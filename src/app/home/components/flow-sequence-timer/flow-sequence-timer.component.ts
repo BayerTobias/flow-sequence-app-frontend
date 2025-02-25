@@ -9,6 +9,7 @@ import { HeaderComponent } from '../../../shared/components/header/header.compon
 import { FooterComponent } from '../../../shared/components/footer/footer.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlowSequence } from '../../../models/flow-sequence.model';
+import { SequenceCompleteComponent } from '../sequence-complete/sequence-complete.component';
 
 @Component({
   selector: 'app-flow-sequence-timer',
@@ -20,6 +21,7 @@ import { FlowSequence } from '../../../models/flow-sequence.model';
     FlowSequenceDetailsComponent,
     HeaderComponent,
     FooterComponent,
+    SequenceCompleteComponent,
   ],
   templateUrl: './flow-sequence-timer.component.html',
   styleUrl: './flow-sequence-timer.component.scss',

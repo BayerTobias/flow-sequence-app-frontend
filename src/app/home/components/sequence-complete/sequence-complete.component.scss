@@ -1,0 +1,51 @@
+@import "./../../../../mixin.scss";
+@import "./../../../../styles.scss";
+
+section {
+  @include glassStyle();
+  @include dFlex($gp: 36px);
+  width: 700px;
+  padding: 24px 48px;
+  border-radius: 24px;
+}
+
+.left {
+  @include dFlex($gp: 12px);
+  flex-direction: column;
+  width: 50%;
+
+  h2 {
+    color: $copy-light;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 300;
+  }
+}
+
+.right {
+  @include dFlex($gp: 12px);
+  flex-direction: column;
+  width: 50%;
+}
+
+button,
+a {
+  color: $copy-light;
+  padding: 12px 48px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.33);
+  box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(27.5px);
+  width: 100%;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 300;
+  text-align: center;
+  text-decoration: none;
+  transition: filter 250ms ease-in-out;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
+}

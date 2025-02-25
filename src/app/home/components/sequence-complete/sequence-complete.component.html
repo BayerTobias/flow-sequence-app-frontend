@@ -1,0 +1,20 @@
+<section>
+  <div class="left">
+    <h2>What do you want to do now?</h2>
+
+    <a routerLink="/welcome">Back to the Starting Page.</a>
+
+    <button (click)="flowSequenceService.resetTimer()">
+      Restart this flow sequence.
+    </button>
+  </div>
+  <div class="right">
+    <button (click)="openSettings()">Browse my saved flow sequences.</button>
+
+    <button (click)="openSettings()">Create a new custom flow sequence.</button>
+
+    <button (click)="authService.logout()">
+      I&rsquo;m done for today. (Logout)
+    </button>
+  </div>
+</section>

@@ -25,7 +25,6 @@ main {
   right: 0;
   height: 33vh;
   height: 33svh;
-  pointer-events: none;
 }
 
 .gradient-bottom {
@@ -35,7 +34,6 @@ main {
   right: 0;
   height: 33vh;
   height: 33svh;
-  pointer-events: none;
 }
 
 .timer-active {
@@ -45,20 +43,9 @@ main {
     @include dFlex($gp: 12px);
     flex-direction: column;
   }
-}
 
-.open-settings {
-  position: absolute;
-  top: 36px;
-  right: 36px;
-  height: 36px;
-  width: 36px;
-  background-color: red;
-  cursor: pointer;
-}
-
-.test-button {
-  position: absolute;
-  top: 100px;
-  right: 100px;
+  .right {
+    @include dFlex($gp: 12px);
+    flex-direction: column;
+  }
 }

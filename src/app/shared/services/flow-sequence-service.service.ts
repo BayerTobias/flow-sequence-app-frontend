@@ -94,6 +94,7 @@ export class FlowSequenceServiceService {
       step.complete = false;
     });
     this.setupTimer();
+    this.setQueryParams();
   }
 
   countDownSecond() {
@@ -129,6 +130,7 @@ export class FlowSequenceServiceService {
   async completeFlowSequence() {
     this.clearTimerInterval();
     this.sequenceComplete = true;
+    this.isPaused = true;
     this.currentStepTimeRemaining = 0;
     this.minutesRemaining = 0;
     this.secondsOfMinuteRemainung = 0;
