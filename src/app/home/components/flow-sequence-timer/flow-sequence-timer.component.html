@@ -33,7 +33,9 @@
       </div>
       <div class="right">
         <app-flow-sequence-details></app-flow-sequence-details>
+        @if (flowSequenceService.sequenceComplete) {
         <app-sequence-complete></app-sequence-complete>
+        }
       </div>
     </div>
     }

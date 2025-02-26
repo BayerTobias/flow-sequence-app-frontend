@@ -18,13 +18,6 @@ section {
     path {
       transition: fill 250ms ease-in-out, stroke 250ms ease-in-out;
     }
-
-    // &:hover {
-    //   path {
-    //     stroke: red;
-    //     fill: aqua;
-    //   }
-    // }
   }
 
   .chapter-img {
@@ -35,4 +28,10 @@ section {
     width: 25px;
     height: 25px;
   }
+}
+
+.disabled {
+  pointer-events: none; /* Deaktiviert alle Mausinteraktionen */
+  filter: brightness(0.5); /* Macht das SVG dunkler */
+  opacity: 0.6; /* Optional: Transparenz reduzieren */
 }
