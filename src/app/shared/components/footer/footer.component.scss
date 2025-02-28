@@ -38,6 +38,11 @@ footer {
     color: $copy-light;
   }
 
+  a {
+    color: $copy-light;
+    text-decoration: none;
+  }
+
   &:hover svg path {
     stroke: $copy-light !important;
   }
