@@ -1,5 +1,8 @@
 <section
   [ngClass]="{ 'start-animation': startAnimation }"
+  [ngStyle]="{
+    '--scrollbar-color': settingsService.appSettings.theme.accentColor
+  }"
   (click)="$event.stopPropagation()"
 >
   <div class="headline">
