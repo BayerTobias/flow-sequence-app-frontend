@@ -2,6 +2,7 @@ import { inject, Injectable, signal } from '@angular/core';
 
 import {
   Auth,
+  deleteUser,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithPopup,
@@ -9,7 +10,9 @@ import {
   UserCredential,
 } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { SettingsServiceService } from '../../shared/services/settings-service.service';
+
+import { reauthenticateWithPopup } from 'firebase/auth';
+import { FirestoreServiceService } from '../../shared/services/firestore-service.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +20,7 @@ import { SettingsServiceService } from '../../shared/services/settings-service.s
 export class AuthService {
   private auth = inject(Auth);
   private router = inject(Router);
+  private firestoreService = inject(FirestoreServiceService);
 
   private provider = new GoogleAuthProvider();
 
@@ -32,7 +36,7 @@ export class AuthService {
         this.auth,
         this.provider
       );
-
+      const user = result.user;
       this.userSignal.set(result.user);
     } catch (err) {
       console.error(err);
@@ -51,8 +55,27 @@ export class AuthService {
     }
   }
 
+  async deleteGoogleAccount() {
+    try {
+      const user = this.userSignal();
+
+      if (!user) {
+        console.error('No User logged in ');
+        return;
+      }
+
+      await reauthenticateWithPopup(user, this.provider);
+
+      await deleteUser(user);
+
+      this.userSignal.set(null);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   private initializeAuthStateListener() {
-    onAuthStateChanged(this.auth, (user) => {
+    onAuthStateChanged(this.auth, async (user) => {
       this.userSignal.set(user);
       if (user) {
         console.log('Benutzer eingeloggt:', user.uid);

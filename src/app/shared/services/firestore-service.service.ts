@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import {
   collection,
+  deleteDoc,
   doc,
   Firestore,
   getDoc,
@@ -14,6 +15,13 @@ export class FirestoreServiceService {
   private firestore = inject(Firestore);
 
   constructor() {}
+
+  async isFirstLogin(uid: string): Promise<boolean> {
+    const docRef = this.getDocRef('AppSettings', uid);
+    const docSnapshot = await getDoc(docRef);
+
+    return !docSnapshot.exists();
+  }
 
   async saveSettings(uid: string, settings: {}) {
     if (uid) {
@@ -33,6 +41,16 @@ export class FirestoreServiceService {
     } else {
       console.log('No Settings Found');
       return null;
+    }
+  }
+
+  async deleteSettings(uid: string) {
+    try {
+      const docRef = this.getDocRef('AppSettings', uid);
+      await deleteDoc(docRef);
+      console.log('Settings Deleted');
+    } catch (err) {
+      console.error(err);
     }
   }
 

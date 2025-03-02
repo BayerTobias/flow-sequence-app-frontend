@@ -217,6 +217,17 @@ export class SettingsServiceService {
     );
   }
 
+  async deleteSettings() {
+    const uid = this.authService.userSignal()?.uid;
+
+    if (uid) {
+      await this.firestoreService.deleteSettings(uid);
+      localStorage.removeItem('appSettings');
+    } else {
+      console.error('no UID');
+    }
+  }
+
   setLocalStorage() {
     localStorage.setItem(
       'appSettings',
@@ -245,7 +256,11 @@ export class SettingsServiceService {
       this.appSettingsSignal.set(new AppSettings(settings as AppSettingsData));
       console.log('Settings von Firestore geladen', settings);
     } else {
-      console.error('Error Loading Settings');
+      if (await this.firestoreService.isFirstLogin(uid)) {
+        console.log('First Login');
+      } else {
+        console.error('Error Loading Settings');
+      }
     }
   }
 

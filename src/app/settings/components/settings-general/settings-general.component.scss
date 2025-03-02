@@ -47,3 +47,9 @@ section {
     }
   }
 }
+
+.logout-delete-wrapper {
+  @include dFlex($jc: space-between);
+  flex: 1;
+  flex-direction: column;
+}

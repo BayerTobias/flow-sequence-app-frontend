@@ -7,10 +7,10 @@
   }"
   [ngClass]="{
     primary: style === 'primary',
-    secondary: style === 'secondary',
-    dark: style === 'dark'
+    secondary: style === 'secondary'
   }"
   (click)="submit()"
 >
+  <img [src]="imgPath" alt="icon" />
   {{ content }}
 </button>

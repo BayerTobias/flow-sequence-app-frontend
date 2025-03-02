@@ -1,6 +1,8 @@
 @import "./../../../../../styles.scss";
+@import "./../../../../../mixin.scss";
 
 button {
+  @include dFlex($gp: 8px);
   font-size: 14px;
   border-radius: 4px;
   border: unset;
@@ -28,15 +30,5 @@ button {
   &:hover {
     color: rgb(251, 251, 251);
     background-color: $interface-accent-2;
-  }
-}
-
-.dark {
-  color: rgb(251, 251, 251);
-  background-color: rgb(68, 68, 68);
-  box-shadow: 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
-
-  &:hover {
-    filter: brightness(0.8);
   }
 }

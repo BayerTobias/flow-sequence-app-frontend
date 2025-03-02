@@ -21,7 +21,7 @@ section {
   }
 
   &::-webkit-scrollbar-track {
-    background: $scrollbar-background;
+    background-color: $settings-background;
   }
 
   &::-webkit-scrollbar-thumb {

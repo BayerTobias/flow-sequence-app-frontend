@@ -1,33 +1,63 @@
 <section>
   <div class="headline">
-    <img src="assets\img\icons\settings.svg" alt="settings" />
+    <img src="assets/img/icons/settings.svg" alt="settings" />
     <span>Account</span>
   </div>
 
   <div class="account-settings">
     <div>
-      <span>First Name:</span>
-      <span>Katrin</span>
+      <span>Login via:</span>
+      @if (authService.userSignal()) { <span>Google</span>} @else {<span
+        >-</span
+      >
+      }
     </div>
 
     <div>
-      <span>Primary Email:</span>
-      <span>katrin.gabriela+flowseq&#64;gmail.com</span>
-    </div>
-
-    <div>
-      <span>Secondary Email:</span>
-      <span>katrin.wertl&#64;gmx.at</span>
+      <span>Email:</span>
+      @if (authService.userSignal()) {
+      <span>{{ authService.userSignal()?.email }}</span
+      >} @else {<span>-</span>
+      }
     </div>
 
     <div>
       <span>Account Type:</span>
-      <span>Premium</span>
+      <span>Free</span>
     </div>
+  </div>
 
-    <app-simple-settings-button
+  <div class="logout-delete-wrapper">
+    @if (authService.userSignal()) {
+    <app-settings-button-with-icon
+      [height]="74"
+      [width]="310"
       [content]="'Logout'"
+      [fontSize]="15"
+      [fontWeight]="500"
+      [imgPath]="'assets/img/icons/logout.svg'"
       (submitEvent)="logoutAndCloseSettings()"
+    ></app-settings-button-with-icon>
+    }@else {
+    <app-settings-button-with-icon
+      [height]="74"
+      [width]="310"
+      [content]="'Back to Login'"
+      [fontSize]="15"
+      [fontWeight]="500"
+      [imgPath]="'assets/img/icons/logout.svg'"
+      (submitEvent)="navigateLogin()"
+    ></app-settings-button-with-icon>
+    } @if (authService.userSignal()) {
+    <app-simple-settings-button
+      [height]="74"
+      [width]="310"
+      [content]="'Delete Account'"
+      [fontSize]="15"
+      [fontWeight]="500"
+      [style]="'dark'"
+      (submitEvent)="deleteAccount()"
     ></app-simple-settings-button>
+    }
   </div>
 </section>
