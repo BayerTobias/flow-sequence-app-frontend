@@ -19,35 +19,6 @@ section {
     text-align: center;
   }
 
-  .minutes {
-    color: $copy-light;
-    font-size: 256px;
-    font-weight: 300;
-    line-height: 236px;
-  }
-
-  .push {
-    color: $copy-light;
-    font-size: 65px;
-    font-weight: 300;
-    line-height: 236px;
-  }
-
-  .gratulation {
-    color: $copy-light;
-    font-size: 32px;
-    line-height: 236px;
-    font-weight: 600;
-  }
-
-  .time-text {
-    color: rgba(255, 255, 255, 0.25);
-    font-size: 24px;
-    font-weight: 300;
-    text-align: center;
-    text-wrap: pretty;
-  }
-
   .progress-bar-wrapper {
     position: absolute;
     bottom: 0;
@@ -74,6 +45,70 @@ section {
     bottom: 36px;
     cursor: pointer;
   }
+}
+
+.main-message-wrapper {
+  @include dFlex();
+  position: relative;
+
+  width: 100%;
+  height: 236px;
+
+  > span {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .minutes {
+    color: $copy-light;
+    font-size: 256px;
+    font-weight: 300;
+  }
+
+  .push {
+    color: $copy-light;
+    font-size: 65px;
+    font-weight: 300;
+  }
+
+  .gratulation {
+    color: $copy-light;
+    font-size: 48px;
+    font-weight: 600;
+  }
+}
+
+.time-text-wrapper {
+  @include dFlex($ai: flex-start);
+  width: 100%;
+  height: 56px;
+
+  > span {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .gray {
+    color: rgba(255, 255, 255, 0.25) !important;
+  }
+
+  .time-text {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 24px;
+    font-weight: 300;
+    text-align: center;
+    text-wrap: pretty;
+    max-width: 236px;
+  }
+}
+
+.show {
+  opacity: 1 !important;
+}
+.hide {
+  opacity: 0 !important;
 }
 
 @keyframes animate-bar {

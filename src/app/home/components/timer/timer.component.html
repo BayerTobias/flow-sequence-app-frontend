@@ -6,19 +6,86 @@
         : "Choose your Flow Sequence"
     }}
   </p>
-  @if (flowSequenceService.sequenceComplete){
-  <span class="gratulation">Congratulations!</span>
-  } @else if(flowSequenceService.minutesRemaining < 1) {
-  <span class="push">final push</span>
-  }@else {
-  <span class="minutes">{{ flowSequenceService.minutesRemaining }}</span
-  >} @if (flowSequenceService.sequenceComplete){
-  <span class="time-text">You completed your flow sequence</span>
-  } @else if(flowSequenceService.minutesRemaining < 1) {
-  <span class="time-text">the last 60 seconds</span>
-  }@else {
-  <span class="time-text">minutes</span>
-  }
+
+  <div class="main-message-wrapper">
+    <span
+      class="gratulation"
+      [ngClass]="{
+        show: flowSequenceService.sequenceComplete,
+        hide: !flowSequenceService.sequenceComplete
+      }"
+      >Well done!</span
+    >
+    <span
+      class="push"
+      [ngClass]="{
+        show:
+          (flowSequenceService.minutesRemaining < 2 &&
+            flowSequenceService.secondsOfMinuteRemainung < 2 &&
+            !flowSequenceService.sequenceComplete) ||
+          (flowSequenceService.minutesRemaining < 1 &&
+            !flowSequenceService.sequenceComplete),
+        hide:
+          (flowSequenceService.minutesRemaining > 1 &&
+            flowSequenceService.secondsOfMinuteRemainung > 2) ||
+          flowSequenceService.sequenceComplete
+      }"
+      >final push</span
+    >
+    <span
+      class="minutes"
+      [ngClass]="{
+        show:
+          flowSequenceService.minutesRemaining >= 1 &&
+          !flowSequenceService.sequenceComplete,
+        hide:
+          (flowSequenceService.minutesRemaining < 2 &&
+            flowSequenceService.secondsOfMinuteRemainung < 2) ||
+          flowSequenceService.sequenceComplete
+      }"
+      >{{ flowSequenceService.minutesRemaining }}</span
+    >
+  </div>
+
+  <div class="time-text-wrapper">
+    <span
+      class="time-text"
+      [ngClass]="{
+        show: flowSequenceService.sequenceComplete,
+        hide: !flowSequenceService.sequenceComplete
+      }"
+      >You completed your flow sequence</span
+    >
+    <span
+      class="time-text"
+      [ngClass]="{
+        show:
+          (flowSequenceService.minutesRemaining < 2 &&
+            flowSequenceService.secondsOfMinuteRemainung < 2 &&
+            !flowSequenceService.sequenceComplete) ||
+          (flowSequenceService.minutesRemaining < 1 &&
+            !flowSequenceService.sequenceComplete),
+        hide:
+          (flowSequenceService.minutesRemaining > 1 &&
+            flowSequenceService.secondsOfMinuteRemainung > 2) ||
+          flowSequenceService.sequenceComplete
+      }"
+      >the last 60 seconds</span
+    >
+    <span
+      class="time-text gray"
+      [ngClass]="{
+        show:
+          flowSequenceService.minutesRemaining >= 1 &&
+          !flowSequenceService.sequenceComplete,
+        hide:
+          (flowSequenceService.minutesRemaining < 2 &&
+            flowSequenceService.secondsOfMinuteRemainung < 2) ||
+          flowSequenceService.sequenceComplete
+      }"
+      >minutes</span
+    >
+  </div>
 
   <div class="progress-bar-wrapper">
     <div
