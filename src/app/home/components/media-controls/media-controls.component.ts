@@ -29,7 +29,16 @@ export class MediaControlsComponent {
   }
 
   next() {
-    this.flowSequenceService.nextStep();
+    if (
+      this.flowSequenceService.currentStepindex ===
+      this.flowSequenceService.activeFlowSequence().steps.length - 1
+    ) {
+      this.flowSequenceService.currentStepTimeRemaining = 1;
+      this.flowSequenceService.secondsOfMinuteRemainung = 1;
+      this.flowSequenceService.minutesRemaining = 0;
+    } else {
+      this.flowSequenceService.nextStep();
+    }
   }
 
   previous() {

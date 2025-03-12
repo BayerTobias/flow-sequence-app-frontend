@@ -1,4 +1,13 @@
-<section (click)="$event.stopPropagation()">
+<section
+  [ngClass]="{
+    'fow-seq-fin':
+      flowSequenceService.currentStepindex ===
+        flowSequenceService.activeFlowSequence().steps.length - 1 &&
+      flowSequenceService.minutesRemaining < 1 &&
+      flowSequenceService.secondsOfMinuteRemainung <= 1
+  }"
+  (click)="$event.stopPropagation()"
+>
   <div class="sequence-box">
     @for (step of flowSequence.steps; track $index) {
 
