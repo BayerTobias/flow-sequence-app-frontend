@@ -238,10 +238,12 @@ export class SettingsCustomTimersComponent {
   }
 
   formIsValid() {
+    const maxSequences = this.settingsService.appSettings.premiumUser ? 15 : 5;
+
     return (
       this.sequenceName &&
       this.sequenceDescription &&
-      this.settingsService.appSettings.customSequences.length < 10
+      this.settingsService.appSettings.customSequences.length < maxSequences
     );
   }
 

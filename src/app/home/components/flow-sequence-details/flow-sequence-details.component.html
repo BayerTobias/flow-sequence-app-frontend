@@ -6,6 +6,9 @@
       flowSequenceService.minutesRemaining < 1 &&
       flowSequenceService.secondsOfMinuteRemainung <= 1
   }"
+  [ngStyle]="{
+    '--scrollbar-color': settingsService.appSettings.theme.accentColor
+  }"
   (click)="$event.stopPropagation()"
 >
   <div class="sequence-box">

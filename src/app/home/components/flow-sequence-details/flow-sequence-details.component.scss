@@ -20,6 +20,18 @@ section {
     overflow-y: auto;
     width: 100%;
 
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: $settings-background;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-color, $standard-accent);
+    }
+
     .step-wrapper {
       @include dFlex($gp: 12px, $jc: flex-start);
       width: 100%;

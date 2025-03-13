@@ -20,6 +20,7 @@ export interface AppSettingsData {
   customSequence: flowSequenceData[];
   completedSequences: CompletedSequenceData[];
   focusMode: boolean;
+  premiumUser: boolean;
 }
 
 export class AppSettings {
@@ -33,6 +34,7 @@ export class AppSettings {
   customSequences: FlowSequence[];
   completedSequences: CompletedSequence[];
   focusMode: boolean;
+  premiumUser: boolean;
 
   constructor(data?: AppSettingsData) {
     this.theme = data
@@ -66,6 +68,7 @@ export class AppSettings {
         )
       : [];
     this.focusMode = data?.focusMode || false;
+    this.premiumUser = data?.premiumUser || false;
   }
 
   setupCustomSequences(customSequenceData: flowSequenceData[]) {
@@ -94,6 +97,7 @@ export class AppSettings {
       customSequence: this.customSequencesAsJson(),
       completedSequences: this.completedSequencesAsJson(),
       focusMode: this.focusMode,
+      premiumUser: this.premiumUser,
     };
   }
 }

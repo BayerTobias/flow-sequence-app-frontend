@@ -32,12 +32,19 @@
       <img src="assets\img\icons\settings.svg" alt="settings" />
       <span>Saved Flow Sequences</span>
     </div>
+    @if (settingsService.appSettings.premiumUser) {
     <span
       [ngClass]="{
-        red: settingsService.appSettings.customSequences.length === 10
+        red: settingsService.appSettings.customSequences.length >= 15
       }"
-      >( {{ settingsService.appSettings.customSequences.length }} of 10 )</span
-    >
+      >( {{ settingsService.appSettings.customSequences.length }} of 15 )</span
+    >}@else {
+    <span
+      [ngClass]="{
+        red: settingsService.appSettings.customSequences.length >= 5
+      }"
+      >( {{ settingsService.appSettings.customSequences.length }} of 5 )</span
+    >}
   </div>
 
   <div
@@ -213,12 +220,19 @@
         saving.</span
       >
       }@else if(sequenceCountError &&
-      settingsService.appSettings.customSequences.length >= 10){
+      settingsService.appSettings.customSequences.length >= 5 &&
+      !settingsService.appSettings.premiumUser){
       <span class="error"
-        >You can save up to 10 flow sequences. In order to upgrade to Premium,
+        >You can save up to 5 flow sequences. In order to upgrade to Premium,
         send an Email to my dear husband contact&#64;tobias-bayer.dev and ask
-        him to create a database structure and implement login screen for my
-        amazing app instead of saving all this shit in local storage! ^^</span
+        him to create a paid Premium feature</span
+      >
+      }@else if (sequenceCountError &&
+      settingsService.appSettings.customSequences.length >= 5 &&
+      settingsService.appSettings.premiumUser) {
+      <span class="error"
+        >You can save up to 15 flow sequences. if we need to increse the number
+        of saved flow sequences please give us feedback.</span
       >
       }
     </div>
