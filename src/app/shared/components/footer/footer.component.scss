@@ -8,11 +8,28 @@ footer {
   z-index: 1;
   font-size: 14px;
   transition: opacity 400ms ease-in-out;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 120px;
+    padding: 64px 32px;
+  }
 }
 
 .left-wrapper,
 .right-wrapper {
   @include dFlex($jc: flex-start, $gp: 80px);
+
+  @media (max-width: 1200px) {
+    gap: 32px;
+  }
+
+  @media (max-width: 1000px) {
+    align-items: flex-start;
+    flex-direction: column;
+    width: 250px;
+  }
 }
 
 .social-media-wrapper {
