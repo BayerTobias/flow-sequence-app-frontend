@@ -1,6 +1,25 @@
 <main>
   <app-header></app-header>
 
+  <div
+    [ngStyle]="{
+      background:
+        'linear-gradient(180deg,' +
+        'rgb(12, 23, 19) 0%' +
+        ', rgba(12, 23, 19, 0) 100%)'
+    }"
+    class="gradient-top"
+  ></div>
+  <div
+    [ngStyle]="{
+      background:
+        'linear-gradient(0deg,' +
+        'rgb(12, 23, 19) 0%' +
+        ', rgba(12, 23, 19, 0) 100%)'
+    }"
+    class="gradient-bottom"
+  ></div>
+
   <section>
     <router-outlet></router-outlet>
   </section>

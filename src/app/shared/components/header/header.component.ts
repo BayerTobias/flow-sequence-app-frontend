@@ -10,7 +10,8 @@ import {
 import { SettingsOverlayComponent } from '../../../settings/components/settings-overlay/settings-overlay.component';
 import { PreviewOverlayComponent } from '../preview-overlay/preview-overlay.component';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs';
+import { filter, first } from 'rxjs';
+import { AppNavigationService } from '../../services/app-navigation.service';
 
 export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   showDelay: 500,
@@ -37,6 +38,7 @@ export class HeaderComponent {
   public settingsService = inject(SettingsServiceService);
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
+  public appNavService = inject(AppNavigationService);
 
   public focusModeOnIcon: boolean = false;
   public focusModeOffIcon: boolean = true;
@@ -44,15 +46,23 @@ export class HeaderComponent {
   public fadeInStrat: boolean = false;
   public fadeInFinished: boolean = true;
   public showMenu: boolean = false;
+  public loginPage: boolean = false;
 
   constructor() {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
-        const path = this.activatedRoute.snapshot.url.join('/');
+        const firstChild = this.activatedRoute.root.firstChild;
+        const secondChild = firstChild?.firstChild;
+        const path =
+          secondChild?.routeConfig?.path || firstChild?.routeConfig?.path || '';
 
         if (path === 'flowsequencetimer' || path === 'welcome') {
           this.showMenu = true;
+          this.loginPage = false;
+        } else if (path === '' || path === 'login') {
+          this.showMenu = false;
+          this.loginPage = true;
         } else {
           this.showMenu = false;
         }

@@ -9,10 +9,18 @@ footer {
   font-size: 14px;
   transition: opacity 400ms ease-in-out;
 
+  > svg {
+    display: none;
+
+    @media (max-width: 1000px) {
+      display: block;
+    }
+  }
+
   @media (max-width: 1000px) {
     flex-direction: column;
     justify-content: flex-start;
-    gap: 120px;
+    gap: 42px;
     padding: 64px 32px;
   }
 }
@@ -22,7 +30,7 @@ footer {
   @include dFlex($jc: flex-start, $gp: 80px);
 
   @media (max-width: 1200px) {
-    gap: 32px;
+    gap: 24px;
   }
 
   @media (max-width: 1000px) {

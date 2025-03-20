@@ -1,4 +1,5 @@
 @import "./../../../../mixin.scss";
+@import "./../../../../styles.scss";
 
 header {
   @include dFlex($jc: space-between);
@@ -17,6 +18,30 @@ header {
 
   svg {
     cursor: pointer;
+  }
+}
+
+.scroll-to-login-button {
+  @include dFlex();
+  text-decoration: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  border: unset;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  color: $copy-dark;
+  height: 40px;
+  background: rgb(106, 158, 157);
+
+  transition: filter 250ms ease-in-out;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+
+  &:active {
+    filter: brightness(0.7);
   }
 }
 

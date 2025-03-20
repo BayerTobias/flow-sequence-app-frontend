@@ -132,6 +132,13 @@
       </defs>
     </svg>
   </div>
+  }@else if (loginPage) {
+
+  <div class="right-wrapper">
+    <a (click)="appNavService.triggerScroll()" class="scroll-to-login-button"
+      >Login</a
+    >
+  </div>
   }
 </header>
 
