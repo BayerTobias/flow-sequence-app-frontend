@@ -10,6 +10,7 @@
   min-height: 100svh;
   display: flex;
   flex-direction: column;
+  background-attachment: fixed;
 }
 
 main {
@@ -17,21 +18,36 @@ main {
   @include dFlex($gp: 80px);
   flex-direction: column;
   flex-grow: 1;
-
   transition: opacity 0.5s ease-in-out;
+
+  @media (max-width: 1000px) {
+    gap: 42px;
+  }
 }
 
 .welcome-wrapper {
   @include glassStyle();
-  @include dFlex($gp: 26px);
+  @include dFlex($gp: 24px);
   flex-direction: column;
   padding: 80px 120px;
   border-radius: 24px;
+  text-align: center;
+
+  @media (max-width: 1000px) {
+    font-size: 40px;
+    padding: 36px;
+    width: 275px;
+    gap: 12px;
+  }
 
   h1 {
     font-size: 80px;
     font-weight: 400;
     color: $copy-light;
+
+    @media (max-width: 1000px) {
+      font-size: 40px;
+    }
   }
 
   span {
@@ -43,4 +59,30 @@ main {
 
 .buttons-wrapper {
   @include dFlex($gp: 48px);
+  flex-wrap: wrap;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+.gradient-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 33vh;
+  height: 33svh;
+  pointer-events: none;
+}
+
+.gradient-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 33vh;
+  height: 33svh;
+  pointer-events: none;
 }

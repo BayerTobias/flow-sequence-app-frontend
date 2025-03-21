@@ -4,6 +4,25 @@
     'url(' + settingsService.appSettings.theme.backgroundImage + ')'
   "
 >
+  <div
+    [ngStyle]="{
+      background:
+        'linear-gradient(180deg,' +
+        settingsService.appSettings.theme.gradientColor +
+        ', rgba(12, 23, 19, 0) 100%)'
+    }"
+    class="gradient-top"
+  ></div>
+  <div
+    [ngStyle]="{
+      background:
+        'linear-gradient(0deg,' +
+        settingsService.appSettings.theme.gradientColor +
+        ', rgba(12, 23, 19, 0) 100%)'
+    }"
+    class="gradient-bottom"
+  ></div>
+
   <app-header></app-header>
 
   <main>
