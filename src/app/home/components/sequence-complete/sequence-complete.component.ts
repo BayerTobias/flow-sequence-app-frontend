@@ -21,7 +21,7 @@ export class SequenceCompleteComponent {
   ngAfterViewInit() {
     setTimeout(() => {
       this.fadeIn = true;
-    });
+    }, 100);
   }
 
   openSettings() {

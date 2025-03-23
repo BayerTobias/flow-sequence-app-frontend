@@ -52,5 +52,9 @@ main {
   .right {
     @include dFlex($gp: 12px);
     flex-direction: column;
+
+    @media (max-width: 1000px) {
+      flex-direction: column-reverse;
+    }
   }
 }
