@@ -8,6 +8,16 @@ section {
   padding: 24px 48px;
   width: 400px;
 
+  @media (max-width: 1000px) {
+    height: auto;
+    padding: 16px;
+  }
+
+  @media (max-width: 400px) {
+    width: 90vw;
+    width: 90svw;
+  }
+
   img {
     cursor: pointer;
   }
@@ -31,7 +41,7 @@ section {
 }
 
 .disabled {
-  pointer-events: none; /* Deaktiviert alle Mausinteraktionen */
-  filter: brightness(0.5); /* Macht das SVG dunkler */
-  opacity: 0.6; /* Optional: Transparenz reduzieren */
+  pointer-events: none;
+  filter: brightness(0.5);
+  opacity: 0.6;
 }

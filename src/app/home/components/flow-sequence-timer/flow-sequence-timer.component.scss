@@ -39,6 +39,11 @@ main {
 .timer-active {
   @include dFlex($gp: 12px, $ai: flex-start);
 
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .left {
     @include dFlex($gp: 12px);
     flex-direction: column;

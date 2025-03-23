@@ -13,6 +13,7 @@ export class FlowSequenceServiceService {
   private location = inject(Location);
 
   public activeFlowSequence = signal<FlowSequence>(new FlowSequence());
+  public stepIndexSignal = signal<Number>(0);
   public previewSequence: FlowSequence | null = null;
   public currentStepindex: number = 0;
   public currentStepTimeRemaining: number = 0;
@@ -71,6 +72,7 @@ export class FlowSequenceServiceService {
 
   setupTimer() {
     this.currentStep = this.activeFlowSequence().steps[this.currentStepindex];
+    this.stepIndexSignal.set(this.currentStepindex);
     this.minutesRemaining = this.currentStep.duration;
     this.currentStepTimeRemaining = this.currentStep.duration * 60;
     this.currentStep.complete = false;
@@ -194,6 +196,7 @@ export class FlowSequenceServiceService {
       this.playSound();
       this.currentStepindex++;
       this.startStepTimer();
+      this.stepIndexSignal.set(this.currentStepindex);
     } else {
       this.currentStep.complete = true;
       this.completeFlowSequence();
@@ -208,10 +211,12 @@ export class FlowSequenceServiceService {
       ) {
         this.clearTimerInterval();
         this.startStepTimer();
+        this.stepIndexSignal.set(this.currentStepindex);
       } else {
         this.clearTimerInterval();
         this.currentStepindex--;
         this.startStepTimer();
+        this.stepIndexSignal.set(this.currentStepindex);
       }
     }
   }
@@ -221,6 +226,7 @@ export class FlowSequenceServiceService {
     this.currentStepindex = index;
     this.setupTimer();
     this.updateStepStatuses();
+    this.stepIndexSignal.set(this.currentStepindex);
   }
 
   updateStepStatuses() {

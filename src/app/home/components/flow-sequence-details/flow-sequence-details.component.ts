@@ -27,6 +27,11 @@ export class FlowSequenceDetailsComponent {
       const sequence = this.flowSequenceService.activeFlowSequence();
       this.setupSequence(sequence);
     });
+
+    effect(() => {
+      const index = this.flowSequenceService.stepIndexSignal();
+      this.scrollToNextStep(Number(index));
+    });
   }
 
   setupSequence(sequence: FlowSequence) {
@@ -52,5 +57,21 @@ export class FlowSequenceDetailsComponent {
     this.router.navigate(['flowsequencetimer'], {
       queryParams: { id: chosenSequece.id },
     });
+  }
+
+  scrollToNextStep(index: number) {
+    const steps = Array.from(document.querySelectorAll('.step-wrapper'));
+    const container = document.querySelector('.sequence-box');
+
+    if (!steps.length || !container) return;
+
+    let lastCompletedStep: Element | null = steps[index];
+
+    if (lastCompletedStep) {
+      lastCompletedStep.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end',
+      });
+    }
   }
 }
