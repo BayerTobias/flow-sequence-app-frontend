@@ -21,6 +21,12 @@ header {
   }
 }
 
+.hide-on-desktop {
+  @media (min-width: 360px) {
+    display: none;
+  }
+}
+
 .scroll-to-login-button {
   @include dFlex();
   text-decoration: none;
