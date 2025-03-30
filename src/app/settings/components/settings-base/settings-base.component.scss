@@ -16,6 +16,11 @@ section {
   transition: transform 750ms ease-in-out;
   overflow: auto;
 
+  @media (max-width: 900px) {
+    min-width: unset;
+    padding: 24px 12px;
+  }
+
   &::-webkit-scrollbar {
     width: 8px;
   }
@@ -42,6 +47,15 @@ section {
 nav {
   @include dFlex();
 
+  @media (max-width: 900px) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+
+    & :last-child {
+      grid-column: span 2;
+    }
+  }
+
   > div {
     @include dFlex($gp: 4px);
     background-color: $tab-background-color;
@@ -49,6 +63,10 @@ nav {
     border-bottom: 4px solid $inactive-text;
     cursor: pointer;
     transition: border 250ms ease-in-out;
+
+    @media (max-width: 900px) {
+      padding: 16px 8px;
+    }
 
     &:first-child {
       border-bottom-left-radius: 4px;
