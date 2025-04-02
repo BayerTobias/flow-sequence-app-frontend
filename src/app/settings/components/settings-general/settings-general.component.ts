@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { SimpleSettingsButtonComponent } from '../../../shared/components/buttons/simple-settings-button/simple-settings-button.component';
 import { AuthService } from '../../../auth/services/auth.service';
 import { SettingsServiceService } from '../../../shared/services/settings-service.service';
@@ -16,6 +16,13 @@ export class SettingsGeneralComponent {
   public authService = inject(AuthService);
   public settingsService = inject(SettingsServiceService);
   private router = inject(Router);
+
+  public isMobile = window.innerWidth < 900;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.isMobile = event.target.innerWidth < 900;
+  }
 
   async logoutAndCloseSettings() {
     this.settingsService.settingsOpen = false;

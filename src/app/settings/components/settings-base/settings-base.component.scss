@@ -18,11 +18,17 @@ section {
 
   @media (max-width: 900px) {
     min-width: unset;
+    width: 100vw;
+    width: 100svw;
     padding: 24px 12px;
   }
 
   &::-webkit-scrollbar {
     width: 8px;
+
+    @media (max-width: 900px) {
+      width: 2px;
+    }
   }
 
   &::-webkit-scrollbar-track {
@@ -34,6 +40,14 @@ section {
   }
 }
 
+.close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: white;
+  cursor: pointer;
+}
+
 .headline {
   @include dFlex($gp: 16px);
 
@@ -41,6 +55,10 @@ section {
     color: $copy-light;
     font-size: 48px;
     font-weight: 400;
+
+    @media (max-width: 900px) {
+      font-size: 36px;
+    }
   }
 }
 

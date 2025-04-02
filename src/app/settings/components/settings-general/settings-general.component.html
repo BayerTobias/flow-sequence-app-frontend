@@ -30,8 +30,8 @@
   <div class="logout-delete-wrapper">
     @if (authService.userSignal()) {
     <app-settings-button-with-icon
-      [height]="74"
-      [width]="310"
+      [height]="isMobile ? 50 : 74"
+      [width]="isMobile ? 185 : 310"
       [content]="'Logout'"
       [fontSize]="15"
       [fontWeight]="500"
@@ -40,8 +40,8 @@
     ></app-settings-button-with-icon>
     }@else {
     <app-settings-button-with-icon
-      [height]="74"
-      [width]="310"
+      [height]="isMobile ? 50 : 74"
+      [width]="isMobile ? 185 : 310"
       [content]="'Back to Login'"
       [fontSize]="15"
       [fontWeight]="500"
@@ -50,8 +50,8 @@
     ></app-settings-button-with-icon>
     } @if (authService.userSignal()) {
     <app-simple-settings-button
-      [height]="74"
-      [width]="310"
+      [height]="isMobile ? 50 : 74"
+      [width]="isMobile ? 185 : 310"
       [content]="'Delete Account'"
       [fontSize]="15"
       [fontWeight]="500"
