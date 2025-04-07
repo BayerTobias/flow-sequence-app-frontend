@@ -19,9 +19,9 @@ export class SettingsGeneralComponent {
 
   public isMobile = window.innerWidth < 900;
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.isMobile = event.target.innerWidth < 900;
+  @HostListener('window:resize')
+  onResize() {
+    this.isMobile = window.innerWidth < 900;
   }
 
   async logoutAndCloseSettings() {

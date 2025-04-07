@@ -111,6 +111,7 @@ export class SettingsCustomTimersComponent {
       event.previousIndex,
       event.currentIndex
     );
+    this.settingsService.saveSettings();
   }
 
   dropCreateSequence(event: CdkDragDrop<string[]>) {

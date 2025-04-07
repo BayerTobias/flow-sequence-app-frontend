@@ -131,6 +131,10 @@ nav {
   flex-grow: 1;
   width: 100%;
 
+  @media (max-width: 900px) {
+    align-items: center;
+  }
+
   app-settings-general,
   app-settings-completed-sequences {
     display: flex;
