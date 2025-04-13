@@ -6,6 +6,10 @@ section {
   flex-direction: column;
   width: 100%;
   flex-grow: 1;
+
+  @media (max-width: 900px) {
+    width: 280px;
+  }
 }
 
 .headline {
@@ -25,10 +29,26 @@ section {
 .select-wrapper {
   @include dFlex($ai: flex-start, $gp: 40px);
   flex-direction: column;
+
+  @media (max-width: 900px) {
+    align-items: center;
+  }
 }
 
 .select-theme-wrapper {
   @include dFlex($gp: 36px);
+
+  @media (max-width: 900px) {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+
+    > :nth-child(2),
+    > :nth-child(3) {
+      margin-left: 16px;
+    }
+  }
 
   span {
     font-size: 16px;
@@ -45,6 +65,11 @@ section {
 .preview-wrapper {
   @include dFlex($ai: flex-start, $gp: 36px);
 
+  @media (max-width: 900px) {
+    flex-direction: column;
+    gap: 16px;
+  }
+
   span {
     font-size: 16px;
     color: $copy-light;
@@ -60,6 +85,10 @@ section {
       aspect-ratio: 16 / 9;
       object-fit: cover;
       object-position: center;
+
+      @media (max-width: 900px) {
+        width: 100%;
+      }
     }
 
     div {
