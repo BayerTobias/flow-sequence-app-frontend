@@ -19,7 +19,7 @@ export class SettingsServiceService {
   public appSettingsSignal = signal<AppSettings>(new AppSettings());
 
   // public activeTab: string = 'account';
-  public activeTab: string = 'themes';
+  public activeTab: string = 'sounds';
   public settingsOpen: boolean = true;
   public previewOpen: boolean = false;
 

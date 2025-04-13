@@ -9,6 +9,10 @@ section {
   overflow: auto;
 
   color: $copy-light;
+
+  @media (max-width: 900px) {
+    width: 280px;
+  }
 }
 
 .headline {
@@ -42,6 +46,12 @@ section {
   .drag-left {
     @include dFlex($gp: 16px, $ai: flex-start);
     flex-direction: column;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
   }
 
   .drag-right {
@@ -78,6 +88,11 @@ section {
   border: 1px dashed $interface-accent-1;
   overflow: hidden;
 
+  @media (max-width: 900px) {
+    height: unset;
+    min-height: 35px;
+  }
+
   .cdk-drag-placeholder {
     display: none !important;
   }
@@ -91,8 +106,18 @@ section {
   border-radius: 4px;
   padding: 8px 16px;
   cursor: pointer;
+  text-align: center;
+
+  @media (max-width: 900px) {
+    max-width: 110px;
+    padding: 8px;
+  }
 }
 
 mat-slider {
   width: 500px;
+
+  @media (max-width: 900px) {
+    width: 80%;
+  }
 }
