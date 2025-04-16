@@ -107,11 +107,11 @@ p {
 
     .name-row {
       text-align: start !important;
-      max-width: 280px;
-      word-wrap: break-word;
 
       @media (max-width: 900px) {
         font-weight: 600;
+        max-width: 280px;
+        word-wrap: break-word;
       }
     }
 
