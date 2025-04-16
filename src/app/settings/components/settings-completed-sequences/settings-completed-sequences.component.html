@@ -9,15 +9,19 @@
   <div class="completed-sequences-list">
     <div class="list-headline">
       <div>Name of the flow sequence:</div>
-      <div>Completed on:</div>
-      <div>Duration:</div>
+      <div class="headline-details">
+        <div>Completed on:</div>
+        <div>Duration:</div>
+      </div>
     </div>
     @for (sequence of settingsService.appSettings.completedSequences; track
     $index) {
     <div class="list-row">
-      <div class="name-row">{{ sequence.name }}</div>
-      <div>{{ formatCompleted(sequence) }}</div>
-      <div>{{ formatDuration(sequence) }}</div>
+      <div class="name-row list-cell">{{ sequence.name }}</div>
+      <div class="details-container">
+        <div class="list-cell">{{ formatCompleted(sequence) }}</div>
+        <div class="list-cell">{{ formatDuration(sequence) }}</div>
+      </div>
     </div>
     }
   </div>

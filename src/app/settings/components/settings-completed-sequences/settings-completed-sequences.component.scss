@@ -6,6 +6,10 @@ section {
   flex-direction: column;
   width: 100%;
   flex-grow: 1;
+
+  @media (max-width: 900px) {
+    max-width: 280px;
+  }
 }
 
 .headline {
@@ -31,30 +35,102 @@ p {
 .completed-sequences-list {
   display: grid;
   grid-auto-rows: max-content;
-  grid-template-columns: 1fr 175px 88px;
+  grid-template-columns: 1fr auto;
   overflow: auto;
   gap: 8px;
   width: 100%;
   max-width: 790.5px;
   flex-grow: 1;
 
+  @media (max-width: 900px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
   .list-headline {
     display: contents;
+
+    @media (max-width: 900px) {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4px;
+
+      > :first-child {
+        text-align: start;
+        align-self: center;
+        border-radius: 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.33);
+        background: rgba(255, 255, 255, 0.1);
+        color: $copy-light;
+        font-weight: 600;
+        padding: 8px 16px;
+      }
+    }
 
     div {
       color: $copy-light;
       font-weight: 600;
+    }
+
+    .headline-details {
+      display: grid;
+      grid-template-columns: 175px 88px;
+      gap: 8px;
+
+      @media (max-width: 900px) {
+        grid-template-columns: auto 1fr;
+        gap: 4px;
+
+        > div {
+          text-align: start;
+          align-self: center;
+          border-radius: 8px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.33);
+          background: rgba(255, 255, 255, 0.1);
+          color: rgba(170, 170, 170, 1);
+          font-weight: 400;
+          padding: 8px 16px;
+        }
+      }
     }
   }
 
   .list-row {
     display: contents;
 
-    .name-row {
-      text-align: start;
+    @media (max-width: 900px) {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4px;
     }
 
-    > div {
+    .name-row {
+      text-align: start !important;
+      max-width: 280px;
+      word-wrap: break-word;
+
+      @media (max-width: 900px) {
+        font-weight: 600;
+      }
+    }
+
+    .details-container {
+      display: grid;
+      grid-template-columns: 175px 88px;
+      gap: 8px;
+
+      @media (max-width: 900px) {
+        grid-template-columns: auto 1fr;
+        gap: 4px;
+
+        > div {
+          color: rgba(170, 170, 170, 1);
+        }
+      }
+    }
+
+    .list-cell {
       text-align: center;
       align-self: center;
       border-radius: 8px;
