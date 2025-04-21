@@ -8,11 +8,11 @@ main {
   min-height: 100svh;
   min-width: 100vw;
   min-width: 100svw;
+}
+
+.background-fixed {
+  @include background-fixed();
   background-image: url("/assets/img/backgrounds/background-1.webp");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
 }
 
 section {

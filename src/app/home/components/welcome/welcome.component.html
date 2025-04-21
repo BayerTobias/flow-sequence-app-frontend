@@ -1,9 +1,11 @@
-<div
-  class="wrapper"
-  [style.background-image]="
-    'url(' + settingsService.appSettings.theme.backgroundImage + ')'
-  "
->
+<div class="wrapper">
+  <div
+    class="background-fixed"
+    [style.background-image]="
+      'url(' + settingsService.appSettings.theme.backgroundImage + ')'
+    "
+  ></div>
+
   <div
     [ngStyle]="{
       background:

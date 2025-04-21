@@ -1,14 +1,16 @@
 @import "./../../../../mixin.scss";
 
 .wrapper {
-  background-size: cover;
-  background-position: center;
   min-width: 100vw;
   min-width: 100svw;
   min-height: 100vh;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
+}
+
+.background-fixed {
+  @include background-fixed();
 }
 
 main {
