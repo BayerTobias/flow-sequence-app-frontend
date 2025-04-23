@@ -29,7 +29,6 @@ export class SettingsThemesComponent {
 
   chooseTheme() {
     if (this.settingsService.appSettings.theme !== this.selectedTheme) {
-      // this.settingsService.transitionInProgress = true;
       this.settingsService.appSettings.theme = this.selectedTheme;
       this.settingsService.saveSettings();
     } else {

@@ -33,14 +33,11 @@ export class FlowSequenceTimerComponent {
   private router = inject(Router);
   private id: number | null = null;
   private stepIndex: number | null = null;
-  // private timeRemaining: number | null = null;
 
   constructor() {
     this.route.queryParams.subscribe((params) => {
       const id: number = params['id'];
       const index = params['stepIndex'];
-
-      // const timeRemaining = params['timeRemaining'];
 
       this.flowSequenceService.clearTimerInterval();
       this.flowSequenceService.isPaused = true;
@@ -49,12 +46,9 @@ export class FlowSequenceTimerComponent {
         this.router.navigateByUrl('welcome');
       } else {
         this.id = Number(id);
-
         if (index) {
           this.stepIndex = Number(index);
-          // this.timeRemaining = Number(timeRemaining);
         } else this.stepIndex = null;
-
         this.matchIdAndSetupSequence();
       }
     });
@@ -85,7 +79,6 @@ export class FlowSequenceTimerComponent {
 
   setupFlowSequence(sequence: FlowSequence) {
     this.flowSequenceService.activeFlowSequence.set(sequence);
-    // this.flowSequenceService.activeFlowSequence = sequence;
     if (this.stepIndex) {
       this.flowSequenceService.currentStepindex = this.stepIndex;
     } else {
@@ -93,7 +86,6 @@ export class FlowSequenceTimerComponent {
 
       this.flowSequenceService.currentStepindex = 0;
     }
-
     this.flowSequenceService.setupTimer();
   }
 

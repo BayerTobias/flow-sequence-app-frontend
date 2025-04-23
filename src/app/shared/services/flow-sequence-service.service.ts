@@ -80,16 +80,6 @@ export class FlowSequenceServiceService {
     this.updateStepStatuses();
   }
 
-  // setupQeryParamTimer(stepIndex: number) {
-  //   this.currentStepindex = stepIndex;
-  //   this.currentStep = this.activeFlowSequence.steps[this.currentStepindex];
-  //   this.currentStepTimeRemaining = timeRemaining;
-  //   this.minutesRemaining = Math.floor(timeRemaining / 60);
-  //   this.currentStep.complete = false;
-  //   this.sequenceComplete = false;
-  //   this.updateStepStatuses();
-  // }
-
   resetTimer() {
     this.currentStepindex = 0;
     this.activeFlowSequence().steps.forEach((step) => {
@@ -115,9 +105,7 @@ export class FlowSequenceServiceService {
     const baseUrl = this.location.path();
     const fullUrl = new URL(window.location.href);
     const searchParams = new URLSearchParams(fullUrl.search);
-
     searchParams.set('stepIndex', String(this.currentStepindex));
-    // searchParams.set('timeRemaining', String(this.currentStepTimeRemaining));
 
     this.location.replaceState(
       `${baseUrl.split('?')[0]}?${searchParams.toString()}`

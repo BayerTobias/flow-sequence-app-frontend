@@ -46,10 +46,6 @@ section {
   flex-direction: column;
   width: 100%;
 
-  // @media (max-width: 900px) {
-  //   align-items: center;
-  // }
-
   > div {
     @include dFlex($gp: 8px);
 
@@ -253,10 +249,6 @@ section {
 
     img {
       cursor: pointer;
-
-      // @media (max-width: 900px) {
-      //   display: none;
-      // }
     }
 
     > div {

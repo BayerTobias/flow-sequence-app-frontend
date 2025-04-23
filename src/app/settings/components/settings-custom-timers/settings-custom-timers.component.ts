@@ -90,10 +90,9 @@ export class SettingsCustomTimersComponent {
     const chosenSequece =
       this.settingsService.appSettings.customSequences[index];
     this.flowSequenceService.activeFlowSequence.set(chosenSequece);
-
     this.flowSequenceService.resetTimer();
     this.settingsService.settingsOpen = false;
-    // this.closeOverlayEvent.emit();
+
     this.router.navigate(['flowsequencetimer'], {
       queryParams: { id: chosenSequece.id },
     });
