@@ -18,7 +18,9 @@ export class SettingsServiceService {
 
   public appSettingsSignal = signal<AppSettings>(new AppSettings());
 
-  public activeTab: string = 'account';
+  // public activeTab: string = 'account';
+  public activeTab: string = 'sounds';
+
   public settingsOpen: boolean = true;
   public confirmDeleteAccountOpen: boolean = false;
   public previewOpen: boolean = false;

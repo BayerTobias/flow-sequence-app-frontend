@@ -22,6 +22,32 @@
   <div class="drag-wrapper">
     <div class="drag-left">
       <div>
+        <span>Shorter notifications:</span>
+        <div
+          cdkDropList
+          [cdkDropListData]="shortSounds"
+          [cdkDropListConnectedTo]="[
+            'flowArea',
+            'shortBreakArea',
+            'longBreakArea',
+            'completedArea'
+          ]"
+          cdkDropListSortingDisabled
+          class="drag-area"
+        >
+          @for (sound of shortSounds; track $index) {
+          <div
+            (click)="playSound(sound)"
+            class="sound-item"
+            cdkDrag
+            [cdkDragData]="sound"
+          >
+            {{ sound.name }}
+          </div>
+          }
+        </div>
+      </div>
+      <div>
         <span>Longer notifications:</span>
         <div
           cdkDropList
@@ -48,7 +74,30 @@
         </div>
       </div>
       <div>
-        <span>Shorter notifications:</span>
+        <span>Fanfare notifications:</span>
+        <div
+          cdkDropList
+          [cdkDropListData]="fanfareSounds"
+          [cdkDropListConnectedTo]="[
+            'flowArea',
+            'shortBreakArea',
+            'longBreakArea',
+            'completedArea'
+          ]"
+          cdkDropListSortingDisabled
+          class="drag-area"
+        >
+          @for (sound of fanfareSounds; track $index) {
+          <div
+            (click)="playSound(sound)"
+            class="sound-item"
+            cdkDrag
+            [cdkDragData]="sound"
+          >
+            {{ sound.name }}
+          </div>
+          }
+        </div>
       </div>
     </div>
     <div class="drag-right">
@@ -68,7 +117,7 @@
               (click)="playSound(selectedFlowTimeSound)"
               cdkDrag
               (cdkDragEnded)="checkDropOutside($event, 'flowArea')"
-              class="sound-item"
+              class="sound-item selected-sound-item"
             >
               {{ selectedFlowTimeSound.name }}
             </div>
@@ -99,7 +148,7 @@
               (click)="playSound(selectedShortBreakSound)"
               cdkDrag
               (cdkDragEnded)="checkDropOutside($event, 'shortBreakArea')"
-              class="sound-item"
+              class="sound-item selected-sound-item"
             >
               {{ selectedShortBreakSound.name }}
             </div>
@@ -130,7 +179,7 @@
               (click)="playSound(selectedLongBreakSound)"
               cdkDrag
               (cdkDragEnded)="checkDropOutside($event, 'longBreakArea')"
-              class="sound-item"
+              class="sound-item selected-sound-item"
             >
               {{ selectedLongBreakSound.name }}
             </div>
@@ -161,7 +210,7 @@
               (click)="playSound(selectedCompletedSound)"
               cdkDrag
               (cdkDragEnded)="checkDropOutside($event, 'completedArea')"
-              class="sound-item"
+              class="sound-item selected-sound-item"
             >
               {{ selectedCompletedSound.name }}
             </div>

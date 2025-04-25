@@ -19,25 +19,66 @@ import { FormsModule } from '@angular/forms';
 })
 export class SettingsSoundComponent {
   public settingsService = inject(SettingsServiceService);
-  public longSounds: NotificationSound[] = [
+
+  public shortSounds: NotificationSound[] = [
     new NotificationSound({
-      name: 'Big Band',
-      path: 'assets/sounds/big-band-celebration.mp3',
+      name: 'Sahara',
+      path: 'assets/sounds/middle_east_short_01.wav',
     }),
     new NotificationSound({
-      name: 'Celebration',
-      path: 'assets/sounds/celebration-big.mp3',
+      name: 'Sakura',
+      path: 'assets/sounds/far_east_short_01.wav',
     }),
     new NotificationSound({
-      name: 'Correct Answer',
-      path: 'assets/sounds/correct-answer.mp3',
+      name: 'Modern',
+      path: 'assets/sounds/chime_short_01.wav',
     }),
     new NotificationSound({
-      name: 'Dream Harp',
-      path: 'assets/sounds/dream-harp.mp3',
+      name: 'Simple',
+      path: 'assets/sounds/chime_short_02.wav',
+    }),
+    new NotificationSound({
+      name: 'Harp',
+      path: 'assets/sounds/harp_short-01.wav',
     }),
   ];
-  public shortSounds: NotificationSound[] = [];
+  public longSounds: NotificationSound[] = [
+    new NotificationSound({
+      name: 'Tibet',
+      path: 'assets/sounds/far_east_long_01.wav',
+    }),
+    new NotificationSound({
+      name: 'Harp Intro',
+      path: 'assets/sounds/harp_long_01.wav',
+    }),
+    new NotificationSound({
+      name: 'Harp Rise',
+      path: 'assets/sounds/harp_long_02.wav',
+    }),
+  ];
+  public fanfareSounds: NotificationSound[] = [
+    new NotificationSound({
+      name: 'Cartoon',
+      path: 'assets/sounds/fanfare_cartoon.wav',
+    }),
+    new NotificationSound({
+      name: 'Desert',
+      path: 'assets/sounds/fanfare_middle_east.wav',
+    }),
+    new NotificationSound({
+      name: 'Tuba',
+      path: 'assets/sounds/fanfare_modern.wav',
+    }),
+    new NotificationSound({
+      name: 'Drumroll',
+      path: 'assets/sounds/fanfare_drumroll.wav',
+    }),
+    new NotificationSound({
+      name: 'Epic',
+      path: 'assets/sounds/fanfare_epic.wav',
+    }),
+  ];
+
   public volumeLevel: number = 0;
 
   public get selectedFlowTimeSound(): NotificationSound | null {

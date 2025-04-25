@@ -115,6 +115,16 @@ section {
   }
 }
 
+.selected-sound-item {
+  min-width: 100%;
+
+  @media (max-width: 900px) {
+    max-width: 110px;
+    min-width: 95px;
+    padding: 8px;
+  }
+}
+
 mat-slider {
   width: 500px;
 
