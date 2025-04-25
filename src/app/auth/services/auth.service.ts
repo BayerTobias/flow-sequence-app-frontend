@@ -12,7 +12,6 @@ import {
 import { Router } from '@angular/router';
 
 import { reauthenticateWithPopup } from 'firebase/auth';
-import { FirestoreServiceService } from '../../shared/services/firestore-service.service';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +19,6 @@ import { FirestoreServiceService } from '../../shared/services/firestore-service
 export class AuthService {
   private auth = inject(Auth);
   private router = inject(Router);
-  private firestoreService = inject(FirestoreServiceService);
 
   private provider = new GoogleAuthProvider();
 

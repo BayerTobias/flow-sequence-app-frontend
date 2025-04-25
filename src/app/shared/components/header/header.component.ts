@@ -10,8 +10,9 @@ import {
 import { SettingsOverlayComponent } from '../../../settings/components/settings-overlay/settings-overlay.component';
 import { PreviewOverlayComponent } from '../preview-overlay/preview-overlay.component';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { filter, first } from 'rxjs';
+import { filter } from 'rxjs';
 import { AppNavigationService } from '../../services/app-navigation.service';
+import { DeleteAccountOverlayComponent } from '../delete-account-overlay/delete-account-overlay.component';
 
 export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   showDelay: 500,
@@ -28,6 +29,7 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   imports: [
     PreviewOverlayComponent,
     SettingsOverlayComponent,
+    DeleteAccountOverlayComponent,
     CommonModule,
     MatTooltipModule,
   ],

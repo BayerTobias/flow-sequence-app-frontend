@@ -144,5 +144,6 @@
 
 @if (settingsService.settingsOpen) {
 <app-settings-overlay></app-settings-overlay>}
-@if(settingsService.previewOpen){<app-preview-overlay></app-preview-overlay>
-}
+@if(settingsService.previewOpen){<app-preview-overlay></app-preview-overlay> }
+@if (settingsService.confirmDeleteAccountOpen) {<app-delete-account-overlay
+></app-delete-account-overlay>}

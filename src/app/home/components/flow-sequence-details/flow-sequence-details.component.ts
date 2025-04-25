@@ -16,11 +16,10 @@ import { Router } from '@angular/router';
 export class FlowSequenceDetailsComponent {
   public flowSequenceService = inject(FlowSequenceServiceService);
   public settingsService = inject(SettingsServiceService);
+  private router = inject(Router);
 
   public flowSequence: FlowSequence = new FlowSequence();
   public preview: boolean = false;
-
-  private router = inject(Router);
 
   constructor() {
     effect(() => {

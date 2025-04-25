@@ -1,0 +1,26 @@
+@import "./../../../../styles.scss";
+@import "./../../../../mixin.scss";
+
+.confirm-delete-wrapper {
+  @include dFlex();
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: transform 250ms ease-in-out;
+  z-index: 100;
+
+  > div {
+    transition: transform 250ms ease-in-out;
+    transform: translateX(calc(50vw + 50%));
+    background-color: white;
+    padding: 36px;
+  }
+}
+
+.start-animation {
+  transform: translateX(0) !important;
+}
