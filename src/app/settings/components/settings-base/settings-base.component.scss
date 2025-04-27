@@ -40,14 +40,6 @@ section {
   }
 }
 
-.close-button {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  color: white;
-  cursor: pointer;
-}
-
 .headline {
   @include dFlex($gp: 16px);
 
@@ -156,4 +148,10 @@ nav {
 
 .start-animation {
   transform: translateX(0);
+}
+
+app-close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
 }

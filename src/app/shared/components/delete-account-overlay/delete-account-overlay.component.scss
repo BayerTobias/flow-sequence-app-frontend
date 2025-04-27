@@ -14,10 +14,32 @@
   z-index: 100;
 
   > div {
+    @include dFlex($gp: 24px);
+    flex-direction: column;
+    padding: 32px;
+    color: $copy-light;
     transition: transform 250ms ease-in-out;
     transform: translateX(calc(50vw + 50%));
-    background-color: white;
-    padding: 36px;
+    border-radius: 24px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.33);
+    box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(27.5px);
+
+    width: 270px;
+
+    h2 {
+      font-weight: 400;
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    span {
+      color: $interface-accent-2;
+    }
   }
 }
 

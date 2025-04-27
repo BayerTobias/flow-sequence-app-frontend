@@ -1,0 +1,17 @@
+.wrapper {
+  padding: 4px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 250ms ease-in-out;
+  background-color: unset;
+  border: unset;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  > img {
+    width: 36px;
+    display: block;
+  }
+}

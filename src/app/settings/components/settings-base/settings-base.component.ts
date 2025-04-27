@@ -6,6 +6,7 @@ import { SettingsServiceService } from '../../../shared/services/settings-servic
 import { SettingsThemesComponent } from '../settings-themes/settings-themes.component';
 import { SettingsSoundComponent } from '../settings-sound/settings-sound.component';
 import { SettingsCompletedSequencesComponent } from '../settings-completed-sequences/settings-completed-sequences.component';
+import { CloseButtonComponent } from '../../../shared/components/buttons/close-button/close-button.component';
 
 @Component({
   selector: 'app-settings-base',
@@ -17,6 +18,7 @@ import { SettingsCompletedSequencesComponent } from '../settings-completed-seque
     SettingsThemesComponent,
     SettingsSoundComponent,
     SettingsCompletedSequencesComponent,
+    CloseButtonComponent,
   ],
   templateUrl: './settings-base.component.html',
   styleUrl: './settings-base.component.scss',

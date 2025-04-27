@@ -39,7 +39,7 @@ export class SettingsSoundComponent {
     }),
     new NotificationSound({
       name: 'Harp',
-      path: 'assets/sounds/harp_short-01.wav',
+      path: 'assets/sounds/harp_short_01.wav',
     }),
   ];
   public longSounds: NotificationSound[] = [

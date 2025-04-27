@@ -1,6 +1,26 @@
 <div class="confirm-delete-wrapper">
   <div [ngClass]="{ 'start-animation': startAnimation }">
-    <button>Delete</button>
-    <button (click)="closeConfirmDelete()">Back</button>
+    <h2>Do you <b>really</b> wanna <span>delete</span> your account?</h2>
+
+    <p>
+      All settings and your saved custom sequences will be deleted for good
+      and<br />
+      <span>can not be restored</span>.
+    </p>
+
+    <app-simple-settings-button
+      (submitEvent)="deleteAccount()"
+      [content]="'Delete'"
+      [width]="180"
+      [height]="42"
+      [style]="'dark'"
+    ></app-simple-settings-button>
+
+    <app-simple-settings-button
+      (submitEvent)="closeConfirmDelete()"
+      [content]="'Cancel'"
+      [width]="180"
+      [height]="42"
+    ></app-simple-settings-button>
   </div>
 </div>

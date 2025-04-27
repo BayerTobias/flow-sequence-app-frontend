@@ -3,11 +3,12 @@ import { Component, inject } from '@angular/core';
 import { AuthService } from '../../../auth/services/auth.service';
 import { SettingsServiceService } from '../../services/settings-service.service';
 import { Router } from '@angular/router';
+import { SimpleSettingsButtonComponent } from '../buttons/simple-settings-button/simple-settings-button.component';
 
 @Component({
   selector: 'app-delete-account-overlay',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SimpleSettingsButtonComponent],
   templateUrl: './delete-account-overlay.component.html',
   styleUrl: './delete-account-overlay.component.scss',
 })
