@@ -7,11 +7,22 @@
       flowSequenceService.secondsOfMinuteRemainung <= 1
   }"
   [ngStyle]="{
-    '--scrollbar-color': settingsService.appSettings.theme.accentColor
+    '--scrollbar-color': settingsService.appSettings.theme.accentColor,
+    'max-height': isPreview ? '90vh' : null
   }"
   (click)="$event.stopPropagation()"
 >
-  <div class="sequence-box">
+  @if (isPreview) {<app-close-button
+    (buttonClicked)="closeOverlay()"
+  ></app-close-button
+  >} @if (isPreview) {
+  <h2>{{ flowSequence.name }}</h2>
+  }
+
+  <div
+    class="sequence-box"
+    [ngStyle]="isPreview ? { 'max-height': 'calc(90vh - 250px)' } : {}"
+  >
     @for (step of flowSequence.steps; track $index) {
 
     <div class="step-wrapper">

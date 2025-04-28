@@ -1,15 +1,23 @@
-import { Component, effect, inject } from '@angular/core';
+import {
+  Component,
+  effect,
+  EventEmitter,
+  inject,
+  Input,
+  Output,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlowSequenceServiceService } from '../../../shared/services/flow-sequence-service.service';
 import { SettingsServiceService } from '../../../shared/services/settings-service.service';
 import { FlowSequence } from '../../../models/flow-sequence.model';
 import { SimpleSettingsButtonComponent } from '../../../shared/components/buttons/simple-settings-button/simple-settings-button.component';
 import { Router } from '@angular/router';
+import { CloseButtonComponent } from '../../../shared/components/buttons/close-button/close-button.component';
 
 @Component({
   selector: 'app-flow-sequence-details',
   standalone: true,
-  imports: [CommonModule, SimpleSettingsButtonComponent],
+  imports: [CommonModule, SimpleSettingsButtonComponent, CloseButtonComponent],
   templateUrl: './flow-sequence-details.component.html',
   styleUrl: './flow-sequence-details.component.scss',
 })
@@ -17,6 +25,9 @@ export class FlowSequenceDetailsComponent {
   public flowSequenceService = inject(FlowSequenceServiceService);
   public settingsService = inject(SettingsServiceService);
   private router = inject(Router);
+
+  @Input() isPreview: boolean = false;
+  @Output() closeOverlayClicked = new EventEmitter<void>();
 
   public flowSequence: FlowSequence = new FlowSequence();
   public preview: boolean = false;
@@ -72,5 +83,9 @@ export class FlowSequenceDetailsComponent {
         block: 'end',
       });
     }
+  }
+
+  closeOverlay() {
+    this.closeOverlayClicked.emit();
   }
 }
