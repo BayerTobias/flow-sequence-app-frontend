@@ -56,6 +56,10 @@ footer {
   }
 }
 
+a {
+  text-decoration: none;
+}
+
 .footer-item {
   @include dFlex($gp: 4px);
 
