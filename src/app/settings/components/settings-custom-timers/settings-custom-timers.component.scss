@@ -211,6 +211,11 @@ section {
 
       input {
         text-align: center;
+
+        &::-webkit-inner-spin-button,
+        ::-webkit-outer-spin-button {
+          display: none;
+        }
       }
     }
   }

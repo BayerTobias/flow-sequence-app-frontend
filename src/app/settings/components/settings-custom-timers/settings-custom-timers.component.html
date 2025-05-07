@@ -131,7 +131,12 @@
       <div>
         <mat-form-field appearance="outline" subscriptSizing="dynamic">
           <mat-label>Minutes</mat-label>
-          <input matInput [(ngModel)]="flowTimeDuration" placeholder="Min" />
+          <input
+            matInput
+            type="number"
+            [(ngModel)]="flowTimeDuration"
+            placeholder="Min"
+          />
         </mat-form-field>
         <app-simple-settings-button
           [width]="120"
@@ -144,7 +149,12 @@
       <div>
         <mat-form-field appearance="outline" subscriptSizing="dynamic">
           <mat-label>Minutes</mat-label>
-          <input matInput [(ngModel)]="shortBreakDuration" placeholder="Min" />
+          <input
+            matInput
+            type="number"
+            [(ngModel)]="shortBreakDuration"
+            placeholder="Min"
+          />
         </mat-form-field>
         <app-simple-settings-button
           [width]="120"
@@ -157,7 +167,12 @@
       <div>
         <mat-form-field appearance="outline" subscriptSizing="dynamic">
           <mat-label>Minutes</mat-label>
-          <input matInput [(ngModel)]="longBreakDuration" placeholder="Min" />
+          <input
+            matInput
+            type="number"
+            [(ngModel)]="longBreakDuration"
+            placeholder="Min"
+          />
         </mat-form-field>
         <app-simple-settings-button
           [width]="120"

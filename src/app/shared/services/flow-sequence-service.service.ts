@@ -147,6 +147,8 @@ export class FlowSequenceServiceService {
     });
     data.duration = this.activeFlowSequence().steps.reduce(
       (totalDuration, step) => {
+        console.log(totalDuration, step.duration);
+
         return totalDuration + step.duration;
       },
       0

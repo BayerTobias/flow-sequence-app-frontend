@@ -132,6 +132,8 @@ export class SettingsCustomTimersComponent {
     this.newFlowSequence.addStep(step);
     this.asignPostion();
 
+    console.log(step.duration);
+
     setTimeout(() => {
       this.focusLastImput();
     }, 1);
@@ -147,6 +149,8 @@ export class SettingsCustomTimersComponent {
     });
     this.newFlowSequence.addStep(step);
     this.asignPostion();
+
+    console.log(typeof step.duration);
   }
 
   addLongBreak() {
