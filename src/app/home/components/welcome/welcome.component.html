@@ -6,6 +6,16 @@
     "
   ></div>
 
+  @if (settingsService.themeTransitionInProgress) {
+  <div
+    class="backgound-fade-out"
+    [style.background-image]="
+      'url(' + settingsService.oldTheme?.backgroundImage + ')'
+    "
+    [ngClass]="{ 'fade-out': settingsService.themeFade }"
+  ></div>
+  }
+
   <div
     [ngStyle]="{
       background:
@@ -29,9 +39,9 @@
 
   <main>
     <div class="welcome-wrapper">
-      <h1>Hallo{{ displayName }},</h1>
+      <h1>Hello{{ displayName }},</h1>
 
-      <span>was möchtest du heute machen?</span>
+      <span>what do you wanna do today?</span>
     </div>
 
     <div class="buttons-wrapper">

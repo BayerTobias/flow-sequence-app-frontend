@@ -18,6 +18,10 @@ export class SettingsServiceService {
 
   public appSettingsSignal = signal<AppSettings>(new AppSettings());
 
+  public themeTransitionInProgress: boolean = false;
+  public themeFade: boolean = false;
+  public oldTheme: Theme | null = null;
+
   public activeTab: string = 'account';
   public settingsOpen: boolean = false;
   public confirmDeleteAccountOpen: boolean = false;

@@ -29,11 +29,27 @@ export class SettingsThemesComponent {
 
   chooseTheme() {
     if (this.settingsService.appSettings.theme !== this.selectedTheme) {
+      this.animateThemeChange();
       this.settingsService.appSettings.theme = this.selectedTheme;
       this.settingsService.saveSettings();
     } else {
       console.log('ist schon dummy');
     }
+  }
+
+  animateThemeChange() {
+    this.settingsService.oldTheme = this.settingsService.appSettings.theme;
+    this.settingsService.themeTransitionInProgress = true;
+
+    setTimeout(() => {
+      this.settingsService.themeFade = true;
+    }, 1);
+
+    setTimeout(() => {
+      this.settingsService.oldTheme = null;
+      this.settingsService.themeFade = false;
+      this.settingsService.themeTransitionInProgress = false;
+    }, 650);
   }
 
   compareThemes(theme1: Theme, theme2: Theme): boolean {

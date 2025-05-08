@@ -6,6 +6,16 @@
     "
   ></div>
 
+  @if (settingsService.themeTransitionInProgress) {
+  <div
+    class="backgound-fade-out"
+    [style.background-image]="
+      'url(' + settingsService.oldTheme?.backgroundImage + ')'
+    "
+    [ngClass]="{ 'fade-out': settingsService.themeFade }"
+  ></div>
+  }
+
   <div
     [ngStyle]="{
       background:

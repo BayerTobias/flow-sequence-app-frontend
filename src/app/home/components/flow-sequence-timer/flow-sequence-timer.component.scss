@@ -13,6 +13,18 @@
   @include background-fixed();
 }
 
+.backgound-fade-out {
+  @include background-fixed();
+  z-index: -4;
+  transition: opacity 600ms ease-in-out;
+  opacity: 1;
+  background-image: url("/assets/img/backgrounds/background-1.webp");
+}
+
+.fade-out {
+  opacity: 0 !important;
+}
+
 main {
   @include dFlex();
   flex-grow: 1;
