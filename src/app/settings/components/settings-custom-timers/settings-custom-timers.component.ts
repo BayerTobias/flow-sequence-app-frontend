@@ -56,6 +56,7 @@ export class SettingsCustomTimersComponent {
   public longBreakDuration: number = 15;
   public sequenceName: string = '';
   public sequenceDescription: string = '';
+  public confirmDeleteIndex: number | null = null;
 
   public nameError: boolean = false;
   public sequenceCountError = false;
@@ -76,6 +77,7 @@ export class SettingsCustomTimersComponent {
   deleteSequence(index: number) {
     const sequences = this.settingsService.appSettings.customSequences;
     sequences.splice(index, 1);
+    this.confirmDeleteIndex = null;
     this.settingsService.saveSettings();
   }
 
@@ -87,14 +89,14 @@ export class SettingsCustomTimersComponent {
   }
 
   chooseSequence(index: number) {
-    const chosenSequece =
+    const chosenSequence =
       this.settingsService.appSettings.customSequences[index];
-    this.flowSequenceService.activeFlowSequence.set(chosenSequece);
+    this.flowSequenceService.activeFlowSequence.set(chosenSequence);
     this.flowSequenceService.resetTimer();
     this.settingsService.settingsOpen = false;
 
     this.router.navigate(['flowsequencetimer'], {
-      queryParams: { id: chosenSequece.id },
+      queryParams: { id: chosenSequence.id },
     });
   }
 
@@ -130,12 +132,12 @@ export class SettingsCustomTimersComponent {
       duration: this.flowTimeDuration,
     });
     this.newFlowSequence.addStep(step);
-    this.asignPostion();
+    this.assignPosition();
 
     console.log(step.duration);
 
     setTimeout(() => {
-      this.focusLastImput();
+      this.focusLastInput();
     }, 1);
   }
 
@@ -148,7 +150,7 @@ export class SettingsCustomTimersComponent {
       duration: this.shortBreakDuration,
     });
     this.newFlowSequence.addStep(step);
-    this.asignPostion();
+    this.assignPosition();
 
     console.log(typeof step.duration);
   }
@@ -162,10 +164,10 @@ export class SettingsCustomTimersComponent {
       duration: this.longBreakDuration,
     });
     this.newFlowSequence.addStep(step);
-    this.asignPostion();
+    this.assignPosition();
   }
 
-  focusLastImput() {
+  focusLastInput() {
     if (this.nameInputFields && this.nameInputFields.length > 0) {
       const lastInput = this.nameInputFields.last;
 
@@ -227,7 +229,7 @@ export class SettingsCustomTimersComponent {
     this.newFlowSequence.steps.splice(index, 1);
   }
 
-  asignPostion() {
+  assignPosition() {
     this.newFlowSequence.steps.forEach((step, index) => {
       step.position = index;
     });

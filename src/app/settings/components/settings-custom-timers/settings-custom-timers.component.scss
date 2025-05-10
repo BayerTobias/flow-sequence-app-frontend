@@ -6,6 +6,9 @@ section {
   flex-direction: column;
   width: 100%;
   flex-grow: 1;
+  overflow-x: hidden;
+
+  position: relative;
 
   @media (max-width: 900px) {
     max-width: 280px;
@@ -149,7 +152,7 @@ section {
   > div {
     @include dFlex($gp: 20px);
 
-    > img {
+    img {
       cursor: pointer;
     }
 
@@ -157,6 +160,33 @@ section {
       font-size: 16px;
       color: $copy-dark;
     }
+  }
+}
+
+.delete-sequence-container {
+  position: relative;
+}
+
+.confirm-delete {
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: red;
+  width: 100px;
+  height: 50px;
+  z-index: 1;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 10px solid red;
   }
 }
 
@@ -295,4 +325,17 @@ section {
 
 .red {
   color: rgba(229, 69, 72, 1) !important;
+}
+
+.overlay {
+  @include dFlex();
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: red;
+  opacity: 0.5;
+  // transform: translateX(calc(100% + 48px));
 }

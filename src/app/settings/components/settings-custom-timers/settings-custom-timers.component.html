@@ -1,4 +1,8 @@
 <section>
+  <!-- <div class="overlay">
+    <div>asdasd</div>
+  </div> -->
+
   <div class="headline">
     <img src="assets\img\icons\clock.svg" alt="settings" />
     <span>Custom Flow Sequence</span>
@@ -61,11 +65,21 @@
         <span>{{ sequence.name }}</span>
       </div>
       <div>
-        <img
-          (click)="deleteSequence($index)"
-          src="assets\img\icons\dumpster.svg"
-          alt="magnifying-glass"
-        />
+        <div class="delete-sequence-container">
+          <img
+            (click)="confirmDeleteIndex = $index"
+            src="assets\img\icons\dumpster.svg"
+            alt="magnifying-glass"
+          />
+
+          @if (confirmDeleteIndex === $index) {
+          <div class="confirm-delete">
+            <button>Cancel</button>
+            <button (click)="deleteSequence($index)">Delete</button>
+          </div>
+          }
+        </div>
+
         <img
           (click)="viewSequence(sequence)"
           src="assets\img\icons\magnifying-glass.svg"

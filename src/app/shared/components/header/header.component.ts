@@ -71,14 +71,6 @@ export class HeaderComponent {
       });
   }
 
-  navigateLoginOrWelcome() {
-    if (this.showMenu) {
-      this.router.navigateByUrl('/welcome');
-    } else {
-      this.router.navigateByUrl('/login');
-    }
-  }
-
   ngOnInit() {
     const FocusMode = this.settingsService.appSettings.focusMode;
 
@@ -88,6 +80,14 @@ export class HeaderComponent {
     } else {
       this.focusModeOnIcon = false;
       this.focusModeOffIcon = true;
+    }
+  }
+
+  navigateLoginOrWelcome() {
+    if (this.showMenu) {
+      this.router.navigateByUrl('/welcome');
+    } else {
+      this.router.navigateByUrl('/login');
     }
   }
 
