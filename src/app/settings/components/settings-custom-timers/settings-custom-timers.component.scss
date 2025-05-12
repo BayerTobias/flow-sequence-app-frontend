@@ -172,10 +172,19 @@ section {
   top: 36px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: red;
-  width: 100px;
-  height: 50px;
+  @include dFlex($gp: 16px);
+  flex-direction: column;
   z-index: 1;
+  width: 232px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: black;
+  padding: 16px;
+  border-radius: 16px;
+
+  @media (max-width: 900px) {
+    left: -20px;
+    transform: translateX(0);
+  }
 
   &::before {
     content: "";
@@ -186,7 +195,26 @@ section {
 
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-bottom: 10px solid red;
+    border-bottom: 10px solid black;
+
+    @media (max-width: 900px) {
+      left: 23px;
+      transform: translateX(0);
+    }
+  }
+
+  p {
+    text-align: center;
+    color: $copy-light;
+  }
+
+  span {
+    color: $interface-accent-2 !important;
+  }
+
+  > div {
+    @include dFlex($jc: space-between);
+    width: 100%;
   }
 }
 

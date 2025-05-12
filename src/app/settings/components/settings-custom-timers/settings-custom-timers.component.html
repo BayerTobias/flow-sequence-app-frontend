@@ -74,8 +74,27 @@
 
           @if (confirmDeleteIndex === $index) {
           <div class="confirm-delete">
-            <button>Cancel</button>
-            <button (click)="deleteSequence($index)">Delete</button>
+            <p>
+              Do you <b>really</b> want to <span>permanently delete</span> your
+              flow sequence?
+            </p>
+            <div>
+              <app-simple-settings-button
+                [content]="'Delete'"
+                [width]="90"
+                [height]="40"
+                [fontSize]="16"
+                (submitEvent)="deleteSequence($index)"
+              ></app-simple-settings-button>
+              <app-simple-settings-button
+                [content]="'Keep'"
+                [style]="'secondary'"
+                [width]="90"
+                [height]="40"
+                [fontSize]="16"
+                (submitEvent)="confirmDeleteIndex = null"
+              ></app-simple-settings-button>
+            </div>
           </div>
           }
         </div>
