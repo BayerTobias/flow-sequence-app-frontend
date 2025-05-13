@@ -1,8 +1,4 @@
 <section>
-  <!-- <div class="overlay">
-    <div>asdasd</div>
-  </div> -->
-
   <div class="headline">
     <img src="assets\img\icons\clock.svg" alt="settings" />
     <span>Custom Flow Sequence</span>
@@ -59,7 +55,14 @@
   >
     @for (sequence of settingsService.appSettings.customSequences; track $index)
     {
+
     <div class="sequence-card" cdkDrag>
+      @if (confirmDeleteIndex === $index) {
+      <div
+        (click)="confirmDeleteIndex = null"
+        class="confirm-delete-overlay"
+      ></div>
+      }
       <div>
         <img src="assets\img\icons\dots.svg" alt="drag" />
         <span>{{ sequence.name }}</span>
@@ -73,6 +76,7 @@
           />
 
           @if (confirmDeleteIndex === $index) {
+
           <div class="confirm-delete">
             <p>
               Do you <b>really</b> want to <span>permanently delete</span> your

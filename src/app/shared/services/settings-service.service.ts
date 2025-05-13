@@ -22,10 +22,8 @@ export class SettingsServiceService {
   public themeFade: boolean = false;
   public oldTheme: Theme | null = null;
 
-  // public activeTab: string = 'account';
-  public activeTab: string = 'timers';
-
-  public settingsOpen: boolean = true;
+  public activeTab: string = 'account';
+  public settingsOpen: boolean = false;
   public confirmDeleteAccountOpen: boolean = false;
   public previewOpen: boolean = false;
 

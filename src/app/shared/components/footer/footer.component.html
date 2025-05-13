@@ -56,7 +56,11 @@
   </svg>
 
   <div class="left-wrapper">
-    <div class="social-media-wrapper">
+    <div
+      matTooltip="Follow us on Social Media or join our Discord server."
+      [matTooltipPosition]="'above'"
+      class="social-media-wrapper"
+    >
       <span>Social Media</span>
 
       <a
@@ -181,7 +185,12 @@
       </a>
     </div>
 
-    <a href="mailto:flowseq@adidah.design" class="footer-item pointer">
+    <a
+      matTooltip="Feel free to write an email to us in case you have questions, constructive feedback or feature requests."
+      [matTooltipPosition]="'above'"
+      href="mailto:flowseq@adidah.design"
+      class="footer-item pointer"
+    >
       <span>Contact</span>
 
       <svg
@@ -269,12 +278,78 @@
       <span>&copy; 2024 FLOWSEQ. All rights reserved.</span>
     </div>
 
-    <div class="footer-item pointer">
+    <div
+      matTooltip="Please read our privacy policy to know how the data in FlowSeq is processed."
+      [matTooltipPosition]="'above'"
+      class="footer-item pointer"
+    >
       <a routerLink="/privacy-policy" target="_blank">Privacy Policy</a>
+      <svg
+        width="10"
+        height="10"
+        viewBox="0 0 10 10"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M9 1H6.33333M9 1L5 5M9 1V3.66667"
+          [attr.stroke]="
+            legalAndLogin
+              ? 'rgba(106, 158, 157, 1)'
+              : settingsService.appSettings.theme.accentColor
+          "
+          stroke-width="1.25"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M9 5.44444V8.11111C9 8.34686 8.90635 8.57295 8.73965 8.73965C8.57295 8.90635 8.34686 9 8.11111 9H1.88889C1.65314 9 1.42705 8.90635 1.26035 8.73965C1.09365 8.57295 1 8.34686 1 8.11111V1.88889C1 1.65314 1.09365 1.42705 1.26035 1.26035C1.42705 1.09365 1.65314 1 1.88889 1H4.55556"
+          [attr.stroke]="
+            legalAndLogin
+              ? 'rgba(106, 158, 157, 1)'
+              : settingsService.appSettings.theme.accentColor
+          "
+          stroke-width="1.25"
+          stroke-linecap="round"
+        />
+      </svg>
     </div>
 
-    <div class="footer-item pointer">
+    <div
+      matTooltip="Please read our terms & conditions bevore using FlowSeq."
+      [matTooltipPosition]="'above'"
+      class="footer-item pointer"
+    >
       <a routerLink="/tos" target="_blank">Terms & Conditions</a>
+      <svg
+        width="10"
+        height="10"
+        viewBox="0 0 10 10"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M9 1H6.33333M9 1L5 5M9 1V3.66667"
+          [attr.stroke]="
+            legalAndLogin
+              ? 'rgba(106, 158, 157, 1)'
+              : settingsService.appSettings.theme.accentColor
+          "
+          stroke-width="1.25"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M9 5.44444V8.11111C9 8.34686 8.90635 8.57295 8.73965 8.73965C8.57295 8.90635 8.34686 9 8.11111 9H1.88889C1.65314 9 1.42705 8.90635 1.26035 8.73965C1.09365 8.57295 1 8.34686 1 8.11111V1.88889C1 1.65314 1.09365 1.42705 1.26035 1.26035C1.42705 1.09365 1.65314 1 1.88889 1H4.55556"
+          [attr.stroke]="
+            legalAndLogin
+              ? 'rgba(106, 158, 157, 1)'
+              : settingsService.appSettings.theme.accentColor
+          "
+          stroke-width="1.25"
+          stroke-linecap="round"
+        />
+      </svg>
     </div>
   </div>
 </footer>

@@ -8,11 +8,12 @@ import {
 import { SettingsServiceService } from '../../services/settings-service.service';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, MatTooltipModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })
