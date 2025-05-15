@@ -14,8 +14,4 @@ export class TimerComponent {
   public settingsService = inject(SettingsServiceService);
   public flowSequenceService = inject(FlowSequenceServiceService);
   public flowSequenceDetailsOpen: boolean = true;
-
-  editTimer() {
-    console.log('edit');
-  }
 }

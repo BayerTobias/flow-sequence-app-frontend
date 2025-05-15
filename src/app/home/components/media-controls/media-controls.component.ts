@@ -16,18 +16,34 @@ export class MediaControlsComponent {
   public playButton: boolean = true;
   public hoveredElement: string | null = null;
 
+  /**
+   * Sets or clears the name of the currently hovered control element.
+   *
+   * @param isHoverd Whether the element is being hovered.
+   * @param element The name or identifier of the hovered element.
+   */
   setHoverd(isHoverd: boolean, element: string) {
     this.hoveredElement = isHoverd ? element : null;
   }
 
+  /**
+   * Starts the flow sequence timer.
+   */
   play() {
     this.flowSequenceService.startSequence();
   }
 
+  /**
+   * Pauses the flow sequence timer.
+   */
   pause() {
     this.flowSequenceService.pauseTimer();
   }
 
+  /**
+   * Moves to the next step in the flow sequence.
+   * If the current step is the last one, the timer is set to end immediately.
+   */
   next() {
     if (
       this.flowSequenceService.currentStepindex ===
@@ -41,6 +57,9 @@ export class MediaControlsComponent {
     }
   }
 
+  /**
+   * Moves to the previous step in the flow sequence.
+   */
   previous() {
     this.flowSequenceService.previousStep();
   }

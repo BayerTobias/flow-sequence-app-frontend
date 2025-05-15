@@ -43,7 +43,10 @@ export class WelcomeComponent {
   public displayName: string | null = null;
 
   constructor() {
+    // Clear any active timers when landing on the welcome page
     this.flowSequenceService.clearTimerInterval();
+
+    // Extract and set the user's first name from the auth service, if available
     effect(() => {
       const fullName = this.authService.userSignal()?.displayName;
 
@@ -56,6 +59,9 @@ export class WelcomeComponent {
     });
   }
 
+  /**
+   * Starts the standard sequence and navigates to the flow sequence timer view.
+   */
   startStandardSequence() {
     const standardSequence = this.settingsService.standardSequence;
     this.flowSequenceService.activeFlowSequence.set(standardSequence);
@@ -65,6 +71,9 @@ export class WelcomeComponent {
     });
   }
 
+  /**
+   * Starts the reverse sequence and navigates to the flow sequence timer view.
+   */
   startReverseSequence() {
     const reverseSequence = this.settingsService.reverseSequence;
     this.flowSequenceService.activeFlowSequence.set(reverseSequence);
@@ -74,11 +83,19 @@ export class WelcomeComponent {
     });
   }
 
+  /**
+   * Opens the settings overlay with the "timers" tab active,
+   * for creating a new timer.
+   */
   openCreateTimerMenu() {
     this.settingsService.activeTab = 'timers';
     this.settingsService.settingsOpen = true;
   }
 
+  /**
+   * Opens the settings overlay with the "timers" tab active,
+   * for managing saved timers.
+   */
   openSavedTimersMenu() {
     this.settingsService.activeTab = 'timers';
     this.settingsService.settingsOpen = true;

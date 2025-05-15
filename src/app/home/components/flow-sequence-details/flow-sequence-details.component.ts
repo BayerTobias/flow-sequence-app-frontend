@@ -33,17 +33,24 @@ export class FlowSequenceDetailsComponent {
   public preview: boolean = false;
 
   constructor() {
+    // Watches the active flow sequence signal and initializes component state
     effect(() => {
       const sequence = this.flowSequenceService.activeFlowSequence();
       this.setupSequence(sequence);
     });
 
+    // Watches for changes to the current step index and scrolls to that step
     effect(() => {
       const index = this.flowSequenceService.stepIndexSignal();
       this.scrollToNextStep(Number(index));
     });
   }
 
+  /**
+   * Sets up the displayed flow sequence based on whether preview mode is active.
+   *
+   * @param sequence The currently active flow sequence.
+   */
   setupSequence(sequence: FlowSequence) {
     if (
       this.settingsService.previewOpen &&
@@ -57,6 +64,9 @@ export class FlowSequenceDetailsComponent {
     }
   }
 
+  /**
+   * Selects the current flow sequence, resets the timer, and navigates to the timer view.
+   */
   chooseSequence() {
     const chosenSequece = this.flowSequence;
     this.flowSequenceService.activeFlowSequence.set(chosenSequece);
@@ -69,6 +79,11 @@ export class FlowSequenceDetailsComponent {
     });
   }
 
+  /**
+   * Scrolls the sequence container to the currently active step.
+   *
+   * @param index The index of the step to scroll to.
+   */
   scrollToNextStep(index: number) {
     const steps = Array.from(document.querySelectorAll('.step-wrapper'));
     const container = document.querySelector('.sequence-box');
@@ -85,6 +100,9 @@ export class FlowSequenceDetailsComponent {
     }
   }
 
+  /**
+   * Emits an event to close the overlay component.
+   */
   closeOverlay() {
     this.closeOverlayClicked.emit();
   }

@@ -26,6 +26,7 @@ export class LoginComponent {
   public legalAndLogin: boolean = false;
 
   constructor() {
+    // Reactively scrolls to the login section if the appNavService signals it
     effect(() => {
       if (this.appNavService.scrollToLogin()) {
         this.loginSection.nativeElement.scrollIntoView({ behavior: 'smooth' });
@@ -33,12 +34,19 @@ export class LoginComponent {
     });
   }
 
+  /**
+   * Handles login via Google.
+   * After successful authentication, navigates the user to the welcome page.
+   */
   async loginWithGoogle() {
     console.log('google Login');
     await this.authService.loginWithGoogle();
     this.router.navigateByUrl('/welcome');
   }
 
+  /**
+   * Redirects the user to the welcome page without performing any login.
+   */
   redirectToHomeWithoutLogin() {
     this.router.navigateByUrl('/welcome');
   }

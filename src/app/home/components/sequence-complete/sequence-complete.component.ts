@@ -18,12 +18,19 @@ export class SequenceCompleteComponent {
   public flowSequenceService = inject(FlowSequenceServiceService);
   public fadeIn: boolean | null = null;
 
+  /**
+   * Triggers a fade-in effect shortly after the view is initialized.
+   * This is typically used to animate the appearance of the completion overlay.
+   */
   ngAfterViewInit() {
     setTimeout(() => {
       this.fadeIn = true;
     }, 100);
   }
 
+  /**
+   * Opens the settings overlay and navigates to the "timers" tab.
+   */
   openSettings() {
     this.settingsService.activeTab = 'timers';
     this.settingsService.settingsOpen = true;
