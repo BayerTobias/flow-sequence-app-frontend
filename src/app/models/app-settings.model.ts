@@ -71,20 +71,32 @@ export class AppSettings {
     this.premiumUser = data?.premiumUser || false;
   }
 
+  /**
+   * Converts raw flow sequence data into FlowSequence instances.
+   */
   setupCustomSequences(customSequenceData: flowSequenceData[]) {
     return customSequenceData.map(
       (sequence: flowSequenceData) => new FlowSequence(sequence)
     );
   }
 
+  /**
+   * Returns all custom sequences as a JSON-serializable array.
+   */
   customSequencesAsJson() {
     return this.customSequences.map((sequence) => sequence.asJson());
   }
 
+  /**
+   * Returns all completed sequences as a JSON-serializable array.
+   */
   completedSequencesAsJson() {
     return this.completedSequences.map((sequence) => sequence.asJson());
   }
 
+  /**
+   * Returns the current app settings in a JSON-serializable format.
+   */
   asJson() {
     return {
       theme: this.theme.asJson(),

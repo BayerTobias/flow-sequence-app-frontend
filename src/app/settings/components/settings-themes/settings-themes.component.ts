@@ -27,6 +27,9 @@ export class SettingsThemesComponent {
   public settingsService = inject(SettingsServiceService);
   public selectedTheme: Theme = this.settingsService.appSettings.theme;
 
+  /**
+   * Applies a new theme if it's different from the current one.
+   */
   chooseTheme() {
     if (this.settingsService.appSettings.theme !== this.selectedTheme) {
       this.animateThemeChange();
@@ -37,6 +40,9 @@ export class SettingsThemesComponent {
     }
   }
 
+  /**
+   * Handles theme change animation by toggling internal flags.
+   */
   animateThemeChange() {
     this.settingsService.oldTheme = this.settingsService.appSettings.theme;
     this.settingsService.themeTransitionInProgress = true;
@@ -52,6 +58,9 @@ export class SettingsThemesComponent {
     }, 650);
   }
 
+  /**
+   * Compares two themes for equality based on their name.
+   */
   compareThemes(theme1: Theme, theme2: Theme): boolean {
     return theme1 && theme2 ? theme1.name === theme2.name : theme1 === theme2;
   }

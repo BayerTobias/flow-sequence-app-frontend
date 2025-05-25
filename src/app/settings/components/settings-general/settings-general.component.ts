@@ -25,21 +25,33 @@ export class SettingsGeneralComponent {
   public startAnimation: boolean = false;
   public isMobile = window.innerWidth < 900;
 
+  /**
+   * Updates the mobile flag on window resize.
+   */
   @HostListener('window:resize')
   onResize() {
     this.isMobile = window.innerWidth < 900;
   }
 
+  /**
+   * Logs out the user and closes the settings overlay.
+   */
   async logoutAndCloseSettings() {
     this.settingsService.settingsOpen = false;
     await this.authService.logout();
   }
 
+  /**
+   * Closes the settings overlay and navigates to the login page.
+   */
   navigateLogin() {
     this.settingsService.settingsOpen = false;
     this.router.navigateByUrl('/login');
   }
 
+  /**
+   * Opens the confirmation overlay to delete the account.
+   */
   openConfirmDelete() {
     this.settingsService.confirmDeleteAccountOpen = true;
   }

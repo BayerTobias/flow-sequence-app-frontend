@@ -101,6 +101,9 @@ export class SettingsSoundComponent {
     this.volumeLevel = this.settingsService.appSettings.volume;
   }
 
+  /**
+   * Handles drop event and assigns the dragged sound to the appropriate sound setting.
+   */
   onDrop(event: CdkDragDrop<string[]>, targetList: string) {
     if (event.previousContainer === event.container) {
       return;
@@ -132,6 +135,9 @@ export class SettingsSoundComponent {
     this.settingsService.saveSettings();
   }
 
+  /**
+   * Checks whether a sound was dropped outside the designated drop area and removes it if so.
+   */
   checkDropOutside(event: CdkDragEnd, dropAreaId: string) {
     const { x, y } = event.dropPoint;
     const dropTarget = document.elementFromPoint(x, y);
@@ -141,6 +147,9 @@ export class SettingsSoundComponent {
     }
   }
 
+  /**
+   * Removes the currently assigned sound from the specified flow step.
+   */
   removeSoundFromFlow(dropAreaId: string) {
     switch (dropAreaId) {
       case 'flowArea':
@@ -162,6 +171,9 @@ export class SettingsSoundComponent {
     this.settingsService.saveSettings();
   }
 
+  /**
+   * Plays the specified notification sound.
+   */
   playSound(sound: NotificationSound) {
     const audio = new Audio(sound.path);
     audio.volume = this.settingsService.appSettings.volume / 100;
@@ -169,6 +181,9 @@ export class SettingsSoundComponent {
     audio.play();
   }
 
+  /**
+   * Saves the new volume setting to the app settings.
+   */
   async changeVolume() {
     this.settingsService.appSettings.volume = this.volumeLevel;
     await this.settingsService.saveSettings();

@@ -68,12 +68,18 @@ export class SettingsCustomTimersComponent {
   @ViewChildren('nameInput') nameInputFields: QueryList<ElementRef> | null =
     null;
 
+  /**
+   * Loads an existing sequence into the form for editing.
+   */
   editSequence(sequence: FlowSequence) {
     this.newFlowSequence = sequence;
     this.sequenceName = sequence.name;
     this.sequenceDescription = sequence.description;
   }
 
+  /**
+   * Deletes a sequence by its index.
+   */
   deleteSequence(index: number) {
     const sequences = this.settingsService.appSettings.customSequences;
     sequences.splice(index, 1);
@@ -81,6 +87,9 @@ export class SettingsCustomTimersComponent {
     this.settingsService.saveSettings();
   }
 
+  /**
+   * Toggles whether the countdown is shown in the browser tab.
+   */
   toggleShowCountdown() {
     this.settingsService.appSettings.countdownInBrowserTab =
       !this.settingsService.appSettings.countdownInBrowserTab;
@@ -88,6 +97,9 @@ export class SettingsCustomTimersComponent {
     this.settingsService.saveSettings();
   }
 
+  /**
+   * Activates the selected sequence and navigates to the timer view.
+   */
   chooseSequence(index: number) {
     const chosenSequence =
       this.settingsService.appSettings.customSequences[index];
@@ -100,12 +112,18 @@ export class SettingsCustomTimersComponent {
     });
   }
 
+  /**
+   * Opens the sequence in preview mode.
+   */
   viewSequence(sequence: FlowSequence) {
     console.log(sequence);
     this.settingsService.previewOpen = true;
     this.flowSequenceService.previewSequence = sequence;
   }
 
+  /**
+   * Reorders saved sequences after a drag-and-drop operation.
+   */
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(
       this.settingsService.appSettings.customSequences,
@@ -115,6 +133,9 @@ export class SettingsCustomTimersComponent {
     this.settingsService.saveSettings();
   }
 
+  /**
+   * Reorders steps of the currently edited sequence.
+   */
   dropCreateSequence(event: CdkDragDrop<string[]>) {
     moveItemInArray(
       this.newFlowSequence.steps,
@@ -123,6 +144,9 @@ export class SettingsCustomTimersComponent {
     );
   }
 
+  /**
+   * Adds a new flow time step to the current sequence.
+   */
   addFlowTime() {
     const step = new FlowTime({
       name: '',
@@ -141,6 +165,9 @@ export class SettingsCustomTimersComponent {
     }, 1);
   }
 
+  /**
+   * Adds a new short break step to the current sequence.
+   */
   addShortBreak() {
     const step = new ShortBreak({
       name: 'Short Break',
@@ -155,6 +182,9 @@ export class SettingsCustomTimersComponent {
     console.log(typeof step.duration);
   }
 
+  /**
+   * Adds a new long break step to the current sequence.
+   */
   addLongBreak() {
     const step = new LongBreak({
       name: 'Long Break',
@@ -167,6 +197,9 @@ export class SettingsCustomTimersComponent {
     this.assignPosition();
   }
 
+  /**
+   * Focuses the name input of the last added step.
+   */
   focusLastInput() {
     if (this.nameInputFields && this.nameInputFields.length > 0) {
       const lastInput = this.nameInputFields.last;
@@ -175,6 +208,9 @@ export class SettingsCustomTimersComponent {
     }
   }
 
+  /**
+   * Updates the name of a step based on user input.
+   */
   renameStep(step: Step, event: Event) {
     const target = event.target as HTMLInputElement;
 
@@ -183,6 +219,9 @@ export class SettingsCustomTimersComponent {
     }
   }
 
+  /**
+   * Updates the duration of a step based on user input.
+   */
   editStepDuration(step: Step, event: Event) {
     const target = event.target as HTMLInputElement;
 
@@ -191,6 +230,9 @@ export class SettingsCustomTimersComponent {
     }
   }
 
+  /**
+   * Copies an existing step and appends it to the sequence.
+   */
   copyStep(step: Step) {
     let copiedStep: FlowTime | ShortBreak | LongBreak | null = null;
 
@@ -225,16 +267,25 @@ export class SettingsCustomTimersComponent {
     }
   }
 
+  /**
+   * Deletes a step by index from the sequence.
+   */
   deleteStep(index: number) {
     this.newFlowSequence.steps.splice(index, 1);
   }
 
+  /**
+   * Assigns correct position indexes to all steps in the sequence.
+   */
   assignPosition() {
     this.newFlowSequence.steps.forEach((step, index) => {
       step.position = index;
     });
   }
 
+  /**
+   * Validates and saves the current sequence.
+   */
   saveNewFlowSequence() {
     if (this.formIsValid()) {
       this.handleFormIsValid();
@@ -243,6 +294,9 @@ export class SettingsCustomTimersComponent {
     }
   }
 
+  /**
+   * Checks whether the form is valid and the user has not exceeded their limit.
+   */
   formIsValid() {
     const maxSequences = this.settingsService.appSettings.premiumUser ? 15 : 5;
 
@@ -253,6 +307,9 @@ export class SettingsCustomTimersComponent {
     );
   }
 
+  /**
+   * Handles logic after the form is validated.
+   */
   handleFormIsValid() {
     this.newFlowSequence.name = this.sequenceName;
     this.newFlowSequence.description = this.sequenceDescription;
@@ -270,6 +327,9 @@ export class SettingsCustomTimersComponent {
     this.resetForm();
   }
 
+  /**
+   * Applies the edited sequence to the settings.
+   */
   handleEditSequence() {
     const index = this.settingsService.appSettings.customSequences.findIndex(
       (seq) => seq.id === this.newFlowSequence.id
@@ -281,6 +341,9 @@ export class SettingsCustomTimersComponent {
     }
   }
 
+  /**
+   * Resets the form and all temporary values.
+   */
   resetForm() {
     this.sequenceName = '';
     this.sequenceDescription = '';
@@ -289,6 +352,9 @@ export class SettingsCustomTimersComponent {
     this.sequenceCountError = false;
   }
 
+  /**
+   * Handles validation errors by focusing the appropriate input or showing errors.
+   */
   handleError() {
     if (!this.sequenceName) {
       this.nameError = true;

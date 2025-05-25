@@ -18,6 +18,9 @@ export class Theme {
     this.backgroundImage = data?.backgroundImage || '';
   }
 
+  /**
+   * Converts the Step instance to a JSON-serializable object.
+   */
   asJson() {
     return {
       name: this.name,

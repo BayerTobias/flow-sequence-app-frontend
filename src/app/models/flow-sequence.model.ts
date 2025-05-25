@@ -27,14 +27,23 @@ export class FlowSequence {
     }
   }
 
+  /**
+   * Adds a new step to the flow sequence.
+   */
   addStep(step: Step) {
     this.steps.push(step);
   }
 
+  /**
+   * Sorts the steps in the sequence by their position.
+   */
   sortSteps() {
     this.steps.sort((a, b) => a.position - b.position);
   }
 
+  /**
+   * Resolves raw step data into their corresponding class instances (FlowTime, ShortBreak, LongBreak).
+   */
   resolveSteps(stepsData: StepData[]) {
     return stepsData
       .map((stepData) => {
@@ -53,6 +62,9 @@ export class FlowSequence {
       .filter((step) => step !== null);
   }
 
+  /**
+   * Converts the FlowSequence instance to a JSON-serializable object.
+   */
   asJson() {
     return {
       id: this.id,

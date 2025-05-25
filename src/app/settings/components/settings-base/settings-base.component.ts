@@ -29,6 +29,9 @@ export class SettingsBaseComponent {
 
   @Output() closeOverlayEvent = new EventEmitter();
 
+  /**
+   * Emits an event to close the settings overlay.
+   */
   closeOverlay() {
     this.closeOverlayEvent.emit();
   }

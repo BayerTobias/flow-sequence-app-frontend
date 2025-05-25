@@ -15,12 +15,18 @@ export class SettingsOverlayComponent {
 
   public start: boolean = false;
 
+  /**
+   * Triggers the overlay animation shortly after view init.
+   */
   ngAfterViewInit() {
     setTimeout(() => {
       this.start = true;
     }, 1);
   }
 
+  /**
+   * Starts the overlay closing animation and hides the settings after delay.
+   */
   closeOverlay() {
     this.start = false;
     setTimeout(() => {

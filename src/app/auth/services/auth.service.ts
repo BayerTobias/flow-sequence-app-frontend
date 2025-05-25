@@ -28,6 +28,10 @@ export class AuthService {
     this.initializeAuthStateListener();
   }
 
+  /**
+   * Initiates the Google sign-in process using a popup.
+   * On success, sets the signed-in user in the user signal.
+   */
   async loginWithGoogle() {
     try {
       const result: UserCredential = await signInWithPopup(
@@ -41,6 +45,9 @@ export class AuthService {
     }
   }
 
+  /**
+   * Signs the user out and navigates to the login page.
+   */
   async logout() {
     try {
       await this.auth.signOut();
@@ -53,6 +60,9 @@ export class AuthService {
     }
   }
 
+  /**
+   * Reauthenticates the user and deletes the Google account.
+   */
   async deleteGoogleAccount() {
     try {
       const user = this.userSignal();
@@ -72,6 +82,10 @@ export class AuthService {
     }
   }
 
+  /**
+   * Initializes a listener to track authentication state changes.
+   * Navigates to the welcome page if user logs in on the login page.
+   */
   private initializeAuthStateListener() {
     onAuthStateChanged(this.auth, async (user) => {
       this.userSignal.set(user);

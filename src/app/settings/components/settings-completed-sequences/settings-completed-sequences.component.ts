@@ -12,12 +12,22 @@ import { CompletedSequence } from '../../../models/completed-sequence.model';
 export class SettingsCompletedSequencesComponent {
   public settingsService = inject(SettingsServiceService);
 
+  /**
+   * Formats the completed date string by removing the comma.
+   * @param sequence - The completed sequence to format.
+   * @returns A cleaned-up completed date string.
+   */
   formatCompleted(sequence: CompletedSequence) {
     const formattedCompleted = sequence.completed.replace(',', '');
 
     return formattedCompleted;
   }
 
+  /**
+   * Formats the duration of the sequence in "H:MMh" format.
+   * @param sequence - The completed sequence to format.
+   * @returns A string representation of the duration.
+   */
   public formatDuration(sequence: CompletedSequence): string {
     const totalMinutes = sequence.duration;
 
