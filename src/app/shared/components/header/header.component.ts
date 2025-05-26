@@ -50,6 +50,10 @@ export class HeaderComponent {
   public showMenu: boolean = false;
   public loginPage: boolean = false;
 
+  /**
+   * Subscribes to router navigation events to update view state flags like `showMenu` and `loginPage`
+   * based on the current route path.
+   */
   constructor() {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
@@ -71,6 +75,9 @@ export class HeaderComponent {
       });
   }
 
+  /**
+   * Initializes focus mode icon state based on current settings.
+   */
   ngOnInit() {
     const FocusMode = this.settingsService.appSettings.focusMode;
 
@@ -83,6 +90,9 @@ export class HeaderComponent {
     }
   }
 
+  /**
+   * Navigates to the welcome or login route based on current `showMenu` state.
+   */
   navigateLoginOrWelcome() {
     if (this.showMenu) {
       this.router.navigateByUrl('/welcome');
@@ -91,10 +101,16 @@ export class HeaderComponent {
     }
   }
 
+  /**
+   * Opens the settings overlay by setting the `settingsOpen` flag.
+   */
   openSettings() {
     this.settingsService.settingsOpen = true;
   }
 
+  /**
+   * Toggles the focus mode state with a short animation effect.
+   */
   toggleFocusMode() {
     this.switching = true;
     this.settingsService.toggleFocusMode();
@@ -112,6 +128,9 @@ export class HeaderComponent {
     }, 200);
   }
 
+  /**
+   * Switches the icons representing the focus mode state.
+   */
   toggleIcons() {
     this.focusModeOffIcon = !this.focusModeOffIcon;
     this.focusModeOnIcon = !this.focusModeOnIcon;

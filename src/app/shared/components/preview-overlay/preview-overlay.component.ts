@@ -15,12 +15,18 @@ export class PreviewOverlayComponent {
 
   public start: boolean = false;
 
+  /**
+   * Starts the entry animation shortly after the view is initialized.
+   */
   ngAfterViewInit() {
     setTimeout(() => {
       this.start = true;
     }, 1);
   }
 
+  /**
+   * Triggers the exit animation and closes the preview overlay after a delay.
+   */
   closeOverlay() {
     this.start = false;
     setTimeout(() => {

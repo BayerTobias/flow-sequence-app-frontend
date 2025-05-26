@@ -170,6 +170,11 @@ export class SettingsServiceService {
     );
   }
 
+  /**
+   * Initializes the settings.
+   * Loads from Firestore if the user is logged in,
+   * otherwise loads from local storage.
+   */
   async initSettings() {
     const uid = this.authService.userSignal()?.uid;
 
@@ -180,6 +185,10 @@ export class SettingsServiceService {
     }
   }
 
+  /**
+   * Deletes completed sequences older than 30 days
+   * and saves the updated settings.
+   */
   async deleteOldCompletedSequences() {
     const thirtyDaysInMs = 30 * 24 * 60 * 60 * 1000;
     const now = new Date();
@@ -199,6 +208,12 @@ export class SettingsServiceService {
     }
   }
 
+  /**
+   * Parses a date string in the format "dd.mm.yyyy, hh:mm"
+   * and returns a Date object.
+   * @param dateString - The date string to parse.
+   * @returns The parsed Date object.
+   */
   parseDate(dateString: string): Date {
     const [datePart, timePart] = dateString.split(', ');
     const [day, month, year] = datePart.split('.').map(Number);
@@ -207,6 +222,12 @@ export class SettingsServiceService {
     return new Date(year, month - 1, day, hours, minutes);
   }
 
+  /**
+   * Saves the current settings.
+   * If user is logged in, saves to Firestore and local storage,
+   * otherwise saves only to local storage.
+   * Updates the appSettingsSignal.
+   */
   async saveSettings() {
     const uid = this.authService.userSignal()?.uid;
 
@@ -222,6 +243,10 @@ export class SettingsServiceService {
     );
   }
 
+  /**
+   * Deletes the saved settings in Firestore and local storage
+   * if the user is logged in.
+   */
   async deleteSettings() {
     const uid = this.authService.userSignal()?.uid;
 
@@ -233,6 +258,9 @@ export class SettingsServiceService {
     }
   }
 
+  /**
+   * Saves the current settings as JSON string in localStorage.
+   */
   setLocalStorage() {
     localStorage.setItem(
       'appSettings',
@@ -240,6 +268,10 @@ export class SettingsServiceService {
     );
   }
 
+  /**
+   * Loads the settings from localStorage.
+   * @returns The loaded AppSettings object or a new AppSettings instance.
+   */
   loadSettings() {
     const settingsString = localStorage.getItem('appSettings');
 
@@ -253,6 +285,12 @@ export class SettingsServiceService {
     return new AppSettings();
   }
 
+  /**
+   * Loads the settings from Firestore for the given user ID.
+   * Updates appSettings and appSettingsSignal.
+   * Logs messages on success, first login, or error.
+   * @param uid - The user ID.
+   */
   async loadSettingsFromFirestore(uid: string) {
     const settings = await this.firestoreService.getSettings(uid);
 
@@ -269,6 +307,9 @@ export class SettingsServiceService {
     }
   }
 
+  /**
+   * Toggles the focus mode setting and saves the updated settings.
+   */
   toggleFocusMode() {
     this.appSettings.focusMode = !this.appSettings.focusMode;
     this.saveSettings();

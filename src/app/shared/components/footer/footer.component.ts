@@ -24,6 +24,10 @@ export class FooterComponent {
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
 
+  /**
+   * Subscribes to route changes to determine whether to hide legal and login links
+   * based on the current path (e.g., hides them on 'flowsequencetimer' and 'welcome').
+   */
   constructor() {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))

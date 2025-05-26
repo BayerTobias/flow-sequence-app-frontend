@@ -19,6 +19,9 @@ export class SettingsButtonWithIconComponent {
 
   @Output() submitEvent = new EventEmitter<void>();
 
+  /**
+   * Emits an event when the button is clicked.
+   */
   submit() {
     this.submitEvent.emit();
   }

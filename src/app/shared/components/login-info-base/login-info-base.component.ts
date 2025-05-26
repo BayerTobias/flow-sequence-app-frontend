@@ -24,6 +24,10 @@ export class LoginInfoBaseComponent {
 
   public loginPage: boolean = true;
 
+  /**
+   * Subscribes to router navigation events to determine
+   * if the current route is the login page and updates `loginPage` flag accordingly.
+   */
   constructor() {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))

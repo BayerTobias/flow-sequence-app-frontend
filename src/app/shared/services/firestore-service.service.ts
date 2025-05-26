@@ -16,6 +16,13 @@ export class FirestoreServiceService {
 
   constructor() {}
 
+  /**
+   * Checks if the given user ID corresponds to a first-time login.
+   * This is determined by whether settings already exist for the user in Firestore.
+   *
+   * @param uid - The user's unique ID.
+   * @returns A promise resolving to true if no settings are found (i.e., first login), false otherwise.
+   */
   async isFirstLogin(uid: string): Promise<boolean> {
     const docRef = this.getDocRef('AppSettings', uid);
     const docSnapshot = await getDoc(docRef);
@@ -23,6 +30,12 @@ export class FirestoreServiceService {
     return !docSnapshot.exists();
   }
 
+  /**
+   * Saves the user settings to Firestore under the specified user ID.
+   *
+   * @param uid - The user's unique ID.
+   * @param settings - An object containing the settings to be stored.
+   */
   async saveSettings(uid: string, settings: {}) {
     if (uid) {
       const docRef = this.getDocRef('AppSettings', uid);
@@ -32,6 +45,12 @@ export class FirestoreServiceService {
     }
   }
 
+  /**
+   * Retrieves the settings document for a specific user.
+   *
+   * @param uid - The user's unique ID.
+   * @returns The settings object if found, or null otherwise.
+   */
   async getSettings(uid: string) {
     const docRef = this.getDocRef('AppSettings', uid);
     const docSnapshot = await getDoc(docRef);
@@ -44,6 +63,11 @@ export class FirestoreServiceService {
     }
   }
 
+  /**
+   * Deletes the settings document associated with the given user ID.
+   *
+   * @param uid - The user's unique ID.
+   */
   async deleteSettings(uid: string) {
     try {
       const docRef = this.getDocRef('AppSettings', uid);

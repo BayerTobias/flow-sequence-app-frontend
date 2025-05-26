@@ -10,6 +10,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class CloseButtonComponent {
   @Output() buttonClicked = new EventEmitter<void>();
 
+  /**
+   * Emits an event when the button is clicked.
+   */
   onButtonClick() {
     this.buttonClicked.emit();
   }

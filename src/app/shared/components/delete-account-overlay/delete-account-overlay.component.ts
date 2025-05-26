@@ -19,12 +19,18 @@ export class DeleteAccountOverlayComponent {
 
   public startAnimation: boolean = false;
 
+  /**
+   * Starts the entrance animation after the view is initialized.
+   */
   ngAfterViewInit() {
     setTimeout(() => {
       this.startAnimation = true;
     }, 1);
   }
 
+  /**
+   * Deletes the user account and navigates to the login page.
+   */
   async deleteAccount() {
     await this.settingsService.deleteSettings();
     await this.authService.deleteGoogleAccount();
@@ -32,6 +38,9 @@ export class DeleteAccountOverlayComponent {
     this.router.navigateByUrl('/login');
   }
 
+  /**
+   * Closes the delete account confirmation overlay with an exit animation.
+   */
   closeConfirmDelete() {
     this.startAnimation = false;
     setTimeout(() => {

@@ -32,6 +32,7 @@ export class FlowSequenceServiceService {
   private flowSequenceSound: HTMLAudioElement = new Audio();
 
   constructor() {
+    // Automatically update sound paths when app settings change
     effect(() => {
       const appSettings = this.settingsService.appSettingsSignal();
 
@@ -42,12 +43,18 @@ export class FlowSequenceServiceService {
     });
   }
 
+  /**
+   * Starts the sequence timer if steps are defined.
+   */
   startSequence() {
     if (this.activeFlowSequence().steps.length > 0) {
       this.startStepTimer();
     } else console.log('nope');
   }
 
+  /**
+   * Starts the timer for the current step.
+   */
   startStepTimer() {
     this.currentStep = this.activeFlowSequence().steps[this.currentStepindex];
 
@@ -70,6 +77,9 @@ export class FlowSequenceServiceService {
     }
   }
 
+  /**
+   * Initializes the timer and step state.
+   */
   setupTimer() {
     this.currentStep = this.activeFlowSequence().steps[this.currentStepindex];
     this.stepIndexSignal.set(this.currentStepindex);
@@ -80,6 +90,9 @@ export class FlowSequenceServiceService {
     this.updateStepStatuses();
   }
 
+  /**
+   * Resets the timer and step state to the beginning of the sequence.
+   */
   resetTimer() {
     this.currentStepindex = 0;
     this.activeFlowSequence().steps.forEach((step) => {
@@ -89,6 +102,9 @@ export class FlowSequenceServiceService {
     this.setQueryParams();
   }
 
+  /**
+   * Decrements the timer by one second and updates the browser tab title.
+   */
   countDownSecond() {
     this.currentStepTimeRemaining--;
     this.minutesRemaining = Math.floor(this.currentStepTimeRemaining / 60);
@@ -101,6 +117,9 @@ export class FlowSequenceServiceService {
     }
   }
 
+  /**
+   * Updates the query params with the current step index.
+   */
   setQueryParams() {
     const baseUrl = this.location.path();
     const fullUrl = new URL(window.location.href);
@@ -112,11 +131,17 @@ export class FlowSequenceServiceService {
     );
   }
 
+  /**
+   * Clears the active interval timer.
+   */
   clearTimerInterval() {
     clearInterval(this.interval);
     this.interval = undefined;
   }
 
+  /**
+   * Completes the entire sequence, resets timers, uploads stats and plays a sound.
+   */
   async completeFlowSequence() {
     this.clearTimerInterval();
     this.sequenceComplete = true;
@@ -133,6 +158,9 @@ export class FlowSequenceServiceService {
     }
   }
 
+  /**
+   * Uploads the completed sequence data to the app settings.
+   */
   async uploadCompletedSequence() {
     const data = new CompletedSequence();
     const date = new Date();
@@ -159,6 +187,9 @@ export class FlowSequenceServiceService {
     await this.settingsService.saveSettings();
   }
 
+  /**
+   * Enables a bar animation when transitioning between steps.
+   */
   checkAnimateBar() {
     if (
       !this.firstStart &&
@@ -172,6 +203,9 @@ export class FlowSequenceServiceService {
     }
   }
 
+  /**
+   * Pauses the active timer.
+   */
   pauseTimer() {
     if (!this.isPaused) {
       this.isPaused = true;
@@ -179,6 +213,9 @@ export class FlowSequenceServiceService {
     }
   }
 
+  /**
+   * Moves to the next step or completes the sequence if at the end.
+   */
   nextStep() {
     if (this.currentStepindex !== this.activeFlowSequence().steps.length - 1) {
       this.clearTimerInterval();
@@ -193,6 +230,9 @@ export class FlowSequenceServiceService {
     }
   }
 
+  /**
+   * Goes back to the previous step.
+   */
   previousStep() {
     if (this.currentStepindex !== 0) {
       if (
@@ -211,6 +251,11 @@ export class FlowSequenceServiceService {
     }
   }
 
+  /**
+   * Restarts a specific step by index.
+   *
+   * @param index - The index of the step to restart.
+   */
   restartStep(index: number) {
     this.pauseTimer();
     this.currentStepindex = index;
@@ -219,6 +264,9 @@ export class FlowSequenceServiceService {
     this.stepIndexSignal.set(this.currentStepindex);
   }
 
+  /**
+   * Updates the `complete` status of each step based on the current index.
+   */
   updateStepStatuses() {
     this.activeFlowSequence().steps.forEach((step, index) => {
       if (index < this.currentStepindex) {
@@ -229,10 +277,16 @@ export class FlowSequenceServiceService {
     });
   }
 
+  /**
+   * Gets the volume level based on settings.
+   */
   get soundVolume() {
     return this.settingsService.appSettings.volume / 100;
   }
 
+  /**
+   * Plays the corresponding sound for the current step or when the sequence ends.
+   */
   playSound() {
     if (this.sequenceComplete) {
       this.flowSequenceSound.volume = this.soundVolume;

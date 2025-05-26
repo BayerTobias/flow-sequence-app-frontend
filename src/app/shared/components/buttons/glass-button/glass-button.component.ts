@@ -14,6 +14,9 @@ export class GlassButtonComponent {
 
   @Output() buttonClicked = new EventEmitter<void>();
 
+  /**
+   * Emits an event when the button is clicked.
+   */
   onButtonClick() {
     this.buttonClicked.emit();
   }

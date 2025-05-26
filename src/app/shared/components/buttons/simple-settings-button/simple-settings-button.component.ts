@@ -18,6 +18,9 @@ export class SimpleSettingsButtonComponent {
 
   @Output() submitEvent = new EventEmitter<void>();
 
+  /**
+   * Emits an event when the button is clicked.
+   */
   submit() {
     this.submitEvent.emit();
   }
