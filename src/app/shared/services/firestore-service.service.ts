@@ -41,7 +41,6 @@ export class FirestoreServiceService {
       const docRef = this.getDocRef('AppSettings', uid);
 
       await setDoc(docRef, settings);
-      console.log('saved');
     }
   }
 
@@ -58,7 +57,6 @@ export class FirestoreServiceService {
     if (docSnapshot.exists()) {
       return docSnapshot.data();
     } else {
-      console.log('No Settings Found');
       return null;
     }
   }
@@ -72,7 +70,6 @@ export class FirestoreServiceService {
     try {
       const docRef = this.getDocRef('AppSettings', uid);
       await deleteDoc(docRef);
-      console.log('Settings Deleted');
     } catch (err) {
       console.error(err);
     }

@@ -26,10 +26,22 @@ export interface AppSettingsData {
 export class AppSettings {
   theme: Theme;
   countdownInBrowserTab: boolean;
-  shortBreakSound: NotificationSound | null;
-  longBreakSound: NotificationSound | null;
-  flowTimeSound: NotificationSound | null;
-  flowSequenceSound: NotificationSound | null;
+  shortBreakSound: NotificationSound | null = new NotificationSound({
+    name: 'Harp',
+    path: 'assets/sounds/harp_short_01.wav',
+  });
+  longBreakSound: NotificationSound | null = new NotificationSound({
+    name: 'Harp Rise',
+    path: 'assets/sounds/harp_long_02.wav',
+  });
+  flowTimeSound: NotificationSound | null = new NotificationSound({
+    name: 'Harp Intro',
+    path: 'assets/sounds/harp_long_01.wav',
+  });
+  flowSequenceSound: NotificationSound | null = new NotificationSound({
+    name: 'Cartoon',
+    path: 'assets/sounds/fanfare_cartoon.wav',
+  });
   volume: number;
   customSequences: FlowSequence[];
   completedSequences: CompletedSequence[];
@@ -46,18 +58,25 @@ export class AppSettings {
           backgroundImage: 'assets/img/backgrounds/background-1.webp',
         });
     this.countdownInBrowserTab = data?.countdownInBrowserTab || false;
-    this.shortBreakSound = data?.shortBreakSound
-      ? new NotificationSound(data.shortBreakSound)
-      : null;
-    this.longBreakSound = data?.longBreakSound
-      ? new NotificationSound(data.longBreakSound)
-      : null;
-    this.flowTimeSound = data?.flowTimeSound
-      ? new NotificationSound(data.flowTimeSound)
-      : null;
-    this.flowSequenceSound = data?.flowSequenceSound
-      ? new NotificationSound(data.flowSequenceSound)
-      : null;
+
+    if (data) {
+      this.shortBreakSound = data?.shortBreakSound
+        ? new NotificationSound(data.shortBreakSound)
+        : null;
+
+      this.longBreakSound = data?.longBreakSound
+        ? new NotificationSound(data.longBreakSound)
+        : null;
+
+      this.flowTimeSound = data?.flowTimeSound
+        ? new NotificationSound(data.flowTimeSound)
+        : null;
+
+      this.flowSequenceSound = data?.flowSequenceSound
+        ? new NotificationSound(data.flowSequenceSound)
+        : null;
+    }
+
     this.volume = data?.volume || 50;
     this.customSequences = data?.customSequence
       ? this.setupCustomSequences(data.customSequence)

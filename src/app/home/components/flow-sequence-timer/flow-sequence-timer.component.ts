@@ -102,8 +102,6 @@ export class FlowSequenceTimerComponent {
     if (this.stepIndex) {
       this.flowSequenceService.currentStepindex = this.stepIndex;
     } else {
-      console.log('no Step Index', this.stepIndex);
-
       this.flowSequenceService.currentStepindex = 0;
     }
     this.flowSequenceService.setupTimer();

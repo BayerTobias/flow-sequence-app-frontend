@@ -116,7 +116,6 @@ export class SettingsCustomTimersComponent {
    * Opens the sequence in preview mode.
    */
   viewSequence(sequence: FlowSequence) {
-    console.log(sequence);
     this.settingsService.previewOpen = true;
     this.flowSequenceService.previewSequence = sequence;
   }
@@ -158,8 +157,6 @@ export class SettingsCustomTimersComponent {
     this.newFlowSequence.addStep(step);
     this.assignPosition();
 
-    console.log(step.duration);
-
     setTimeout(() => {
       this.focusLastInput();
     }, 1);
@@ -178,8 +175,6 @@ export class SettingsCustomTimersComponent {
     });
     this.newFlowSequence.addStep(step);
     this.assignPosition();
-
-    console.log(typeof step.duration);
   }
 
   /**

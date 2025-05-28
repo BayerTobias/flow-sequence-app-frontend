@@ -29,6 +29,17 @@ section {
   }
 }
 
+.volume-wrapper {
+  @include dFlex($gp: 8px);
+
+  span {
+    text-transform: uppercase;
+    color: $interface-accent-2;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+  }
+}
+
 .select-sounds-wrapper {
   @include dFlex($gp: 24px);
   flex-direction: column;

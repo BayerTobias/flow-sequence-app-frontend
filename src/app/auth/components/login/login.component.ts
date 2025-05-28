@@ -39,7 +39,6 @@ export class LoginComponent {
    * After successful authentication, navigates the user to the welcome page.
    */
   async loginWithGoogle() {
-    console.log('google Login');
     await this.authService.loginWithGoogle();
     this.router.navigateByUrl('/welcome');
   }

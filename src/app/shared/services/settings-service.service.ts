@@ -297,10 +297,9 @@ export class SettingsServiceService {
     if (settings) {
       this.appSettings = new AppSettings(settings as AppSettingsData);
       this.appSettingsSignal.set(new AppSettings(settings as AppSettingsData));
-      console.log('Settings von Firestore geladen', settings);
     } else {
       if (await this.firestoreService.isFirstLogin(uid)) {
-        console.log('First Login');
+        await this.saveSettings();
       } else {
         console.error('Error Loading Settings');
       }

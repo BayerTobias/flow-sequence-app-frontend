@@ -53,10 +53,8 @@ export class AuthService {
       await this.auth.signOut();
       this.userSignal.set(null);
       this.router.navigateByUrl('/login');
-
-      console.log('Erfolgreich ausgeloggt');
     } catch (err) {
-      console.error('Logout fehlgeschlagen:', err);
+      console.error('Logout Error:', err);
     }
   }
 
@@ -73,7 +71,6 @@ export class AuthService {
       }
 
       await reauthenticateWithPopup(user, this.provider);
-
       await deleteUser(user);
 
       this.userSignal.set(null);
@@ -90,13 +87,9 @@ export class AuthService {
     onAuthStateChanged(this.auth, async (user) => {
       this.userSignal.set(user);
       if (user) {
-        console.log('Benutzer eingeloggt:', user.uid);
-
         if (this.router.url === '/login') {
           this.router.navigate(['/welcome']);
         }
-      } else {
-        console.log('Kein Benutzer eingeloggt.');
       }
     });
   }

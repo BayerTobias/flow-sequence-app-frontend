@@ -36,6 +36,7 @@ export class DeleteAccountOverlayComponent {
     await this.authService.deleteGoogleAccount();
     this.settingsService.settingsOpen = false;
     this.router.navigateByUrl('/login');
+    this.settingsService.confirmDeleteAccountOpen = false;
   }
 
   /**

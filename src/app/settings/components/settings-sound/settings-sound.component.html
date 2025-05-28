@@ -4,14 +4,17 @@
     <span>Sounds</span>
   </div>
 
-  <mat-slider>
-    <input
-      matSliderThumb
-      [(ngModel)]="volumeLevel"
-      (change)="changeVolume()"
-      #slider
-    />
-  </mat-slider>
+  <div class="volume-wrapper">
+    <span>Volume:</span>
+    <mat-slider>
+      <input
+        matSliderThumb
+        [(ngModel)]="volumeLevel"
+        (change)="changeVolume()"
+        #slider
+      />
+    </mat-slider>
+  </div>
 
   <div class="select-sounds-wrapper">
     <p>

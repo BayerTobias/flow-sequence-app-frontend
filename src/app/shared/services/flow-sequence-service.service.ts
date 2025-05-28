@@ -49,7 +49,7 @@ export class FlowSequenceServiceService {
   startSequence() {
     if (this.activeFlowSequence().steps.length > 0) {
       this.startStepTimer();
-    } else console.log('nope');
+    }
   }
 
   /**
@@ -175,8 +175,6 @@ export class FlowSequenceServiceService {
     });
     data.duration = this.activeFlowSequence().steps.reduce(
       (totalDuration, step) => {
-        console.log(totalDuration, step.duration);
-
         return totalDuration + step.duration;
       },
       0

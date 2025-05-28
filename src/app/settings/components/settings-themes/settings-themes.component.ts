@@ -36,7 +36,7 @@ export class SettingsThemesComponent {
       this.settingsService.appSettings.theme = this.selectedTheme;
       this.settingsService.saveSettings();
     } else {
-      console.log('ist schon dummy');
+      console.error('same Theme');
     }
   }
 
