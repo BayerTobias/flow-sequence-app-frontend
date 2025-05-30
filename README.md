@@ -29,9 +29,8 @@
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/flowseq.git
+   git clone https://github.com/BayerTobias/flow-sequence-app-frontend.git
    cd flowseq
-
 
    ```
 
