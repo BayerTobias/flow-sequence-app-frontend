@@ -8,11 +8,10 @@
 
 - 🕒 **Customizable flow sequences** with steps like focus time, short break, and long break
 - 🔔 **Custom notification sounds** for each step
-- 🎨 **Visual themes** with adjustable accent colors and background images
+- 🎨 **Visual themes** with accent colors and background images
 - 💾 **Save and reuse your own sequences**
 - 📊 **Track completed sequences**
 - 🔇 **Focus mode** to reduce distractions
-- 📦 **Installable as a Progressive Web App (PWA)**
 - 🌐 Uses a **Firebase backend** for user data and synchronization
 
 ---
@@ -37,10 +36,12 @@
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
 
    ```
+
 3. Create the environment file
    Create a new file at: src/environments/environment.ts
 
