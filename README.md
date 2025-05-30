@@ -1,27 +1,87 @@
-# FlowSequenceFrontend
+# 🌀 FlowSeq
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.0.
+**FlowSeq** is a productivity-focused web app that helps you stay in flow by using customizable time sequences consisting of focus sessions, short breaks, and long breaks – inspired by the Pomodoro technique but far more flexible.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## ✨ Features
 
-## Code scaffolding
+- 🕒 **Customizable flow sequences** with steps like focus time, short break, and long break
+- 🔔 **Custom notification sounds** for each step
+- 🎨 **Visual themes** with adjustable accent colors and background images
+- 💾 **Save and reuse your own sequences**
+- 📊 **Track completed sequences**
+- 🔇 **Focus mode** to reduce distractions
+- 📦 **Installable as a Progressive Web App (PWA)**
+- 🌐 Uses a **Firebase backend** for user data and synchronization
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## 🚀 Quick Start
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Prerequisites
 
-## Running unit tests
+- [Node.js](https://nodejs.org/) (recommended: version ≥ 18)
+- [Angular CLI](https://angular.io/cli) (recommended: version ≥ 16)
+- A Firebase project
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Installation
 
-## Running end-to-end tests
+1. Clone the repository:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+   ```bash
+   git clone https://github.com/your-username/flowseq.git
+   cd flowseq
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+
+   ```
+3. Create the environment file
+   Create a new file at: src/environments/environment.ts
+
+   Then paste the following content inside it, and replace the placeholder values with your actual Firebase credentials:
+
+   ```ts
+   export const environment = {
+     production: false,
+     googleClientId: "YOUR_GOOGLE_CLIENT_ID",
+     firebase: {
+       apiKey: "YOUR_API_KEY",
+       authDomain: "your-project.firebaseapp.com",
+       projectId: "your-project-id",
+       storageBucket: "your-project.appspot.com",
+       messagingSenderId: "YOUR_SENDER_ID",
+       appId: "YOUR_APP_ID",
+     },
+   };
+   ```
+
+4. Start the development server:
+
+   ```bash
+   ng serve
+
+   ```
+
+5. Open the app in your browser: http://localhost:4200
+
+## 🔥 Firebase Setup
+
+1. Create a new project at [https://firebase.google.com](https://firebase.google.com)
+
+2. Enable **Authentication**  
+   Go to **Build > Authentication > Get started**  
+   Enable a sign-in method, e.g., **Google Sign-In**
+
+3. Enable **Firestore Database**  
+   Go to **Build > Firestore Database > Create database**  
+   Choose **Start in test mode** (for development) and select a region
+
+4. (Optional) Set up **Firebase Hosting** for deployment  
+   Go to **Build > Hosting > Get started**  
+   Follow the Firebase CLI instructions for deployment
