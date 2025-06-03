@@ -113,7 +113,7 @@ export class FlowSequenceServiceService {
     if (this.settingsService.appSettings.countdownInBrowserTab) {
       document.title = ` ${this.minutesRemaining}min ${this.secondsOfMinuteRemainung}sec `;
     } else {
-      document.title = 'FlowSequenceFrontend';
+      document.title = 'FlowSeq';
     }
   }
 
@@ -154,7 +154,7 @@ export class FlowSequenceServiceService {
     if (this.settingsService.showCountdownInBrowserTab) {
       document.title = `Flow sequence Completed`;
     } else {
-      document.title = 'FlowSequenceFrontend';
+      document.title = 'FlowSeq';
     }
   }
 
