@@ -278,12 +278,14 @@
       <span>&copy; 2024 FLOWSEQ. All rights reserved.</span>
     </div>
 
-    <div
+    <a
       matTooltip="Please read our privacy policy to know how the data in FlowSeq is processed."
       [matTooltipPosition]="'above'"
       class="footer-item pointer"
+      routerLink="/privacy-policy"
+      target="_blank"
     >
-      <a routerLink="/privacy-policy" target="_blank">Privacy Policy</a>
+      <span>Privacy Policy</span>
       <svg
         width="10"
         height="10"
@@ -313,14 +315,16 @@
           stroke-linecap="round"
         />
       </svg>
-    </div>
+    </a>
 
-    <div
+    <a
       matTooltip="Please read our terms & conditions bevore using FlowSeq."
       [matTooltipPosition]="'above'"
       class="footer-item pointer"
+      routerLink="/tos"
+      target="_blank"
     >
-      <a routerLink="/tos" target="_blank">Terms & Conditions</a>
+      <span>Terms & Conditions</span>
       <svg
         width="10"
         height="10"
@@ -350,6 +354,6 @@
           stroke-linecap="round"
         />
       </svg>
-    </div>
+    </a>
   </div>
 </footer>
